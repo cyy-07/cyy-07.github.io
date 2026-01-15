@@ -3,216 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiyang Chen | ECUST & UCR</title>
+    <title>Yiyang Chen | Chemical Engineering & Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-            --card-bg: #ffffff;
+            --bg-deep: #0d1117;
+            --card-inner: #161b22;
+            --accent-cyan: #00d2ff;
+            --accent-green: #3fb950;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --border-glow: rgba(0, 210, 255, 0.3);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'JetBrains Mono', 'Segoe UI', monospace;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            margin: 0; padding: 0;
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        /* Header Styling */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            margin: 10px 0;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .social-links a {
-            margin: 0 12px;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Section Styling */
-        .section {
-            background: var(--card-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
             padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
         }
 
-        .section:hover {
-            transform: translateY(-5px);
+        /* --- 左侧个人看板 --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .profile-box {
+            background: var(--card-inner);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .avatar-glow {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent-cyan), #9d50bb);
+            display: flex;
+            align-items: center; justify-content: center;
+            font-size: 3rem; color: white;
+            box-shadow: 0 0 20px var(--border-glow);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .info-item i { color: var(--accent-cyan); width: 20px; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: #0d1117;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+
+        .stat-val { color: var(--accent-green); font-weight: bold; display: block; }
+        .stat-label { font-size: 0.7rem; color: var(--text-secondary); }
+
+        /* --- 右侧详情区 --- */
+        .content { display: flex; flex-direction: column; gap: 20px; }
+
+        .section-card {
+            background: var(--card-inner);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
         }
 
         h2 {
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        /* Education & Projects */
-        .edu-item, .project-item {
-            margin-bottom: 15px;
-        }
-
-        .edu-item strong {
-            color: var(--primary-color);
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* Skills Tags */
-        .skills-container {
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+            margin-top: 0;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             gap: 10px;
         }
 
-        .skill-tag {
-            background-color: #e1f0fa;
-            color: var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 2px solid #30363d;
         }
 
-        .skill-tag:hover {
-            background-color: var(--accent-color);
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
             color: white;
+            margin-bottom: 5px;
         }
 
-        /* CV Button */
-        .cv-btn {
+        .tag-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(56, 139, 253, 0.15);
+            color: #58a6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 139, 253, 0.3);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .course-item {
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            background: #0d1117;
+            border-radius: 4px;
+        }
+
+        .grade { color: var(--accent-green); }
+
+        .btn-action {
             display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-cyan);
+            color: #000;
             text-decoration: none;
             font-weight: bold;
-            transition: opacity 0.3s;
-        }
-
-        .cv-btn:hover {
-            opacity: 0.9;
-            text-decoration: none;
-        }
-
-        footer {
+            border-radius: 6px;
             text-align: center;
-            padding: 40px 0;
-            color: #888;
-            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: 0.3s;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container { margin: 10px; padding: 10px; }
-            header h1 { font-size: 1.8rem; }
+        .btn-action:hover { background: #00b4db; box-shadow: 0 0 15px var(--accent-cyan); }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>Yiyang Chen <span style="font-weight: 300; color: #999;">(Leo)</span></h1>
-        <p class="subtitle">Chemical Engineering @ ECUST & UCR | Data Science & Machine Learning</p>
-        <div class="social-links">
-            <a href="mailto:your_email@example.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/cyy-07" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <aside class="sidebar">
+        <div class="profile-box">
+            <div class="avatar-glow">YC</div>
+            <h1 style="margin: 10px 0; font-size: 1.6rem;">Yiyang Chen</h1>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">
+                Chemical Engineering Student <br> Data Science Enthusiast
+            </p>
+            
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-val">3.59</span>
+                    <span class="stat-label">GPA / 4.0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">85.7</span>
+                    <span class="stat-label">Avg Grade</span>
+                </div>
+            </div>
+
+            <div style="text-align: left; margin-top: 25px;">
+                <a href="mailto:ychen1420@ucr.edu" class="info-item">
+                    <i class="fas fa-envelope"></i> ychen1420@ucr.edu [cite: 47]
+                </a>
+                <a href="tel:15559086312" class="info-item">
+                    <i class="fas fa-phone"></i> +86 155 5908 6312 [cite: 48]
+                </a>
+                <a href="https://github.com/cyy-07" class="info-item">
+                    <i class="fab fa-github"></i> github.com/cyy-07
+                </a>
+                <div class="info-item">
+                    <i class="fas fa-language"></i> CET-4: 558 | CET-6: 480 [cite: 14, 15]
+                </div>
+            </div>
+
+            <a href="#" class="btn-action">VIEW FULL CV</a>
         </div>
-    </header>
 
-    <div class="section">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div class="edu-item">
-            <p><strong>East China University of Science and Technology</strong><br>
-            B.S. in Chemical Engineering</p>
+        <div class="profile-box" style="padding: 20px;">
+            <h2 style="font-size: 0.9rem; border: none;"><i class="fas fa-tools"></i> Tech Stack</h2>
+            <div class="tag-box">
+                <span class="tag">Python</span><span class="tag">C</span><span class="tag">R</span> [cite: 35, 36]
+                <span class="tag">MATLAB</span><span class="tag">Aspen</span><span class="tag">AutoCAD</span> [cite: 36, 37]
+                <span class="tag">PyTorch</span><span class="tag">Genetic Algorithms</span> [cite: 25]
+                <span class="tag">DICOPT</span><span class="tag">Data Structures</span> [cite: 27, 38]
+            </div>
         </div>
-        <div class="edu-item">
-            <p><strong>University of California, Riverside</strong><br>
-            Exchange Program | Minor in Computer Science</p>
-        </div>
-    </div>
+    </aside>
 
-    <div class="section">
-        <h2><i class="fas fa-flask"></i> Research & Projects</h2>
-        <ul>
-            <li><strong>Machine Learning for PDEs:</strong> Implementing Fourier Neural Operators (FNO) to solve complex physical equations.</li>
-            <li><strong>Data Analysis & Visualization:</strong> Insightful analysis on FIFA datasets and Olympic swimming trends using Python.</li>
-            <li><strong>Computational Chemistry:</strong> Microkinetic modeling and DFT calculations for ABO3 perovskites to explore catalytic properties.</li>
-            <li><strong>Software Development:</strong> Developed an automatic scheduling system in Python to optimize personal productivity.</li>
-        </ul>
-    </div>
+    <main class="content">
+        
+        <section class="section-card">
+            <h2><i class="fas fa-university"></i> Education</h2>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span>East China University of Science and Technology</span>
+                    <span>2022 - 2026 [cite: 10, 12]</span>
+                </div>
+                <p style="font-size: 0.9rem; margin: 5px 0;">B.S. in Chemical Engineering [cite: 7, 10]</p>
+                <div class="course-grid">
+                    <div class="course-item"><span>Advanced Math</span> <span class="grade">98</span></div>
+                    <div class="course-item"><span>Big Data Algorithms</span> <span class="grade">100</span></div>
+                    <div class="course-item"><span>AI Language & Ethics</span> <span class="grade">100</span></div>
+                    <div class="course-item"><span>Data Structures</span> <span class="grade">94</span></div>
+                    <div class="course-item"><span>Chem Eng Principles</span> <span class="grade">91</span></div>
+                </div> 
+            </div>
 
-    <div class="section">
-        <h2><i class="fas fa-code"></i> Skills</h2>
-        <div class="skills-container">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">Data Analysis (Pandas/Matplotlib)</span>
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Computational Chemistry (DFT)</span>
-            <span class="skill-tag">Research Writing</span>
-        </div>
-    </div>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span>University of California, Riverside (GPP)</span>
+                    <span>2025 - 2026 [cite: 30]</span>
+                </div>
+                <p style="font-size: 0.9rem; margin: 5px 0;">Exchange Program | Data Mining & Academic Training [cite: 30]</p>
+            </div>
 
-    <div class="section" style="text-align: center;">
-        <h2><i class="fas fa-file-pdf"></i> Resume</h2>
-        <p>Interested in my full background?</p>
-        <a href="path_to_your_cv.pdf" class="cv-btn" target="_blank">Download CV (PDF)</a>
-    </div>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span>University of Texas at Austin</span>
+                    <span>Summer 2024 [cite: 31, 32]</span>
+                </div>
+                <p style="font-size: 0.9rem; margin: 5px 0;">Summer Program | Python Programming (All A Grades) [cite: 33]</p>
+            </div>
+        </section>
 
-    <footer>
-        <p>© 2026 Yiyang Chen. Built with <i class="fas fa-heart" style="color: #e74c3c;"></i> & GitHub Pages.</p>
-    </footer>
+        <section class="section-card">
+            <h2><i class="fas fa-code-branch"></i> Key Projects</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span>Machine Learning for Multiphase Catalysis</span>
+                    <span>2024.03 [cite: 17, 19]</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                    Led the Python-based generation of volcano surfaces for high-throughput screening. Reproduced classical frameworks for descriptor identification. [cite: 20, 21]
+                </p>
+                <div class="tag-box"><span class="tag">Machine Learning</span><span class="tag">Surface Chemistry</span></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span>Industrial Carbon Emission Optimization</span>
+                    <span>Present [cite: 22, 24]</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                    Developing carbon quota optimization algorithms using Genetic Algorithms and Constraint Programming. Used DICOPT for dynamic scheduling. [cite: 25, 27]
+                </p>
+                <div class="tag-box"><span class="tag">Optimization</span><span class="tag">Genetic Algorithms</span><span class="tag">CPLEX</span></div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2><i class="fas fa-trophy"></i> Awards</h2>
+            <div style="font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+                <div>🏆 <strong>Provincial Third Prize</strong> - Mathematical Modeling Competition (2024) [cite: 41, 43]</div>
+                <div>🏆 <strong>Provincial Third Prize</strong> - Mathematical Competition (2024) [cite: 44]</div>
+                <div>🏅 <strong>Academic Scholarship</strong> - Third Class (2022-2023) [cite: 40]</div>
+                <div>📜 <strong>Computer Network Tech Level 3</strong> - Shanghai Certificate [cite: 45, 46]</div>
+            </div>
+        </section>
+
+    </main>
 </div>
 
 </body>
