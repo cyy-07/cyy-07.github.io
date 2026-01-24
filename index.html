@@ -9,9 +9,10 @@
         :root {
             --bg-deep: #0a0c12;
             --card-inner: #151921;
-            --accent-cyan: #00d2ff;
-            --accent-purple: #bd5eff;
-            --accent-green: #42f5a4;
+            /* 赛博配色盘 */
+            --accent-cyan: #00d2ff;    /* 核心/连接 */
+            --accent-purple: #bd5eff;  /* 研究/算法 */
+            --accent-green: #42f5a4;    /* 成就/数据 */
             --text-primary: #f0f6fc;
             --text-secondary: #8b949e;
             --border: #30363d;
@@ -23,96 +24,140 @@
             color: var(--text-primary);
             margin: 0; padding: 0;
             display: flex; justify-content: center;
+            /* 防止帐篷生成时撑开滚动条 */
             overflow-x: hidden; 
         }
 
         .main-wrapper {
-            max-width: 1150px; width: 95%; margin: 40px auto;
-            display: grid; grid-template-columns: 320px 1fr; gap: 25px;
+            max-width: 1150px;
+            width: 95%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 25px;
         }
 
+        /* --- 侧边栏 --- */
         .sidebar { position: sticky; top: 40px; height: fit-content; }
 
         .profile-box {
-            background: var(--card-inner); border: 1px solid var(--border);
-            border-radius: 16px; padding: 30px 20px; position: relative;
-            overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            background: var(--card-inner);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
 
+        /* 顶部渐变装饰条 */
         .profile-box::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
         }
 
         .avatar {
-            width: 100px; height: 100px; background: #1c2128;
-            border: 2px solid var(--border); border-radius: 50%;
-            margin: 0 auto 15px; display: flex; align-items: center;
-            justify-content: center; font-size: 2.5rem; color: var(--accent-cyan);
+            width: 100px; height: 100px;
+            background: #1c2128;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
         }
 
         .info-link {
-            display: flex; align-items: center; gap: 10px; margin-top: 15px;
-            font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px;
+            margin-top: 15px; font-size: 0.85rem;
+            color: var(--text-secondary); text-decoration: none;
+            transition: 0.3s;
         }
         .info-link:hover { color: var(--accent-cyan); transform: translateX(5px); }
         .info-link i { color: var(--accent-cyan); width: 20px; text-align: center; }
 
         .stat-bar {
-            display: flex; justify-content: space-around; margin-top: 25px;
-            padding-top: 20px; border-top: 1px solid var(--border);
+            display: flex; justify-content: space-around;
+            margin-top: 25px; padding-top: 20px;
+            border-top: 1px solid var(--border);
         }
         .stat-item { text-align: center; }
         .stat-num { display: block; color: var(--accent-green); font-weight: bold; font-size: 1.1rem; }
         .stat-lab { font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase; }
 
+        /* --- 右侧内容区 --- */
         .content { display: flex; flex-direction: column; gap: 20px; }
         .card {
-            background: var(--card-inner); border: 1px solid var(--border);
-            border-radius: 16px; padding: 25px 30px; transition: 0.3s;
+            background: var(--card-inner);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px 30px;
+            transition: 0.3s;
         }
+        .card:hover { border-color: #444c56; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
-        h2 { font-size: 1.1rem; margin: 0 0 20px 0; display: flex; align-items: center; gap: 12px; }
+        h2 {
+            font-size: 1.1rem; margin: 0 0 20px 0; display: flex; align-items: center; gap: 12px;
+            letter-spacing: 1px;
+        }
         .h2-edu { color: var(--accent-cyan); }
         .h2-proj { color: var(--accent-purple); }
+        .h2-honor { color: var(--accent-green); }
 
+        /* 时间线样式 */
         .timeline-item {
-            position: relative; padding-left: 25px; border-left: 1px solid var(--border); margin-bottom: 25px;
+            position: relative; padding-left: 25px;
+            border-left: 1px solid var(--border);
+            margin-bottom: 25px;
         }
         .timeline-item::before {
-            content: ""; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px;
-            border-radius: 50%; background: var(--bg-deep); border: 2px solid var(--accent-cyan);
+            content: ""; position: absolute; left: -5px; top: 6px;
+            width: 9px; height: 9px; border-radius: 50%;
+            background: var(--bg-deep); border: 2px solid var(--accent-cyan);
         }
+
+        .header-flex { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.95rem; }
+        .date-tag { color: var(--text-secondary); font-size: 0.8rem; font-weight: normal; }
+        .sub-header { font-size: 0.85rem; color: var(--accent-cyan); margin: 5px 0 10px 0; opacity: 0.9; }
+
+        /* 成绩高亮卡片 */
+        .grade-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(66, 245, 164, 0.05); padding: 4px 10px;
+            border-radius: 6px; font-size: 0.75rem; margin: 0 8px 8px 0;
+            border: 1px solid rgba(66, 245, 164, 0.15);
+        }
+        .grade-pill .val { color: var(--accent-green); font-weight: bold; }
+
+        /* 标签 */
+        .tag {
+            font-size: 0.7rem; padding: 2px 8px; border-radius: 4px;
+            background: #1c2128; color: var(--text-secondary);
+            border: 1px solid var(--border); margin-right: 5px;
+            transition: 0.3s;
+        }
+        .tag:hover { border-color: var(--accent-purple); color: var(--accent-purple); }
 
         .btn-cv {
             display: block; width: 100%; padding: 12px; margin-top: 20px;
             background: transparent; border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan); text-align: center; text-decoration: none;
             font-weight: bold; border-radius: 8px; transition: 0.3s;
-            text-transform: uppercase; font-size: 0.8rem; box-sizing: border-box;
+            text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; box-sizing: border-box;
         }
         .btn-cv:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
 
-        /* --- 帐篷彩蛋样式 --- */
-        .tent-btn-group { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
-        
-        #build-tent, #clear-tents {
-            width: 100%; padding: 10px; border-radius: 8px; cursor: pointer;
-            font-weight: bold; text-transform: uppercase; font-size: 0.75rem;
-            font-family: inherit; transition: 0.3s;
-        }
-
+        /* --- 帐篷功能专属样式 --- */
         #build-tent {
-            background: transparent; border: 1px solid var(--accent-purple); color: var(--accent-purple);
+            display: block; width: 100%; padding: 10px; margin-top: 12px;
+            background: transparent; border: 1px solid var(--accent-purple);
+            color: var(--accent-purple); text-align: center; cursor: pointer;
+            font-weight: bold; border-radius: 8px; transition: 0.3s;
+            text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;
+            font-family: inherit;
         }
         #build-tent:hover { background: var(--accent-purple); color: #000; box-shadow: 0 0 15px rgba(189, 94, 255, 0.4); }
-        #build-tent.active { background: var(--accent-purple); color: #000; border-color: var(--accent-purple); }
-
-        #clear-tents {
-            background: rgba(255, 80, 80, 0.1); border: 1px solid #ff5050; color: #ff5050;
-            display: none; /* 默认隐藏，有帐篷时显示 */
-        }
-        #clear-tents:hover { background: #ff5050; color: #fff; }
+        #build-tent.active { background: var(--accent-purple); color: #000; }
 
         .tent-mark {
             position: absolute; pointer-events: none; z-index: 1000;
@@ -142,28 +187,51 @@
             </p>
 
             <div class="stat-bar">
-                <div class="stat-item"><span class="stat-num">3.60</span><span class="stat-lab">GPA</span></div>
-                <div class="stat-item" style="border-left: 1px solid var(--border); border-right: 1px solid var(--border); padding: 0 10px;">
-                    <span class="stat-num">85.7</span><span class="stat-lab">AVG Score</span>
+                <div class="stat-item">
+                    <span class="stat-num">3.60</span>
+                    <span class="stat-lab">GPA</span>
                 </div>
-                <div class="stat-item"><span class="stat-num">2026</span><span class="stat-lab">CLASS</span></div>
+                <div class="stat-item" style="border-left: 1px solid var(--border); border-right: 1px solid var(--border); padding: 0 10px;">
+                    <span class="stat-num">85.7</span>
+                    <span class="stat-lab">AVG Score</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">2026</span>
+                    <span class="stat-lab">CLASS</span>
+                </div>
             </div>
 
             <div style="margin-top: 25px;">
-                <a href="mailto:ychen1420@ucr.edu" class="info-link"><i class="fas fa-envelope"></i> ychen1420@ucr.edu</a>
-                <a href="https://github.com/cyy-07" target="_blank" class="info-link"><i class="fab fa-github"></i> github.com/cyy-07</a>
+                <a href="mailto:ychen1420@ucr.edu" class="info-link">
+                    <i class="fas fa-envelope"></i> ychen1420@ucr.edu
+                </a>
+                <a href="https://github.com/cyy-07" target="_blank" class="info-link">
+                    <i class="fab fa-github"></i> github.com/cyy-07
+                </a>
+                <div class="info-link">
+                    <i class="fas fa-language"></i> CET-4: 558 | CET-6: 480
+                </div>
             </div>
 
             <a href="#" class="btn-cv">Download CV</a>
             
-            <div class="tent-btn-group">
-                <button id="build-tent"><i class="fas fa-campground"></i> 搭建帐篷</button>
-                <button id="clear-tents"><i class="fas fa-trash-alt"></i> 清除所有</button>
+            <button id="build-tent"><i class="fas fa-campground"></i> 搭建帐篷</button>
+        </div>
+
+        <div class="profile-box" style="margin-top: 20px; padding: 20px;">
+            <h2 style="font-size: 0.8rem; border:none; margin-bottom: 15px; color: var(--accent-purple);">
+                <i class="fas fa-microchip"></i> TECH STACK
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                <span class="tag">Python</span><span class="tag">C</span><span class="tag">R</span>
+                <span class="tag">MATLAB</span><span class="tag">Aspen Plus</span><span class="tag">PyTorch</span>
+                <span class="tag">Genetic Algo</span><span class="tag">DICOPT</span>
             </div>
         </div>
     </aside>
 
     <main class="content">
+        
         <section class="card">
             <h2 class="h2-edu"><i class="fas fa-graduation-cap"></i> Education</h2>
             <div class="timeline-item">
@@ -172,69 +240,116 @@
                     <span class="date-tag">2022.09 - 2026.06</span>
                 </div>
                 <div class="sub-header">B.S. in Chemical Engineering</div>
+                <div style="margin-top: 5px;">
+                    <div class="grade-pill"><span>Advanced Math</span><span class="val">98</span></div>
+                    <div class="grade-pill"><span>Big Data Algo</span><span class="val">100</span></div>
+                    <div class="grade-pill"><span>AI & Ethics</span><span class="val">100</span></div>
+                    <div class="grade-pill"><span>Data Structures</span><span class="val">94</span></div>
+                    <div class="grade-pill"><span>Principles of ChemE</span><span class="val">91</span></div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="header-flex">
+                    <span>University of California, Riverside (GPP)</span>
+                    <span class="date-tag">2025.09 - 2026.06</span>
+                </div>
+                <div class="sub-header">Exchange Program · Computer Science & Academic Training</div>
+            </div>
+
+            <div class="timeline-item" style="margin-bottom: 0;">
+                <div class="header-flex">
+                    <span>University of Texas at Austin</span>
+                    <span class="date-tag">2024 Summer</span>
+                </div>
+                <div class="sub-header">Core Summer Courses · All A Grades (Data Analysis, Python, Academic Writing)</div>
             </div>
         </section>
-        
+
         <section class="card">
-            <h2 class="h2-proj"><i class="fas fa-terminal"></i> Projects</h2>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">点击页面任何地方来搭建你的小帐篷...</p>
+            <h2 class="h2-proj"><i class="fas fa-terminal"></i> Research & Projects</h2>
+            <div class="timeline-item">
+                <div class="header-flex">
+                    <span>Multiphase Catalytic Reactions (Machine Learning)</span>
+                    <span class="date-tag">2024.03 - 2024.08</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 8px 0; line-height: 1.6;">
+                    Led Python implementation of volcano plot generation for high-throughput screening and descriptor identification. Reproduced classical frameworks for model design.
+                </p>
+            </div>
+
+            <div class="timeline-item" style="margin-bottom: 0;">
+                <div class="header-flex">
+                    <span>Industrial Carbon Emission Optimization</span>
+                    <span class="date-tag">2025.01 - Present</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 8px 0; line-height: 1.6;">
+                    Developed carbon quota optimization algorithms using Genetic Algorithms. Utilized DICOPT solver (CONOPT/CPLEX) for dynamic scheduling and optimization.
+                </p>
+            </div>
         </section>
+
+        <section class="card">
+            <h2 class="h2-honor"><i class="fas fa-award"></i> Awards & Honors</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="font-size: 0.85rem;">
+                    <div style="color:var(--text-primary); margin-bottom:2px;">Mathematical Modeling Competition</div>
+                    <div style="color:var(--accent-green);">Provincial Third Prize · 2024</div>
+                </div>
+                <div style="font-size: 0.85rem;">
+                    <div style="color:var(--text-primary); margin-bottom:2px;">Mathematics Competition</div>
+                    <div style="color:var(--accent-green);">Provincial Third Prize · 2024</div>
+                </div>
+                <div style="font-size: 0.85rem;">
+                    <div style="color:var(--text-primary); margin-bottom:2px;">Academic Scholarship</div>
+                    <div style="color:var(--accent-green);">Third Class · 2022-2023 2024-2025</div>
+                </div>
+                <div style="font-size: 0.85rem;">
+                    <div style="color:var(--text-primary); margin-bottom:2px;">CS Certificate</div>
+                    <div style="color:var(--accent-green);">Shanghai Network Tech Level 3</div>
+                </div>
+            </div>
+        </section>
+
     </main>
 </div>
 
 <script>
-    let tentActive = false;
-    const buildBtn = document.getElementById("build-tent");
-    const clearBtn = document.getElementById("clear-tents");
-    const tentsArray = [];
+let tentActive = false;
+const buildBtn = document.getElementById("build-tent");
 
-    // 切换模式
-    buildBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        tentActive = !tentActive;
-        
-        if (tentActive) {
-            buildBtn.classList.add("active");
-            buildBtn.innerHTML = '<i class="fas fa-hammer"></i> 建造模式中';
-            document.body.style.cursor = 'crosshair';
-        } else {
-            buildBtn.classList.remove("active");
-            buildBtn.innerHTML = '<i class="fas fa-campground"></i> 搭建帐篷';
-            document.body.style.cursor = 'auto';
-        }
-    });
+// 模式切换
+buildBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    tentActive = !tentActive;
+    
+    if (tentActive) {
+        buildBtn.classList.add("active");
+        buildBtn.innerHTML = '<i class="fas fa-hammer"></i> 模式已开启';
+        document.body.style.cursor = 'crosshair';
+    } else {
+        buildBtn.classList.remove("active");
+        buildBtn.innerHTML = '<i class="fas fa-campground"></i> 搭建帐篷';
+        document.body.style.cursor = 'auto';
+    }
+});
 
-    // 建造帐篷
-    document.addEventListener("click", (e) => {
-        if (!tentActive) return;
-        
-        // 检查点击的是否是按钮本身
-        if (e.target.closest('button')) return;
-
-        const tent = document.createElement("div");
-        tent.className = "tent-mark";
-        tent.innerHTML = '<i class="fas fa-campground" style="color: var(--accent-green); font-size: 32px;"></i>';
-        
-        // 坐标计算
-        tent.style.left = `${e.pageX - 16}px`;
-        tent.style.top = `${e.pageY - 16}px`;
-        
-        document.body.appendChild(tent);
-        tentsArray.push(tent);
-
-        // 显示清除按钮
-        if (tentsArray.length > 0) {
-            clearBtn.style.display = "block";
-        }
-    });
-
-    // 清除帐篷
-    clearBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        tentsArray.forEach(t => t.remove());
-        tentsArray.length = 0;
-        clearBtn.style.display = "none";
-    });
+// 点击生成
+document.addEventListener("click", (e) => {
+    if (!tentActive) return;
+    // 如果点击的是按钮本身，不生成帐篷
+    if (e.target.closest('#build-tent')) return;
+    
+    const tent = document.createElement("div");
+    tent.className = "tent-mark";
+    // 默认使用 FontAwesome 图标，无需外部图片
+    tent.innerHTML = '<i class="fas fa-campground" style="color: var(--accent-green); font-size: 30px;"></i>';
+    
+    tent.style.left = `${e.pageX - 15}px`;
+    tent.style.top = `${e.pageY - 15}px`;
+    
+    document.body.appendChild(tent);
+});
 </script>
 
 </body>
