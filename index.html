@@ -141,6 +141,146 @@
             to { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
+        /* ==================== NEW FEATURES ==================== */
+        
+        /* Wellbeing controls box */
+        .wellbeing-controls {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px;
+        }
+        
+        .wellbeing-btn {
+            padding: 10px; cursor: pointer; font-weight: bold; border-radius: 8px;
+            transition: 0.3s; text-transform: uppercase; font-size: 0.7rem; font-family: inherit;
+            background: transparent; border: 1px solid;
+        }
+        
+        #breathing-btn {
+            border-color: var(--accent-cyan); color: var(--accent-cyan);
+        }
+        #breathing-btn:hover {
+            background: var(--accent-cyan); color: #000;
+        }
+        
+        #snow-btn {
+            border-color: var(--accent-purple); color: var(--accent-purple);
+        }
+        #snow-btn:hover {
+            background: var(--accent-purple); color: #000;
+        }
+        
+        #gentle-exit-btn {
+            grid-column: 1 / -1;
+            border-color: var(--accent-green); color: var(--accent-green);
+        }
+        #gentle-exit-btn:hover {
+            background: var(--accent-green); color: #000;
+        }
+
+        /* Breathing Overlay */
+        .breathing-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+            z-index: 9999; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s;
+        }
+        .breathing-overlay.active { opacity: 1; pointer-events: all; }
+
+        .breathing-circle {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+            box-shadow: 0 0 60px rgba(0, 210, 255, 0.6);
+            z-index: 10000; position: relative;
+        }
+
+        .breathing-text {
+            margin-top: 30px; color: white; font-size: 20px; font-weight: 300;
+            letter-spacing: 2px; z-index: 10001; position: relative;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            28.5% { transform: scale(1.8); }
+            57% { transform: scale(1.8); }
+            100% { transform: scale(1); }
+        }
+
+        .breathing-circle.animating {
+            animation: breathe 14s ease-in-out infinite;
+        }
+
+        /* Gentle Exit Overlay */
+        .gentle-exit-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
+            z-index: 9999; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 1s ease-out;
+        }
+
+        .gentle-exit-overlay.active { opacity: 1; pointer-events: all; }
+
+        .exit-message {
+            color: #e0e0e0; text-align: center; opacity: 0;
+            transform: translateY(20px); transition: all 1s ease-out 0.5s;
+        }
+
+        .gentle-exit-overlay.active .exit-message {
+            opacity: 1; transform: translateY(0);
+        }
+
+        .exit-message h2 {
+            font-size: 32px; font-weight: 300; margin: 0 0 20px 0; letter-spacing: 2px;
+        }
+
+        .exit-message p {
+            font-size: 18px; font-weight: 200; margin: 10px 0; color: #b0b0b0;
+        }
+
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; }
+        }
+
+        .return-btn {
+            margin-top: 40px; padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white; border-radius: 25px; cursor: pointer;
+            font-size: 14px; transition: all 0.3s;
+            backdrop-filter: blur(10px); font-family: inherit;
+        }
+
+        .return-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Snowflakes */
+        .snowflake {
+            position: fixed; top: -10px; color: white;
+            font-size: 20px; pointer-events: none; z-index: 9999;
+            animation: snowfall linear forwards;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+
         @media (max-width: 850px) {
             .main-wrapper { grid-template-columns: 1fr; }
             .sidebar { position: static; }
@@ -177,6 +317,12 @@
             <div class="tent-controls">
                 <button id="build-tent"><i class="fas fa-campground"></i> Build Tent</button>
                 <button id="clear-tents"><i class="fas fa-eraser"></i> Clear</button>
+            </div>
+            
+            <div class="wellbeing-controls">
+                <button id="breathing-btn" class="wellbeing-btn"><i class="fas fa-wind"></i> Breathe</button>
+                <button id="snow-btn" class="wellbeing-btn"><i class="fas fa-snowflake"></i> Snow</button>
+                <button id="gentle-exit-btn" class="wellbeing-btn"><i class="fas fa-moon"></i> Gentle Exit</button>
             </div>
         </div>
 
@@ -253,7 +399,23 @@
     </main>
 </div>
 
+<!-- Breathing Overlay -->
+<div class="breathing-overlay" id="breathingOverlay">
+    <div class="breathing-circle" id="breathingCircle"></div>
+    <div class="breathing-text" id="breathingText">Follow the circle</div>
+</div>
+
+<!-- Gentle Exit Overlay -->
+<div class="gentle-exit-overlay" id="gentleExitOverlay">
+    <div class="exit-message">
+        <h2>You've done enough</h2>
+        <p>Take a rest, tomorrow will be better</p>
+        <button class="return-btn" onclick="deactivateGentleExit()">Maybe later</button>
+    </div>
+</div>
+
 <script>
+// ==================== ORIGINAL TENT FEATURE ====================
 let tentActive = false;
 const buildBtn = document.getElementById("build-tent");
 const clearBtn = document.getElementById("clear-tents");
@@ -290,6 +452,126 @@ clearBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     const marks = document.querySelectorAll('.tent-mark');
     marks.forEach(m => m.remove());
+});
+
+// ==================== NEW BREATHING FEATURE ====================
+let breathingTimeout;
+
+document.getElementById('breathing-btn').addEventListener('click', function() {
+    const overlay = document.getElementById('breathingOverlay');
+    const circle = document.getElementById('breathingCircle');
+    const text = document.getElementById('breathingText');
+    
+    overlay.classList.add('active');
+    circle.classList.add('animating');
+    
+    const phases = [
+        { time: 0, text: 'Breathe in...' },
+        { time: 4000, text: 'Hold...' },
+        { time: 8000, text: 'Breathe out...' }
+    ];
+    
+    phases.forEach(phase => {
+        setTimeout(() => {
+            text.textContent = phase.text;
+        }, phase.time);
+    });
+    
+    breathingTimeout = setTimeout(() => {
+        overlay.classList.remove('active');
+        circle.classList.remove('animating');
+        text.textContent = 'Follow the circle';
+    }, 10000);
+});
+
+document.getElementById('breathingOverlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        clearTimeout(breathingTimeout);
+        this.classList.remove('active');
+        document.getElementById('breathingCircle').classList.remove('animating');
+    }
+});
+
+// ==================== NEW SNOW FEATURE ====================
+document.getElementById('snow-btn').addEventListener('click', function() {
+    createSnowfall();
+});
+
+function createSnowfall() {
+    const duration = 5000;
+    const snowflakeCount = 50;
+    const interval = duration / snowflakeCount;
+    
+    let created = 0;
+    const timer = setInterval(() => {
+        if (created >= snowflakeCount) {
+            clearInterval(timer);
+            return;
+        }
+        
+        for (let i = 0; i < 3; i++) {
+            createSnowflake();
+        }
+        
+        created++;
+    }, interval);
+}
+
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.textContent = ['❄', '❅', '❆'][Math.floor(Math.random() * 3)];
+    
+    snowflake.style.left = Math.random() * 100 + 'vw';
+    
+    const fallDuration = 3 + Math.random() * 3;
+    snowflake.style.animationDuration = fallDuration + 's';
+    
+    const size = 15 + Math.random() * 15;
+    snowflake.style.fontSize = size + 'px';
+    
+    document.body.appendChild(snowflake);
+    
+    setTimeout(() => {
+        snowflake.remove();
+    }, fallDuration * 1000);
+}
+
+// ==================== NEW GENTLE EXIT FEATURE ====================
+document.getElementById('gentle-exit-btn').addEventListener('click', function() {
+    activateGentleExit();
+});
+
+function activateGentleExit() {
+    const overlay = document.getElementById('gentleExitOverlay');
+    overlay.classList.add('active');
+    createStars();
+}
+
+function deactivateGentleExit() {
+    const overlay = document.getElementById('gentleExitOverlay');
+    overlay.classList.remove('active');
+    document.querySelectorAll('.star').forEach(star => star.remove());
+}
+
+function createStars() {
+    const overlay = document.getElementById('gentleExitOverlay');
+    
+    for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        overlay.appendChild(star);
+    }
+}
+
+// ESC key exits modes
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        deactivateGentleExit();
+    }
 });
 </script>
 
