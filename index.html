@@ -441,9 +441,9 @@ document.addEventListener("click", (e) => {
     if (!tentActive) return;
     
     // Only allow build-tent and clear-tents buttons to work
-    if (e.target.closest('button')) {
-        const clickedButton = e.target.closest('button');
-        if (clickedButton.id !== 'build-tent' && clickedButton.id !== 'clear-tents') {
+    const clickedElement = e.target.closest('button, a');
+    if (clickedElement) {
+        if (clickedElement.id !== 'build-tent' && clickedElement.id !== 'clear-tents') {
             e.preventDefault();
             e.stopPropagation();
             return;
