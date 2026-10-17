@@ -230,6 +230,7 @@
         .s-green { color: var(--accent-green); }
         .s-amber { color: var(--accent-amber); }
         .hero-banner {
+            container-type: inline-size;
             background: linear-gradient(135deg, rgba(0,210,255,0.04) 0%, rgba(162,89,255,0.04) 50%, rgba(42,255,160,0.02) 100%);
             border: 1px solid var(--border); border-radius: 0 16px 16px 16px; padding: 30px 32px; position: relative; overflow: hidden;
         }
@@ -239,6 +240,9 @@
         }
         .hero-label::before { content: ""; width: 24px; height: 1px; background: var(--accent-cyan); }
         .hero-h1 { font-family: 'Inter', sans-serif; font-size: 1.85rem; font-weight: 800; margin: 0 0 14px 0; line-height: 1.25; }
+        @media (min-width:881px) {
+            .hero-h1 { font-size:min(1.85rem,4.2cqi); }
+        }
         .hero-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; max-width: 540px; margin: 0 0 20px 0; }
         .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .hero-tag { padding: 5px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; border: 1px solid; }
@@ -625,7 +629,7 @@
         <div id="home" class="tab-content active" role="tabpanel" aria-labelledby="tab-home">
             <div class="hero-banner">
                 <div class="hero-label"><span class="en">Portfolio &middot; 2026</span><span class="zh">个人主页 &middot; 2026</span></div>
-                <h1 class="hero-h1"><span class="en">Where Chemistry<br>Meets Machine Learning</span><span class="zh">化学工程与<br>机器学习的交汇</span></h1>
+                <h1 class="hero-h1"><span class="en">Where Chemistry Meets Machine Learning</span><span class="zh">化学工程与<br>机器学习的交汇</span></h1>
                 <p class="hero-desc"><span class="en">I studied Chemical Engineering at ECUST and Computer Science and AI through UCR’s Graduate Preparation Program. I develop graph neural networks for molecular solubility, optimize industrial furnace schedules, and build interactive applications. I am applying for graduate study in Computer Science, Machine Learning, and AI for Science for Fall 2027.</span><span class="zh">我在华东理工大学学习化学工程，并通过 UCR 研究生预备项目修读计算机与 AI 课程。目前的工作包括分子溶解度图神经网络、工业炉群调度优化和交互式应用开发，正在申请 2027 年秋季入学的计算机科学、机器学习及 AI for Science 研究生项目。</span></p>
                 <div class="hero-tags">
                     <span class="hero-tag cyan"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span>
