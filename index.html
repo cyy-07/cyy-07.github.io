@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yiyang Chen | Portfolio</title>
+    <script>
+        // Default to a readable light theme; honor an explicit previous selection.
+        (function () {
+            try {
+                document.documentElement.dataset.theme =
+                    localStorage.getItem('yc-portfolio-theme') === 'dark' ? 'dark' : 'light';
+            } catch (e) {
+                document.documentElement.dataset.theme = 'light';
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,6 +31,21 @@
             --text-secondary: #7a8499;
             --border: #1e2535;
             --border-bright: #2a3650;
+        }
+        /* The original dark palette remains unchanged; light is the default view. */
+        html[data-theme="light"] {
+            color-scheme: light;
+            --bg-deep: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card2: #f1f5f9;
+            --accent-cyan: #087d9d;
+            --accent-purple: #7447b3;
+            --accent-green: #147957;
+            --accent-amber: #945611;
+            --text-primary: #1e293b;
+            --text-secondary: #526174;
+            --border: #e2e8f0;
+            --border-bright: #cbd5e1;
         }
         * { box-sizing: border-box; }
         /* ===== STAR CANVAS & CURSOR (from FluxMind) ===== */
@@ -424,7 +450,7 @@
         body.lang-zh .en { display: none; }
         body.lang-zh .zh-block { display: block; }
         body.lang-zh .en-block { display: none; }
-        #lang-btn {
+        #lang-btn, #theme-btn {
             display: block; margin: 0 auto;
             background: transparent; border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan); padding: 6px 14px; border-radius: 20px;
@@ -432,7 +458,51 @@
             font-family: 'JetBrains Mono', monospace; letter-spacing: 1px;
             transition: 0.25s; backdrop-filter: blur(10px);
         }
-        #lang-btn:hover { background: var(--accent-cyan); color: #000; }
+        #lang-btn:hover, #theme-btn:hover { background: var(--accent-cyan); color: #000; }
+        /* A few originally hard-coded dark surfaces need light-only counterparts. */
+        .theme-when-dark { display: none; }
+        html[data-theme="dark"] .theme-when-light { display: none; }
+        html[data-theme="dark"] .theme-when-dark { display: inline; }
+        html[data-theme="light"] body { cursor: auto; }
+        html[data-theme="light"] #star-canvas,
+        html[data-theme="light"] #cdot,
+        html[data-theme="light"] #cring { display: none; }
+        html[data-theme="light"] .profile-box { box-shadow: 0 16px 36px rgba(15,23,42,0.07); }
+        html[data-theme="light"] .avatar {
+            background: linear-gradient(135deg, #eaf5f8, #eaeefa);
+            box-shadow: 0 0 24px rgba(8,125,157,0.08);
+        }
+        html[data-theme="light"] .tag { background: rgba(15,23,42,0.025); }
+        html[data-theme="light"] .highlight-item,
+        html[data-theme="light"] .project-stats { background: rgba(15,23,42,0.025); }
+        html[data-theme="light"] .more-projects-card { background: var(--bg-card); }
+        html[data-theme="light"] .card:hover { box-shadow: 0 10px 30px rgba(15,23,42,0.06); }
+        html[data-theme="light"] .project-card:hover { box-shadow: 0 14px 32px rgba(15,23,42,0.10); }
+        html[data-theme="light"] [data-tooltip]::after {
+            background: var(--bg-card); color: var(--text-primary);
+        }
+        html[data-theme="light"] .project-title[style*="text-shadow"] { text-shadow: none !important; }
+        html[data-theme="light"] .snowflake {
+            color: #77a6b8;
+            text-shadow: 0 0 5px rgba(8,125,157,0.15);
+        }
+        /* White lettering stays legible on the darker light-theme accents. */
+        html[data-theme="light"] .btn-cv:hover,
+        html[data-theme="light"] #build-tent:hover,
+        html[data-theme="light"] #clear-tents:hover,
+        html[data-theme="light"] #breathing-btn:hover,
+        html[data-theme="light"] #snow-btn:hover,
+        html[data-theme="light"] #star-toggle-btn:hover,
+        html[data-theme="light"] #gentle-exit-btn:hover,
+        html[data-theme="light"] .cta-primary,
+        html[data-theme="light"] .cyan-btn,
+        html[data-theme="light"] .cyan-btn:hover,
+        html[data-theme="light"] #lang-btn:hover,
+        html[data-theme="light"] #theme-btn:hover {
+            color: #ffffff !important;
+        }
+        html[data-theme="light"] .cta-primary:hover { background: #116c4f; box-shadow: 0 0 14px rgba(20,121,87,0.15); }
+        html[data-theme="light"] .cyan-btn:hover { background: #076b87; box-shadow: 0 0 14px rgba(8,125,157,0.15); }
         @media (max-width:880px) {
             .main-wrapper { grid-template-columns:1fr; }
             .sidebar { position:static; }
@@ -462,7 +532,7 @@
                 <div class="stat-div"></div>
                 <div class="stat-item"><span class="stat-num">2026</span><span class="stat-lab"><span class="en">Class</span><span class="zh">届</span></span></div>
             </div>
-            <a href="mailto:ychen1420@ucr.edu" class="info-link" id="emailLink" data-tooltip="Click to copy email"><i class="fas fa-envelope"></i> ychen1420@ucr.edu</a>
+            <a href="mailto:ychen1420@ucr.edu" class="info-link" id="emailLink" data-tooltip="Click to copy email" data-tooltip-zh="点击复制邮箱"><i class="fas fa-envelope"></i> ychen1420@ucr.edu</a>
             <a href="https://github.com/cyy-07" target="_blank" class="info-link"><i class="fab fa-github"></i> github.com/cyy-07</a>
             <a href="https://www.linkedin.com/in/yiyang-chen-379495376" target="_blank" class="info-link"><i class="fab fa-linkedin"></i> linkedin/yiyang-chen</a>
             <div class="info-link"><i class="fas fa-map-marker-alt"></i> <span class="en">Riverside, CA (OPT eligible Jun 2026)</span><span class="zh">加州河滨市 (2026年6月OPT)</span></div>
@@ -480,7 +550,7 @@
             </div>
         </div>
         <div class="mini-card">
-            <div class="mini-card-title" style="color:var(--accent-purple);"><i class="fas fa-microchip"></i> <span class="en"><span class="en">Tech Stack</span><span class="zh">技术栈</span></span><span class="zh">技术栈</span></div>
+            <div class="mini-card-title" style="color:var(--accent-purple);"><i class="fas fa-microchip"></i> <span class="en">Tech Stack</span><span class="zh">技术栈</span></div>
             <div>
                 <span class="tag">Python</span><span class="tag">C++</span><span class="tag">R</span>
                 <span class="tag">MATLAB</span><span class="tag">PyTorch</span><span class="tag">PyG</span>
@@ -498,7 +568,7 @@
             <div class="tab-btn" data-tab="education" onclick="switchTab('education',event)"><span class="en">Education</span><span class="zh">教育背景</span></div>
             <div class="tab-btn" data-tab="courses" onclick="switchTab('courses',event)"><span class="en">Courses</span><span class="zh">课程成绩</span></div>
             <div class="tab-btn" data-tab="research" onclick="switchTab('research',event)"><span class="en">Research</span><span class="zh">科研经历</span></div>
-            <div class="tab-btn" data-tab="projects" onclick="switchTab('projects',event)"><span class="en">Projects</span><span class="zh">项目</span>&nbsp;<span style="display:inline-flex;align-items:center;background:rgba(42,255,160,0.15);border:1px solid rgba(42,255,160,0.3);border-radius:4px;padding:1px 5px;font-size:0.58rem;color:var(--accent-green);letter-spacing:0.5px;vertical-align:middle;margin-left:2px;">NEW</span></div>
+            <div class="tab-btn" data-tab="projects" onclick="switchTab('projects',event)"><span class="en">Projects</span><span class="zh">项目</span>&nbsp;<span style="display:inline-flex;align-items:center;background:rgba(42,255,160,0.15);border:1px solid rgba(42,255,160,0.3);border-radius:4px;padding:1px 5px;font-size:0.58rem;color:var(--accent-green);letter-spacing:0.5px;vertical-align:middle;margin-left:2px;"><span class="en">NEW</span><span class="zh">新</span></span></div>
         </div>
 
         <!-- HOME -->
@@ -508,11 +578,11 @@
                 <h1 class="hero-h1"><span class="en">Where Chemistry<br>Meets Machine Learning</span><span class="zh">化学工程与<br>机器学习的交汇</span></h1>
                 <p class="hero-desc"><span class="en">Dual-trained in Chemical Engineering (ECUST) and Computer Science (UCR), I build physics-informed AI systems that accelerate scientific discovery &mdash; from molecular solubility prediction with GNNs to multi-objective industrial optimization. Targeting a PhD in AI for Science starting Fall 2026.</span><span class="zh">化学工程（华东理工）与计算机科学（加州大学河滨分校）双背景，我构建融合物理约束的AI系统加速科学发现——从图神经网络预测分子溶解度到多目标工业优化。目标：2026年秋季入读AI for Science方向博士项目。</span></p>
                 <div class="hero-tags">
-                    <span class="hero-tag cyan">Physics-Informed ML</span>
-                    <span class="hero-tag purple">Graph Neural Networks</span>
-                    <span class="hero-tag green">Scientific Discovery</span>
-                    <span class="hero-tag cyan">Molecular Systems</span>
-                    <span class="hero-tag purple">MINLP Optimization</span>
+                    <span class="hero-tag cyan"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span>
+                    <span class="hero-tag purple"><span class="en">Graph Neural Networks</span><span class="zh">图神经网络</span></span>
+                    <span class="hero-tag green"><span class="en">Scientific Discovery</span><span class="zh">科学发现</span></span>
+                    <span class="hero-tag cyan"><span class="en">Molecular Systems</span><span class="zh">分子系统</span></span>
+                    <span class="hero-tag purple"><span class="en">MINLP Optimization</span><span class="zh">MINLP 优化</span></span>
                 </div>
                 <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;">
                     <button class="hero-cta-btn cyan-btn" onclick="switchTab('research',event)"><i class="fas fa-flask"></i> <span class="en">View Research</span><span class="zh">查看科研</span></button>
@@ -526,25 +596,25 @@
                     <div class="research-item cyan">
                         <div class="ri-icon">&#129514;</div>
                         <div class="ri-title"><span class="en">Molecular Solubility GNN</span><span class="zh">分子溶解度图神经网络</span></div>
-                        <div class="ri-desc">Multi-modal fusion GNN (~5.7M params, 5-fold ensemble) embedding Van&rsquo;t Hoff thermodynamic constraints as physics-informed auxiliary loss. R&sup2;=0.968, RMSE=0.244.</div>
+                        <div class="ri-desc"><span class="en">Multi-modal fusion GNN (~5.7M params, 5-fold ensemble) embedding Van&rsquo;t Hoff thermodynamic constraints as physics-informed auxiliary loss. R&sup2;=0.968, RMSE=0.244.</span><span class="zh">构建多模态融合 GNN（约 570 万参数、5 折集成），以 Van&rsquo;t Hoff 热力学约束作为物理信息辅助损失。R&sup2;=0.968，RMSE=0.244。</span></div>
                         <span class="ri-badge ongoing"><span class="en">&#9679; Ongoing &middot; UCR</span><span class="zh">&#9679; 进行中 &middot; UCR</span></span>
                     </div>
                     <div class="research-item purple">
                         <div class="ri-icon">&#9879;</div>
                         <div class="ri-title"><span class="en">Ethylene Furnace Optimization</span><span class="zh">乙烯裂解炉多目标优化</span></div>
-                        <div class="ri-desc">Multi-objective MINLP framework achieving 38.6% CO&#8322; reduction via ML surrogate models and dynamic decoking scheduling across multi-furnace systems.</div>
+                        <div class="ri-desc"><span class="en">Multi-objective MINLP framework achieving 38.6% CO&#8322; reduction via ML surrogate models and dynamic decoking scheduling across multi-furnace systems.</span><span class="zh">构建多目标 MINLP 优化框架，结合 ML 代理模型和多炉动态清焦调度，实现 38.6% 的 CO&#8322; 减排。</span></div>
                         <span class="ri-badge under-review"><span class="en">&#128196; Under Review &middot; Fuel Journal</span><span class="zh">&#128196; 审稿中 &middot; Fuel期刊</span></span>
                     </div>
                     <div class="research-item" style="border-top:2px solid rgba(42,255,160,0.3);">
                         <div class="ri-icon">&#128300;</div>
                         <div class="ri-title"><span class="en">Multiphase Catalytic Reactions (ML)</span><span class="zh">多相催化反应（机器学习）</span></div>
-                        <div class="ri-desc">Led Python implementation of volcano plot generation for high-throughput catalyst screening and descriptor identification. Applied ML to accelerate reaction pathway discovery.</div>
+                        <div class="ri-desc"><span class="en">Led Python implementation of volcano plot generation for high-throughput catalyst screening and descriptor identification. Applied ML to accelerate reaction pathway discovery.</span><span class="zh">负责以 Python 实现火山图生成，用于高通量催化剂筛选与描述符识别，并借助 ML 加速反应路径发现。</span></div>
                         <span class="ri-badge" style="background:rgba(42,255,160,0.07);color:var(--accent-green);border:1px solid rgba(42,255,160,0.2);"><span class="en">&#10003; Completed &middot; ECUST 2024</span><span class="zh">&#10003; 已完成 &middot; 华理 2024</span></span>
                     </div>
                     <div class="research-item" style="border-top:2px solid rgba(255,179,71,0.3);">
                         <div class="ri-icon">&#128202;</div>
                         <div class="ri-title"><span class="en">Industrial Carbon Quota Optimization</span><span class="zh">工业碳配额优化</span></div>
-                        <div class="ri-desc">Developed carbon quota allocation algorithms using Genetic Algorithms for multi-plant industrial systems. Balancing emissions constraints with production efficiency.</div>
+                        <div class="ri-desc"><span class="en">Developed carbon quota allocation algorithms using Genetic Algorithms for multi-plant industrial systems. Balancing emissions constraints with production efficiency.</span><span class="zh">为多工厂工业系统开发基于遗传算法的碳配额分配方法，在排放约束与生产效率之间寻求平衡。</span></div>
                         <span class="ri-badge" style="background:rgba(255,179,71,0.07);color:var(--accent-amber);border:1px solid rgba(255,179,71,0.2);"><span class="en">&#9679; Ongoing &middot; ECUST 2025</span><span class="zh">&#9679; 进行中 &middot; 华理 2025</span></span>
                     </div>
                 </div>
@@ -615,46 +685,46 @@
                 <div class="section-title s-cyan"><i class="fas fa-graduation-cap"></i> <span class="en">Education</span><span class="zh">教育背景</span></div>
                 <p style="font-size:0.72rem;color:var(--text-secondary);margin:-10px 0 20px 0;"><span class="en">Most recent first &uarr;</span><span class="zh">最新在前 &uarr;</span></p>
                 <div class="timeline-item">
-                    <div class="header-flex"><span>University of California, Riverside</span><span class="date-tag">Sep 2025 &ndash; Jun 2026</span></div>
+                    <div class="header-flex"><span><span class="en">University of California, Riverside</span><span class="zh">加州大学河滨分校</span></span><span class="date-tag"><span class="en">Sep 2025 &ndash; Jun 2026</span><span class="zh">2025年9月 &ndash; 2026年6月</span></span></div>
                     <div class="sub-header"><span class="en">Exchange Student &middot; Graduate Preparation Program (AI &amp; Data Science)</span><span class="zh">交换生 &middot; 研究生预备项目（AI与数据科学）</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Focused entirely on AI and CS coursework under faculty supervision. Conducting research on physics-informed graph neural networks for molecular property prediction and adversarial robustness of LLMs.</span><span class="zh">在教授指导下专注于AI和CS课程学习，同时开展物理信息图神经网络预测分子性质及大语言模型对抗鲁棒性相关研究。</span></p>
                     <div>
-                        <div class="grade-pill"><span>Data Structures &amp; Algorithms</span><span class="val">A+</span></div>
-                        <div class="grade-pill"><span>Intro to ML &amp; Data Mining</span><span class="val">A+</span></div>
-                        <div class="grade-pill"><span>Intro to AI</span><span class="val">A+</span></div>
-                        <div class="grade-pill"><span>Deep Learning</span><span class="val">A+</span></div>
-                        <div class="grade-pill"><span>Discrete Mathematics</span><span class="val">A+</span></div>
-                        <div class="grade-pill"><span>C++ for Programmers</span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">Data Structures &amp; Algorithms</span><span class="zh">数据结构与算法</span></span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">Intro to ML &amp; Data Mining</span><span class="zh">机器学习与数据挖掘导论</span></span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">Intro to AI</span><span class="zh">人工智能导论</span></span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">Deep Learning</span><span class="zh">深度学习</span></span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">Discrete Mathematics</span><span class="zh">离散数学</span></span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">C++ for Programmers</span><span class="zh">C++ 程序设计</span></span><span class="val">A+</span></div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="header-flex"><span>University of Texas at Austin</span><span class="date-tag">Jul 2024 &ndash; Aug 2024</span></div>
+                    <div class="header-flex"><span><span class="en">University of Texas at Austin</span><span class="zh">德克萨斯大学奥斯汀分校</span></span><span class="date-tag"><span class="en">Jul 2024 &ndash; Aug 2024</span><span class="zh">2024年7月 &ndash; 2024年8月</span></span></div>
                     <div class="sub-header"><span class="en">Summer Visiting Student</span><span class="zh">暑期访问学生</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Intensive summer program. Completed Data Analysis (R), Python Programming, and Academic Writing &mdash; all with A grades.</span><span class="zh">密集暑期课程，完成数据分析（R语言）、Python编程和学术写作三门课，均获A。</span></p>
                 </div>
                 <div class="timeline-item">
-                    <div class="header-flex"><span>East China University of Science and Technology</span><span class="date-tag">Sep 2022 &ndash; Jun 2026</span></div>
+                    <div class="header-flex"><span><span class="en">East China University of Science and Technology</span><span class="zh">华东理工大学</span></span><span class="date-tag"><span class="en">Sep 2022 &ndash; Jun 2026</span><span class="zh">2022年9月 &ndash; 2026年6月</span></span></div>
                     <div class="sub-header"><span class="en">B.Eng. in Chemical Engineering &middot; GPA 3.61 / 4.00 &middot; Avg Score 85.7</span><span class="zh">化学工程工学学士 &middot; GPA 3.61 / 4.00 &middot; 均分 85.7</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Built a dual foundation in chemical engineering and computer science. CS-heavy curriculum alongside rigorous science and engineering fundamentals.</span><span class="zh">构建化学工程与计算机科学的双重知识体系，在扎实工程基础之上兼修大量CS课程。</span></p>
                     <div>
-                        <div class="grade-pill"><span>Big Data Algorithms</span><span class="val">100</span></div>
-                        <div class="grade-pill"><span>AI Language &amp; Ethics</span><span class="val">100</span></div>
-                        <div class="grade-pill"><span>Advanced Mathematics II</span><span class="val">98</span></div>
-                        <div class="grade-pill"><span>Data Structures</span><span class="val">94</span></div>
-                        <div class="grade-pill"><span>Network &amp; Cloud Computing</span><span class="val">92</span></div>
-                        <div class="grade-pill"><span>Simulation of ChemE Safety</span><span class="val">92</span></div>
-                        <div class="grade-pill"><span>Separation Engineering</span><span class="val">92</span></div>
-                        <div class="grade-pill"><span>AI Tech &amp; Applications</span><span class="val">91</span></div>
-                        <div class="grade-pill"><span>ChemE Principles</span><span class="val">91</span></div>
-                        <div class="grade-pill"><span>Probability &amp; Stats</span><span class="val">90</span></div>
-                        <div class="grade-pill"><span>OS Principles</span><span class="val">85</span></div>
-                        <div class="grade-pill"><span>Information Retrieval</span><span class="val">85</span></div>
+                        <div class="grade-pill"><span><span class="en">Big Data Algorithms</span><span class="zh">大数据算法</span></span><span class="val">100</span></div>
+                        <div class="grade-pill"><span><span class="en">AI Language &amp; Ethics</span><span class="zh">人工智能语言与伦理</span></span><span class="val">100</span></div>
+                        <div class="grade-pill"><span><span class="en">Advanced Mathematics II</span><span class="zh">高等数学 II</span></span><span class="val">98</span></div>
+                        <div class="grade-pill"><span><span class="en">Data Structures</span><span class="zh">数据结构</span></span><span class="val">94</span></div>
+                        <div class="grade-pill"><span><span class="en">Network &amp; Cloud Computing</span><span class="zh">网络与云计算</span></span><span class="val">92</span></div>
+                        <div class="grade-pill"><span><span class="en">Simulation of ChemE Safety</span><span class="zh">化工安全仿真</span></span><span class="val">92</span></div>
+                        <div class="grade-pill"><span><span class="en">Separation Engineering</span><span class="zh">分离工程</span></span><span class="val">92</span></div>
+                        <div class="grade-pill"><span><span class="en">AI Tech &amp; Applications</span><span class="zh">人工智能技术与应用</span></span><span class="val">91</span></div>
+                        <div class="grade-pill"><span><span class="en">ChemE Principles</span><span class="zh">化工原理</span></span><span class="val">91</span></div>
+                        <div class="grade-pill"><span><span class="en">Probability &amp; Stats</span><span class="zh">概率论与统计</span></span><span class="val">90</span></div>
+                        <div class="grade-pill"><span><span class="en">OS Principles</span><span class="zh">操作系统原理</span></span><span class="val">85</span></div>
+                        <div class="grade-pill"><span><span class="en">Information Retrieval</span><span class="zh">信息检索</span></span><span class="val">85</span></div>
                     </div>
                 </div>
                 <div class="timeline-item dim">
-                    <div class="header-flex"><span>Fujian Gaokao (College Entrance Exam)</span><span class="date-tag">2022</span></div>
+                    <div class="header-flex"><span><span class="en">Fujian Gaokao (College Entrance Exam)</span><span class="zh">福建高考</span></span><span class="date-tag">2022</span></div>
                     <div class="sub-header" style="color:var(--text-secondary);"><span class="en">Ranked 6,802 / 218,000 students &middot; Top 3%</span><span class="zh">福建高考 21.8万人中排名第6802 &middot; 前3%</span></div>
-                    <div class="quote-block">&ldquo;While I was not always the most disciplined student, I gradually learned how to build systems for myself and take ownership of my growth.&rdquo;</div>
+                    <div class="quote-block"><span class="en">&ldquo;While I was not always the most disciplined student, I gradually learned how to build systems for myself and take ownership of my growth.&rdquo;</span><span class="zh">“我并不总是最自律的学生，但我逐渐学会为自己建立有效的方法，并主动为自己的成长负责。”</span></div>
                 </div>
             </div>
         </div>
@@ -665,42 +735,42 @@
                 <div class="section-title s-cyan"><i class="fas fa-laptop-code"></i> <span class="en">Computer Science Coursework</span><span class="zh">计算机科学课程</span></div>
                 <div class="courses-source"><span class="en">UC Riverside &nbsp;&middot;&nbsp; 2025&ndash;2026</span><span class="zh">加州大学河滨分校 &nbsp;&middot;&nbsp; 2025&ndash;2026</span></div>
                 <div class="courses-grid">
-                    <div class="course-item"><span class="course-name">Intro to ML &amp; Data Mining</span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name">Deep Learning</span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name">Intro to Artificial Intelligence</span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name">Data Structures &amp; Algorithms</span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name">Discrete Mathematics</span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name">C++ for Programmers</span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name">Problem Solving Lab</span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Intro to ML &amp; Data Mining</span><span class="zh">机器学习与数据挖掘导论</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Deep Learning</span><span class="zh">深度学习</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Intro to Artificial Intelligence</span><span class="zh">人工智能导论</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Data Structures &amp; Algorithms</span><span class="zh">数据结构与算法</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Discrete Mathematics</span><span class="zh">离散数学</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">C++ for Programmers</span><span class="zh">C++ 程序设计</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Problem Solving Lab</span><span class="zh">问题求解实验</span></span><span class="course-grade grade-ap">A+</span></div>
                 </div>
                 <div class="courses-source" style="margin-top:20px;"><span class="en">ECUST &nbsp;&middot;&nbsp; 2022&ndash;2026</span><span class="zh">华东理工大学 &nbsp;&middot;&nbsp; 2022&ndash;2026</span></div>
                 <div class="courses-grid">
-                    <div class="course-item"><span class="course-name">Big Data Algorithms</span><span class="course-grade grade-num-high">100</span></div>
-                    <div class="course-item"><span class="course-name">AI Language &amp; Ethics</span><span class="course-grade grade-num-high">100</span></div>
-                    <div class="course-item"><span class="course-name">Data Structures &amp; Algorithms</span><span class="course-grade grade-num-high">94</span></div>
-                    <div class="course-item"><span class="course-name">Computer Network &amp; Cloud Computing</span><span class="course-grade grade-num-mid">92</span></div>
-                    <div class="course-item"><span class="course-name">AI Tech &amp; Applications</span><span class="course-grade grade-num-mid">91</span></div>
-                    <div class="course-item"><span class="course-name">Principles of Operating Systems</span><span class="course-grade grade-num-mid">85</span></div>
-                    <div class="course-item"><span class="course-name">Information Retrieval</span><span class="course-grade grade-num-mid">85</span></div>
-                    <div class="course-item"><span class="course-name">Computer Applications to ChemE</span><span class="course-grade grade-num-mid">82</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Big Data Algorithms</span><span class="zh">大数据算法</span></span><span class="course-grade grade-num-high">100</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">AI Language &amp; Ethics</span><span class="zh">人工智能语言与伦理</span></span><span class="course-grade grade-num-high">100</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Data Structures &amp; Algorithms</span><span class="zh">数据结构与算法</span></span><span class="course-grade grade-num-high">94</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Computer Network &amp; Cloud Computing</span><span class="zh">计算机网络与云计算</span></span><span class="course-grade grade-num-mid">92</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">AI Tech &amp; Applications</span><span class="zh">人工智能技术与应用</span></span><span class="course-grade grade-num-mid">91</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Principles of Operating Systems</span><span class="zh">操作系统原理</span></span><span class="course-grade grade-num-mid">85</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Information Retrieval</span><span class="zh">信息检索</span></span><span class="course-grade grade-num-mid">85</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Computer Applications to ChemE</span><span class="zh">计算机在化学工程中的应用</span></span><span class="course-grade grade-num-mid">82</span></div>
                 </div>
                 <div class="courses-source" style="margin-top:20px;"><span class="en">UT Austin &nbsp;&middot;&nbsp; Summer 2024</span><span class="zh">德克萨斯大学奥斯汀分校 &nbsp;&middot;&nbsp; 2024年暑期</span></div>
                 <div class="courses-grid">
-                    <div class="course-item"><span class="course-name">Data Analysis (R)</span><span class="course-grade grade-a">A</span></div>
-                    <div class="course-item"><span class="course-name">Python Programming</span><span class="course-grade grade-a">A</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Data Analysis (R)</span><span class="zh">数据分析（R）</span></span><span class="course-grade grade-a">A</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Python Programming</span><span class="zh">Python 编程</span></span><span class="course-grade grade-a">A</span></div>
                 </div>
             </div>
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-amber"><i class="fas fa-atom"></i> <span class="en">Science &amp; Engineering Fundamentals</span><span class="zh">理工基础课程</span></div>
                 <div class="courses-grid">
-                    <div class="course-item"><span class="course-name">Advanced Mathematics II</span><span class="course-grade grade-num-high">98</span></div>
-                    <div class="course-item"><span class="course-name">Probability &amp; Mathematical Statistics</span><span class="course-grade grade-num-mid">90</span></div>
-                    <div class="course-item"><span class="course-name">Chemical Engineering Principles</span><span class="course-grade grade-num-mid">91</span></div>
-                    <div class="course-item"><span class="course-name">Analytical Chemistry A1</span><span class="course-grade grade-num-mid">90</span></div>
-                    <div class="course-item"><span class="course-name">Separation Engineering</span><span class="course-grade grade-num-mid">92</span></div>
-                    <div class="course-item"><span class="course-name">Unit Operations I</span><span class="course-grade grade-num-mid">92</span></div>
-                    <div class="course-item"><span class="course-name">Unit Operations II</span><span class="course-grade grade-num-mid">91</span></div>
-                    <div class="course-item"><span class="course-name">Simulation of Chemical Process Safety</span><span class="course-grade grade-num-high">92</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Advanced Mathematics II</span><span class="zh">高等数学 II</span></span><span class="course-grade grade-num-high">98</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Probability &amp; Mathematical Statistics</span><span class="zh">概率论与数理统计</span></span><span class="course-grade grade-num-mid">90</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Chemical Engineering Principles</span><span class="zh">化工原理</span></span><span class="course-grade grade-num-mid">91</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Analytical Chemistry A1</span><span class="zh">分析化学 A1</span></span><span class="course-grade grade-num-mid">90</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Separation Engineering</span><span class="zh">分离工程</span></span><span class="course-grade grade-num-mid">92</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Unit Operations I</span><span class="zh">单元操作 I</span></span><span class="course-grade grade-num-mid">92</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Unit Operations II</span><span class="zh">单元操作 II</span></span><span class="course-grade grade-num-mid">91</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Simulation of Chemical Process Safety</span><span class="zh">化工过程安全仿真</span></span><span class="course-grade grade-num-high">92</span></div>
                 </div>
             </div>
         </div>
@@ -711,24 +781,24 @@
                 <div class="section-title s-purple"><i class="fas fa-terminal"></i> <span class="en">Research Experience</span><span class="zh">科研经历</span></div>
                 <div class="timeline-item">
                     <div class="pub-badge"><i class="fas fa-flask"></i> <span class="en">Ongoing Research &middot; UC Riverside</span><span class="zh">进行中 &middot; 加州大学河滨分校</span></div>
-                    <div class="header-flex"><span>Physics-Informed Multi-Modal GNN for Molecular Solubility</span><span class="date-tag">Jan 2025 &ndash; Present</span></div>
+                    <div class="header-flex"><span><span class="en">Physics-Informed Multi-Modal GNN for Molecular Solubility</span><span class="zh">用于分子溶解度预测的物理信息多模态 GNN</span></span><span class="date-tag"><span class="en">Jan 2025 &ndash; Present</span><span class="zh">2025年1月 &ndash; 至今</span></span></div>
                     <div class="sub-header"><span class="en">Advisor: Prof. Jianzhong Wu &middot; UC Riverside</span><span class="zh">导师：吴建中教授 &middot; 加州大学河滨分校</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin:8px 0 12px 0;"><span class="en">Architected a multi-modal fusion GNN (~5.7M parameters, 5-fold ensemble) combining AttentiveFP solute encoder, GIN solvent encoder, and descriptor MLP. Embedded the Van&rsquo;t Hoff thermodynamic constraint as a physics-informed auxiliary loss. Achieved R&sup2;=0.968, RMSE=0.244 on held-out test set. Implemented GradCAM-based solvent-aware atomic attribution.</span><span class="zh">构建多模态融合GNN（约570万参数，5折集成），融合AttentiveFP溶质编码器、GIN溶剂编码器与描述符MLP。将Van't Hoff热力学约束嵌入为物理信息辅助损失函数，测试集R²=0.968，RMSE=0.244，并实现GradCAM溶剂感知原子归因。</span></p>
-                    <div><span class="tag">PyTorch Geometric</span><span class="tag">AttentiveFP</span><span class="tag">GIN</span><span class="tag">GradCAM</span><span class="tag">Physics-Informed ML</span><span class="tag">RDKit</span></div>
+                    <div><span class="tag">PyTorch Geometric</span><span class="tag">AttentiveFP</span><span class="tag">GIN</span><span class="tag">GradCAM</span><span class="tag"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span><span class="tag">RDKit</span></div>
                 </div>
                 <div class="timeline-item">
                     <div class="pub-badge"><i class="fas fa-file-alt"></i> <span class="en">Under Review &middot; Fuel Journal (JFUE-D-25-13575)</span><span class="zh">审稿中 &middot; Fuel期刊</span></div>
-                    <div class="header-flex"><span>Multi-objective Optimization of Ethylene Cracking Furnaces</span><span class="date-tag">Jan 2025 &ndash; Present</span></div>
+                    <div class="header-flex"><span><span class="en">Multi-objective Optimization of Ethylene Cracking Furnaces</span><span class="zh">乙烯裂解炉多目标优化</span></span><span class="date-tag"><span class="en">Jan 2025 &ndash; Present</span><span class="zh">2025年1月 &ndash; 至今</span></span></div>
                     <div class="sub-header"><span class="en">2nd Author &middot; Advisors: Prof. Du Wenli &amp; Prof. Zhao Liang &middot; ECUST</span><span class="zh">第二作者 &middot; 导师：杜文莉教授 &amp; 赵亮教授 &middot; 华东理工大学</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin:8px 0 12px 0;"><span class="en">Developed a multi-objective MINLP optimization framework balancing economic efficiency and carbon emissions in petrochemical systems. Achieved 38.6% CO&#8322; reduction via dynamic coking mitigation. ML-based surrogate models handle coke thickness prediction and heat transfer optimization across multi-furnace systems.</span><span class="zh">构建石化系统多目标MINLP优化框架，实现经济效益与碳排放的协同优化，通过动态结焦调度实现CO₂减排38.6%。基于ML代理模型处理多炉系统的焦层厚度预测与传热优化。</span></p>
-                    <div><span class="tag">MINLP</span><span class="tag">DICOPT</span><span class="tag">Surrogate Modeling</span><span class="tag">Genetic Algorithm</span><span class="tag">Aspen Plus</span></div>
+                    <div><span class="tag">MINLP</span><span class="tag">DICOPT</span><span class="tag"><span class="en">Surrogate Modeling</span><span class="zh">代理建模</span></span><span class="tag"><span class="en">Genetic Algorithm</span><span class="zh">遗传算法</span></span><span class="tag">Aspen Plus</span></div>
                 </div>
                 <div class="timeline-item" style="margin-bottom:0;">
                     <div class="pub-badge" style="background:rgba(42,255,160,0.07);color:var(--accent-green);border:1px solid rgba(42,255,160,0.2);"><i class="fas fa-check-circle"></i> <span class="en">Completed &middot; ECUST</span><span class="zh">已完成 &middot; 华东理工大学</span></div>
-                    <div class="header-flex"><span>Multiphase Catalytic Reactions &mdash; ML Screening</span><span class="date-tag">Mar 2024 &ndash; Aug 2024</span></div>
+                    <div class="header-flex"><span><span class="en">Multiphase Catalytic Reactions &mdash; ML Screening</span><span class="zh">多相催化反应 &mdash; ML 筛选</span></span><span class="date-tag"><span class="en">Mar 2024 &ndash; Aug 2024</span><span class="zh">2024年3月 &ndash; 2024年8月</span></span></div>
                     <div class="sub-header"><span class="en">Undergraduate Researcher &middot; ECUST</span><span class="zh">本科生科研助理 &middot; 华东理工大学</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin:8px 0 12px 0;"><span class="en">Led Python implementation of volcano plot generation for high-throughput catalyst screening and descriptor identification in multiphase catalytic systems. Applied ML methods to identify key descriptors and accelerate reaction pathway discovery.</span><span class="zh">主导多相催化体系中火山图生成的Python实现，用于高通量催化剂筛选与描述符识别，应用ML方法加速反应路径发现。</span></p>
-                    <div><span class="tag">Python</span><span class="tag">Volcano Plots</span><span class="tag">Catalyst Screening</span><span class="tag">Descriptor Analysis</span><span class="tag">Scikit-learn</span></div>
+                    <div><span class="tag">Python</span><span class="tag"><span class="en">Volcano Plots</span><span class="zh">火山图</span></span><span class="tag"><span class="en">Catalyst Screening</span><span class="zh">催化剂筛选</span></span><span class="tag"><span class="en">Descriptor Analysis</span><span class="zh">描述符分析</span></span><span class="tag">Scikit-learn</span></div>
                 </div>
             </div>
             <div class="card" style="border-radius:16px;">
@@ -768,19 +838,19 @@
                         <div class="pstat"><div class="pstat-val" style="color:var(--accent-amber);">&lt;24h</div><div class="pstat-lab"><span class="en">Built &amp; Shipped</span><span class="zh">构建完成</span></div></div>
                     </div>
                     <div class="project-highlights">
-                        <div class="highlight-item"><div class="highlight-icon">&#128202;</div><div class="highlight-text"><strong><span class="en"><span class="en">Stress Curve Engine</span><span class="zh">压力曲线引擎</span></span><span class="zh">压力曲线引擎</span></strong><span class="en">Renders 3 plan trajectories with animated curves &mdash; showing when each path breaches the 70% overload threshold.</span><span class="zh">渲染3条计划轨迹动画曲线，展示每条路径何时突破70%过载阈值。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#127922;</div><div class="highlight-text"><strong><span class="en"><span class="en">Uncertainty Engine</span><span class="zh">不确定性引擎</span></span><span class="zh">不确定性引擎</span></strong><span class="en">Probabilistic min/max distributions model variance in task difficulty, deadline proximity, and life disruptions.</span><span class="zh">概率性最大/最小分布建模任务难度、截止日期临近程度和生活干扰的方差。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#128506;</div><div class="highlight-text"><strong><span class="en"><span class="en">Architecture Mind-Map</span><span class="zh">架构思维导图</span></span><span class="zh">架构思维导图</span></strong><span class="en">Interactive hierarchical diagram showing Input &rarr; Parsing &rarr; Simulation &rarr; Decision &rarr; Output pipeline.</span><span class="zh">交互式层级图，展示输入→解析→模拟→决策→输出的完整流程。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#10024;</div><div class="highlight-text"><strong><span class="en"><span class="en">Star-Field Background</span><span class="zh">星空背景</span></span><span class="zh">星空背景</span></strong><span class="en">Canvas-based constellation system &mdash; stars drift autonomously, connect to each other and to your cursor in real time.</span><span class="zh">基于Canvas的星座系统——星星自主漂移，实时与彼此及鼠标连线。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#128202;</div><div class="highlight-text"><strong><span class="en">Stress Curve Engine</span><span class="zh">压力曲线引擎</span></strong><span class="en">Renders 3 plan trajectories with animated curves &mdash; showing when each path breaches the 70% overload threshold.</span><span class="zh">渲染3条计划轨迹动画曲线，展示每条路径何时突破70%过载阈值。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#127922;</div><div class="highlight-text"><strong><span class="en">Uncertainty Engine</span><span class="zh">不确定性引擎</span></strong><span class="en">Probabilistic min/max distributions model variance in task difficulty, deadline proximity, and life disruptions.</span><span class="zh">概率性最大/最小分布建模任务难度、截止日期临近程度和生活干扰的方差。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#128506;</div><div class="highlight-text"><strong><span class="en">Architecture Mind-Map</span><span class="zh">架构思维导图</span></strong><span class="en">Interactive hierarchical diagram showing Input &rarr; Parsing &rarr; Simulation &rarr; Decision &rarr; Output pipeline.</span><span class="zh">交互式层级图，展示输入→解析→模拟→决策→输出的完整流程。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#10024;</div><div class="highlight-text"><strong><span class="en">Star-Field Background</span><span class="zh">星空背景</span></strong><span class="en">Canvas-based constellation system &mdash; stars drift autonomously, connect to each other and to your cursor in real time.</span><span class="zh">基于Canvas的星座系统——星星自主漂移，实时与彼此及鼠标连线。</span></div></div>
                     </div>
                     <div style="font-size:0.72rem;color:var(--text-secondary);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;"><span class="en">Tech Stack</span><span class="zh">技术栈</span></div>
                     <div class="project-stack">
                         <span class="stack-tag frontend">HTML / CSS / JS</span>
                         <span class="stack-tag frontend">Canvas API</span>
-                        <span class="stack-tag frontend">SVG Animation</span>
-                        <span class="stack-tag data">Stress Simulation</span>
-                        <span class="stack-tag data">Uncertainty Modeling</span>
-                        <span class="stack-tag backend">Decision Solver</span>
+                        <span class="stack-tag frontend"><span class="en">SVG Animation</span><span class="zh">SVG 动画</span></span>
+                        <span class="stack-tag data"><span class="en">Stress Simulation</span><span class="zh">压力模拟</span></span>
+                        <span class="stack-tag data"><span class="en">Uncertainty Modeling</span><span class="zh">不确定性建模</span></span>
+                        <span class="stack-tag backend"><span class="en">Decision Solver</span><span class="zh">决策求解器</span></span>
                         <span class="stack-tag infra">Vercel</span>
                     </div>
                     <div class="project-cta">
@@ -801,7 +871,7 @@
                     <div class="hackathon-strip">
                         <div class="hackathon-icon">&#127942;</div>
                         <div class="hackathon-text">
-                            <div class="hackathon-name">UCR BearHacks Hackathon &middot; 2025</div>
+                            <div class="hackathon-name"><span class="en">UCR BearHacks Hackathon &middot; 2025</span><span class="zh">UCR BearHacks 黑客松 &middot; 2025</span></div>
                             <div class="hackathon-detail"><span class="en">Built and shipped end-to-end in under 24 hours &middot; Full-stack, live deployment, real external data</span><span class="zh">24小时内完成全栈开发与部署 &middot; 真实外部数据</span></div>
                         </div>
                     </div>
@@ -810,15 +880,15 @@
                     <p class="project-desc"><span class="en">EcoLung turns invisible long-term air pollution exposure into a visible, personal story. Users select a real location, define their current daily routine, and compare it to a better one &mdash; then watch the difference play out on an interactive 3D lung that changes color, particle density, and airflow over a continuous year timeline. The app pulls live environmental data from OpenAQ and uses a behavior-parameterized exposure engine to project long-term respiratory burden. <strong style="color:var(--text-primary)">Not a dashboard. Not a diagnostic. A simulator that makes the invisible visible.</strong></span><span class="zh">EcoLung 将无形的长期空气污染暴露转化为可感知的个人故事。用户选择真实地点、设定当前日常习惯，与改善后的习惯对比——在交互式3D肺部模型上实时看到差异，颜色、粒子密度和气流随着年份时间轴动态演变。应用从OpenAQ获取实时环境数据，通过行为参数化暴露引擎预测长期呼吸负担。<strong style="color:var(--text-primary)">不是仪表板，不是诊断工具，而是让隐形可见的模拟器。</strong></span></p>
                     <div class="project-stats">
                         <div class="pstat"><div class="pstat-val" style="color:var(--accent-green);">4.2M</div><div class="pstat-lab"><span class="en">Deaths/yr addressed</span><span class="zh">每年相关死亡</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-cyan);">Live</div><div class="pstat-lab"><span class="en">OpenAQ data</span><span class="zh">OpenAQ数据</span></div></div>
+                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-cyan);"><span class="en">Live</span><span class="zh">实时</span></div><div class="pstat-lab"><span class="en">OpenAQ data</span><span class="zh">OpenAQ数据</span></div></div>
                         <div class="pstat"><div class="pstat-val" style="color:var(--accent-purple);">3D</div><div class="pstat-lab"><span class="en">Lung visualization</span><span class="zh">肺部可视化</span></div></div>
                         <div class="pstat"><div class="pstat-val" style="color:var(--accent-amber);">&lt;24h</div><div class="pstat-lab"><span class="en">Built &amp; shipped</span><span class="zh">构建完成</span></div></div>
                     </div>
                     <div class="project-highlights">
-                        <div class="highlight-item"><div class="highlight-icon">&#127758;</div><div class="highlight-text"><strong><span class="en"><span class="en">Real Environmental Data</span><span class="zh">真实环境数据</span></span><span class="zh">真实环境数据</span></strong><span class="en">Live PM2.5, PM10, and O&#8323; measurements pulled from OpenAQ API for any selected region.</span><span class="zh">从OpenAQ API实时获取任意地区的PM2.5、PM10和O₃浓度数据。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#129753;</div><div class="highlight-text"><strong><span class="en"><span class="en">3D Lung Scene</span><span class="zh">3D肺部场景</span></span><span class="zh">3D肺部场景</span></strong><span class="en">Three.js visualization &mdash; color, particle density, and airflow shift as years accumulate.</span><span class="zh">Three.js可视化——随着年份累积，颜色、粒子密度和气流动态变化。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#9879;</div><div class="highlight-text"><strong><span class="en"><span class="en">Exposure Engine</span><span class="zh">暴露量引擎</span></span><span class="zh">暴露量引擎</span></strong><span class="en">Behavior &times; pollutant model using CDC/NIOSH/EPA-calibrated filtration parameters, not assumptions.</span><span class="zh">行为×污染物模型，采用CDC/NIOSH/EPA校准的过滤参数，非假设推断。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#128202;</div><div class="highlight-text"><strong><span class="en"><span class="en">Before vs. After</span><span class="zh">前后对比</span></span><span class="zh">前后对比</span></strong><span class="en">Compare current routine vs. improved routine &mdash; mask, HEPA, outdoor hours &mdash; across a year slider.</span><span class="zh">通过年份滑块对比当前与改善后的日常习惯——口罩、空气净化器、户外时间。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#127758;</div><div class="highlight-text"><strong><span class="en">Real Environmental Data</span><span class="zh">真实环境数据</span></strong><span class="en">Live PM2.5, PM10, and O&#8323; measurements pulled from OpenAQ API for any selected region.</span><span class="zh">从OpenAQ API实时获取任意地区的PM2.5、PM10和O₃浓度数据。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#129753;</div><div class="highlight-text"><strong><span class="en">3D Lung Scene</span><span class="zh">3D肺部场景</span></strong><span class="en">Three.js visualization &mdash; color, particle density, and airflow shift as years accumulate.</span><span class="zh">Three.js可视化——随着年份累积，颜色、粒子密度和气流动态变化。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#9879;</div><div class="highlight-text"><strong><span class="en">Exposure Engine</span><span class="zh">暴露量引擎</span></strong><span class="en">Behavior &times; pollutant model using CDC/NIOSH/EPA-calibrated filtration parameters, not assumptions.</span><span class="zh">行为×污染物模型，采用CDC/NIOSH/EPA校准的过滤参数，非假设推断。</span></div></div>
+                        <div class="highlight-item"><div class="highlight-icon">&#128202;</div><div class="highlight-text"><strong><span class="en">Before vs. After</span><span class="zh">前后对比</span></strong><span class="en">Compare current routine vs. improved routine &mdash; mask, HEPA, outdoor hours &mdash; across a year slider.</span><span class="zh">通过年份滑块对比当前与改善后的日常习惯——口罩、空气净化器、户外时间。</span></div></div>
                     </div>
                     <div style="font-size:0.72rem;color:var(--text-secondary);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;"><span class="en">Tech Stack</span><span class="zh">技术栈</span></div>
                     <div class="project-stack">
@@ -861,7 +931,7 @@
     </div>
 </div>
 
-<div id="copyFlash" style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#2affa0;color:#000;padding:10px 22px;border-radius:8px;font-size:0.78rem;font-weight:700;z-index:99999;opacity:0;transition:opacity 0.3s;pointer-events:none;">&#10003; Email copied!</div>
+<div id="copyFlash" style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#2affa0;color:#000;padding:10px 22px;border-radius:8px;font-size:0.78rem;font-weight:700;z-index:99999;opacity:0;transition:opacity 0.3s;pointer-events:none;"><span class="en">&#10003; Email copied!</span><span class="zh">&#10003; 邮箱已复制！</span></div>
 
 <script>
 /* ===== STAR CANVAS (ported from FluxMind) ===== */
@@ -985,7 +1055,7 @@ const buildBtn = document.getElementById('build-tent'), clearBtn = document.getE
 buildBtn.addEventListener('click', e => {
     e.stopPropagation(); tentActive = !tentActive;
     buildBtn.classList.toggle('active', tentActive);
-    buildBtn.innerHTML = tentActive ? '<i class="fas fa-times"></i> Exit' : '<i class="fas fa-campground"></i> <span class="en">Build Tent</span><span class="zh">搭帐篷</span>';
+    buildBtn.innerHTML = tentActive ? '<i class="fas fa-times"></i> <span class="en">Exit</span><span class="zh">退出</span>' : '<i class="fas fa-campground"></i> <span class="en">Build Tent</span><span class="zh">搭帐篷</span>';
     clearBtn.style.display = tentActive ? 'block' : 'none';
 });
 document.addEventListener('click', e => {
@@ -1006,8 +1076,10 @@ let breathTO;
 document.getElementById('breathing-btn').addEventListener('click', () => {
     const ov = document.getElementById('breathingOverlay'), ci = document.getElementById('breathingCircle'), tx = document.getElementById('breathingText');
     ov.classList.add('active'); ci.classList.add('animating');
-    [{t:0,s:'Breathe in...'},{t:4000,s:'Hold...'},{t:8000,s:'Breathe out...'}].forEach(p => setTimeout(() => tx.textContent = p.s, p.t));
-    breathTO = setTimeout(() => { ov.classList.remove('active'); ci.classList.remove('animating'); tx.textContent = 'Follow the circle'; }, 12000);
+    [{t:0,en:'Breathe in...',zh:'吸气……'},{t:4000,en:'Hold...',zh:'屏住呼吸……'},{t:8000,en:'Breathe out...',zh:'呼气……'}].forEach(p => setTimeout(() => {
+        tx.innerHTML = '<span class="en">' + p.en + '</span><span class="zh">' + p.zh + '</span>';
+    }, p.t));
+    breathTO = setTimeout(() => { ov.classList.remove('active'); ci.classList.remove('animating'); tx.innerHTML = '<span class="en">Follow the circle</span><span class="zh">跟随圆圈</span>'; }, 12000);
 });
 document.getElementById('breathingOverlay').addEventListener('click', function(e) {
     if (e.target !== this) return;
@@ -1035,10 +1107,38 @@ function deactivateGentleExit() { const ov=document.getElementById('gentleExitOv
 document.addEventListener('keydown', e => { if (e.key==='Escape') deactivateGentleExit(); });
 
 
+/* ===== LIGHT / DARK THEME ===== */
+function syncThemeButton() {
+    const btn = document.getElementById('theme-btn');
+    if (!btn) return;
+    const isZh = document.body.classList.contains('lang-zh');
+    const message = document.documentElement.dataset.theme === 'dark'
+        ? (isZh ? '切换为浅色模式' : 'Switch to light mode')
+        : (isZh ? '切换为深色模式' : 'Switch to dark mode');
+    btn.setAttribute('aria-label', message);
+    btn.title = message;
+}
+function toggleTheme() {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('yc-portfolio-theme', theme); } catch (e) {}
+    syncThemeButton();
+}
+document.addEventListener('DOMContentLoaded', syncThemeButton);
+
 /* ===== LANGUAGE TOGGLE ===== */
+function syncLanguageUI() {
+    const isZh = document.body.classList.contains('lang-zh');
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
+    document.getElementById('emailLink').setAttribute('data-tooltip',
+        isZh ? '点击复制邮箱' : 'Click to copy email');
+    syncThemeButton();
+}
 function toggleLang() {
     document.body.classList.toggle('lang-zh');
+    syncLanguageUI();
 }
+document.addEventListener('DOMContentLoaded', syncLanguageUI);
 /* ===== STAR TOGGLE ===== */
 let starsOn = true;
 document.getElementById('star-toggle-btn').addEventListener('click', () => {
@@ -1046,11 +1146,15 @@ document.getElementById('star-toggle-btn').addEventListener('click', () => {
     const btn = document.getElementById('star-toggle-btn');
     starCanvas.style.opacity = starsOn ? '1' : '0';
     btn.classList.toggle('off', !starsOn);
-    btn.innerHTML = starsOn ? '<i class="fas fa-star"></i> <span class="en">Stars</span><span class="zh">星空</span>' : '<i class="far fa-star"></i> Stars';
+    btn.innerHTML = starsOn ? '<i class="fas fa-star"></i> <span class="en">Stars</span><span class="zh">星空</span>' : '<i class="far fa-star"></i> <span class="en">Stars</span><span class="zh">星空</span>';
 });
 </script>
-<footer style="text-align:center; padding: 40px 0 50px; position: relative; z-index: 1;">
+<footer style="text-align:center; padding: 40px 0 50px; position: relative; z-index: 1; display:flex; gap:12px; align-items:center; justify-content:center;">
   <button id="lang-btn" onclick="toggleLang()"><span class="en">中文</span><span class="zh">EN</span></button>
+  <button id="theme-btn" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode" title="Switch to dark mode">
+    <span class="theme-when-light"><i class="fas fa-moon" aria-hidden="true"></i> <span class="en">Dark</span><span class="zh">深色</span></span>
+    <span class="theme-when-dark"><i class="fas fa-sun" aria-hidden="true"></i> <span class="en">Light</span><span class="zh">浅色</span></span>
+  </button>
 </footer>
 </body>
 </html>
