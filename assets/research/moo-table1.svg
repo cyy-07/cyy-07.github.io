@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="470" viewBox="0 0 1400 470" role="img" aria-labelledby="title desc">
+  <title id="title">Table 1. Clean-state prediction and coking-aware re-evaluation of the same 368 day economic schedule</title>
+  <desc id="desc">Daily profit is 23.3325 versus 23.0779 million CNY, with a clean-state bias of plus 1.10 percent. Daily carbon dioxide is 4767.55 versus 4828.62 tonnes, bias minus 1.26 percent. Daily ethylene is 2089.82 versus 2046.27 tonnes, bias plus 2.13 percent. Carbon dioxide intensity is 2.2813 versus 2.3597 tonnes per tonne of ethylene, bias minus 3.32 percent.</desc>
+  <rect width="1400" height="470" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#1e293b">
+    <text x="48" y="52" font-size="25" font-weight="700">Table 1</text>
+    <text x="48" y="90" font-size="24">Clean-state prediction and coking-aware re-evaluation</text>
+    <text x="48" y="122" font-size="21" fill="#526174">Same 368 day economic schedule</text>
+    <rect x="48" y="148" width="1304" height="64" rx="5" fill="#edf4f7"/>
+    <g font-size="21" font-weight="700">
+      <text x="64" y="188">Quantity</text>
+      <text x="800" y="188" text-anchor="end">Clean-state prediction</text>
+      <text x="1080" y="188" text-anchor="end">Age-aware re-evaluation</text>
+      <text x="1330" y="188" text-anchor="end">Clean-state bias (%)</text>
+    </g>
+    <g font-size="23">
+      <text x="64" y="250">Daily profit (10⁶ CNY d⁻¹)</text>
+      <text x="800" y="250" text-anchor="end">23.3325</text>
+      <text x="1080" y="250" text-anchor="end">23.0779</text>
+      <text x="1330" y="250" text-anchor="end">+1.10</text>
+      <text x="64" y="301">Daily CO₂ (t d⁻¹)</text>
+      <text x="800" y="301" text-anchor="end">4767.55</text>
+      <text x="1080" y="301" text-anchor="end">4828.62</text>
+      <text x="1330" y="301" text-anchor="end">−1.26</text>
+      <text x="64" y="352">Daily ethylene (t d⁻¹)</text>
+      <text x="800" y="352" text-anchor="end">2089.82</text>
+      <text x="1080" y="352" text-anchor="end">2046.27</text>
+      <text x="1330" y="352" text-anchor="end">+2.13</text>
+      <text x="64" y="403">CO₂ intensity (t CO₂ t⁻¹ C₂H₄)</text>
+      <text x="800" y="403" text-anchor="end">2.2813</text>
+      <text x="1080" y="403" text-anchor="end">2.3597</text>
+      <text x="1330" y="403" text-anchor="end">−3.32</text>
+    </g>
+    <path d="M48 215H1352 M48 419H1352" stroke="#9bafbf" stroke-width="2"/>
+    <text x="48" y="451" font-size="19" fill="#526174">Positive bias denotes overprediction by the clean-state representation.</text>
+  </g>
+</svg>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yiyang Chen | Portfolio</title>
+    <meta name="description" content="Yiyang Chen’s research and projects in machine learning, molecular solubility, industrial optimization, and interactive applications.">
+    <meta property="og:image" content="https://cyy-07.github.io/assets/images/photo.jpg">
     <script>
         // Default to a readable light theme; honor an explicit previous selection.
         (function () {
@@ -377,14 +379,14 @@
         .more-text h3 { font-size: 0.88rem; font-weight: 700; margin: 0 0 6px 0; color: var(--text-secondary); }
         .more-text p { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.7; margin: 0; line-height: 1.6; }
         .sk-group-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .sk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .sk-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
         .sk-item {
             display: flex; align-items: center; justify-content: space-between;
             background: var(--bg-card2); border: 1px solid var(--border); border-radius: 8px;
             padding: 8px 12px; gap: 10px; transition: border-color 0.2s;
         }
         .sk-item:hover { border-color: var(--border-bright); }
-        .sk-name { font-size: 0.73rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+        .sk-name { font-size: 0.73rem; color: var(--text-secondary); min-width:0; flex:1; }
         .sk-stars { display: flex; gap: 3px; flex-shrink: 0; }
         .sk-star { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
         .sk-star.full { opacity: 1; }
@@ -511,6 +513,38 @@
         }
         html[data-theme="light"] .cta-primary:hover { background: #116c4f; box-shadow: 0 0 14px rgba(20,121,87,0.15); }
         html[data-theme="light"] .cyan-btn:hover { background: #076b87; box-shadow: 0 0 14px rgba(8,125,157,0.15); }
+        /* Profile photo and current research assets. */
+        .avatar { width:128px; height:128px; object-fit:cover; object-position:center 32%; background:#fff; }
+        .stat-bar { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .stat-scale { font-size:0.58rem; font-weight:500; color:var(--text-secondary); }
+        .stat-lab { display:block; margin-top:4px; }
+        .stat-note { display:block; font-size:0.59rem; color:var(--text-secondary); line-height:1.7; margin-top:5px; }
+        .research-thumb { display:flex; flex-direction:column; text-decoration:none; margin:-18px -18px 14px; background:#fff; border-bottom:1px solid var(--border); }
+        .research-thumb img { width:100%; height:172px; object-fit:contain; padding:8px; }
+        .figure-label { display:flex; align-items:center; justify-content:center; gap:6px; padding:7px 10px; color:#526174; background:#f8fafc; font-size:0.65rem; line-height:1.5; }
+        .research-figure { display:block; margin:16px 0; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:#fff; text-decoration:none; }
+        .research-figure img { display:block; width:100%; height:auto; }
+        .research-thumb:focus-visible, .research-figure:focus-visible, .course-project:focus-visible { outline:3px solid var(--accent-cyan); outline-offset:3px; }
+        .research-text-only { grid-column:1 / -1; }
+        .research-description { font-size:0.8rem; color:var(--text-secondary); line-height:1.9; margin:12px 0; }
+        .research-code { display:inline-flex; align-items:center; gap:7px; font-size:0.75rem; color:var(--accent-cyan); line-height:1.7; }
+        .academic-summary { font-size:0.8rem; line-height:1.8; color:var(--accent-green); }
+        .projects-intro { font-weight:700; font-size:0.9rem; padding:8px 2px; }
+        .project-title { margin:0 0 6px; }
+        .project-event { font-size:0.72rem; color:var(--accent-cyan); margin-bottom:12px; line-height:1.6; }
+        .project-card-top { background:linear-gradient(90deg,var(--accent-cyan),var(--accent-purple)); }
+        .course-projects { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+        .course-project { display:block; padding:16px; border:1px solid var(--border); border-radius:10px; text-decoration:none; background:var(--bg-card2); }
+        .course-project strong { display:block; font-size:0.8rem; color:var(--text-primary); margin-bottom:9px; }
+        .course-project > span { font-size:0.73rem; color:var(--text-secondary); line-height:1.7; }
+        @media (max-width:580px) {
+            .card, .project-card-body { padding:22px 18px; }
+            .hero-banner { padding:26px 20px; }
+            .hero-h1 { font-size:1.65rem; }
+            .course-projects, .sk-grid { grid-template-columns:1fr; }
+            .project-cta { flex-wrap:wrap; }
+            .research-thumb img { height:auto; aspect-ratio:16 / 9; }
+        }
         @media (prefers-reduced-motion: reduce) {
             body { cursor: auto !important; }
             #star-canvas, #cdot, #cring { display: none !important; }
@@ -540,23 +574,20 @@
 <div class="main-wrapper">
     <aside class="sidebar">
         <div class="profile-box">
-            <div class="avatar">YC</div>
+            <img class="avatar" src="assets/images/photo.jpg" alt="Yiyang Chen" width="128" height="128" fetchpriority="high">
             <h1 class="name-title">Yiyang Chen</h1>
-            <p class="name-sub"><span class="en">ChemE @ ECUST &nbsp;&middot;&nbsp; CS &amp; AI @ UCR</span><span class="zh">华东理工大学化工 &nbsp;&middot;&nbsp; UCR 计算机与AI</span><br><span class="en">Class of 2026</span><span class="zh">2026届</span></p>
+            <p class="name-sub"><span class="en">ChemE @ ECUST &nbsp;&middot;&nbsp; CS &amp; AI @ UCR</span><span class="zh">华东理工大学化工 &nbsp;&middot;&nbsp; UCR 计算机与AI</span></p>
             <div class="aifs-badge"><div class="dot"></div><span class="en">AI for Science Researcher</span><span class="zh">AI for Science 研究者</span></div>
             <div class="stat-bar">
-                <div class="stat-item"><span class="stat-num">3.61</span><span class="stat-lab">GPA</span></div>
-                <div class="stat-div"></div>
-                <div class="stat-item"><span class="stat-num">10&times;A+</span><span class="stat-lab"><span class="en">CS Courses</span><span class="zh">CS课程</span></span></div>
-                <div class="stat-div"></div>
-                <div class="stat-item"><span class="stat-num">2026</span><span class="stat-lab"><span class="en">Class</span><span class="zh">届</span></span></div>
+                <div class="stat-item"><span class="stat-num">3.68<span class="stat-scale"> / 4.00</span></span><span class="stat-lab">ECUST GPA</span><span class="stat-note"><span class="en">Average 89.16 / 100</span><span class="zh">均分 89.16 / 100</span></span></div>
+                <div class="stat-item"><span class="stat-num">4.00<span class="stat-scale"> / 4.00</span></span><span class="stat-lab">UCR GPA</span><span class="stat-note"><span class="en">39 units · All A / A+</span><span class="zh">39 学分 · 全部 A / A+</span></span></div>
             </div>
             <a href="mailto:ychen1420@ucr.edu" class="info-link" id="emailLink" data-tooltip="Click to copy email" data-tooltip-zh="点击复制邮箱"><i class="fas fa-envelope"></i> ychen1420@ucr.edu</a>
-            <a href="https://github.com/cyy-07" target="_blank" class="info-link"><i class="fab fa-github"></i> github.com/cyy-07</a>
-            <a href="https://www.linkedin.com/in/yiyang-chen-379495376" target="_blank" class="info-link"><i class="fab fa-linkedin"></i> linkedin/yiyang-chen</a>
+            <a href="https://github.com/cyy-07" target="_blank" rel="noopener" class="info-link"><i class="fab fa-github"></i> github.com/cyy-07</a>
+            <a href="https://www.linkedin.com/in/yiyang-chen-379495376" target="_blank" rel="noopener" class="info-link"><i class="fab fa-linkedin"></i> linkedin/yiyang-chen</a>
             <div class="info-link"><i class="fas fa-map-marker-alt"></i> <span class="en">Riverside, CA (OPT EAD approved)</span><span class="zh">加州河滨市（OPT EAD 已获批）</span></div>
             <div class="info-link"><i class="fas fa-language"></i> <span class="en">CET-4: 558 &nbsp;&middot;&nbsp; CET-6: 480</span><span class="zh">四级: 558 &nbsp;&middot;&nbsp; 六级: 480</span></div>
-            <a href="#" class="btn-cv"><i class="fas fa-download" style="margin-right:6px;"></i> <span class="en">Download CV</span><span class="zh">下载简历</span></a>
+            <a href="mailto:ychen1420@ucr.edu?subject=CV%20request" class="btn-cv"><i class="fas fa-envelope" style="margin-right:6px;"></i> <span class="en">Request CV</span><span class="zh">索取简历</span></a>
             <div class="tent-controls">
                 <button id="build-tent"><i class="fas fa-campground"></i> <span class="en">Build Tent</span><span class="zh">搭帐篷</span></button>
                 <button id="clear-tents"><i class="fas fa-eraser"></i> <span class="en">Clear</span><span class="zh">清除</span></button>
@@ -575,7 +606,7 @@
                 <span class="tag">MATLAB</span><span class="tag">PyTorch</span><span class="tag">PyG</span>
                 <span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span>
                 <span class="tag">RDKit</span><span class="tag">GNN</span><span class="tag">MINLP</span>
-                <span class="tag">GradCAM</span><span class="tag">Aspen</span><span class="tag">DICOPT</span>
+                <span class="tag">GIN</span><span class="tag">Aspen</span><span class="tag">DICOPT</span>
             </div>
         </div>
     </aside>
@@ -595,7 +626,7 @@
             <div class="hero-banner">
                 <div class="hero-label"><span class="en">Portfolio &middot; 2026</span><span class="zh">个人主页 &middot; 2026</span></div>
                 <h1 class="hero-h1"><span class="en">Where Chemistry<br>Meets Machine Learning</span><span class="zh">化学工程与<br>机器学习的交汇</span></h1>
-                <p class="hero-desc"><span class="en">Dual-trained in Chemical Engineering (ECUST) and Computer Science (UCR), I build physics-informed AI systems that accelerate scientific discovery &mdash; from molecular solubility prediction with GNNs to multi-objective industrial optimization. Preparing MS and PhD applications in Computer Science, Machine Learning, and AI for Science for Fall 2027.</span><span class="zh">化学工程（华东理工）与计算机科学（加州大学河滨分校）双背景，我构建融合物理约束的AI系统加速科学发现——从图神经网络预测分子溶解度到多目标工业优化。计划申请2027年秋季入学的计算机科学、机器学习和AI for Science硕博项目。</span></p>
+                <p class="hero-desc"><span class="en">I studied Chemical Engineering at ECUST and Computer Science and AI through UCR’s Graduate Preparation Program. I develop graph neural networks for molecular solubility, optimize industrial furnace schedules, and build interactive applications. I am applying for graduate study in Computer Science, Machine Learning, and AI for Science for Fall 2027.</span><span class="zh">我在华东理工大学学习化学工程，并通过 UCR 研究生预备项目修读计算机与 AI 课程。目前的工作包括分子溶解度图神经网络、工业炉群调度优化和交互式应用开发，正在申请 2027 年秋季入学的计算机科学、机器学习及 AI for Science 研究生项目。</span></p>
                 <div class="hero-tags">
                     <span class="hero-tag cyan"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span>
                     <span class="hero-tag purple"><span class="en">Graph Neural Networks</span><span class="zh">图神经网络</span></span>
@@ -613,28 +644,21 @@
                 <div class="section-title s-purple"><i class="fas fa-flask"></i> <span class="en">Research Spotlight</span><span class="zh">科研亮点</span></div>
                 <div class="research-grid">
                     <div class="research-item cyan">
-                        <div class="ri-icon">&#129514;</div>
-                        <div class="ri-title"><span class="en">Molecular Solubility GNN</span><span class="zh">分子溶解度图神经网络</span></div>
-                        <div class="ri-desc"><span class="en">Multi-modal fusion GNN (~5.7M params, 5-fold ensemble) embedding Van&rsquo;t Hoff thermodynamic constraints as physics-informed auxiliary loss. R&sup2;=0.968, RMSE=0.244.</span><span class="zh">构建多模态融合 GNN（约 570 万参数、5 折集成），以 Van&rsquo;t Hoff 热力学约束作为物理信息辅助损失。R&sup2;=0.968，RMSE=0.244。</span></div>
-                        <span class="ri-badge ongoing"><span class="en">&#9679; Ongoing &middot; UCR</span><span class="zh">&#9679; 进行中 &middot; UCR</span></span>
+                        <a class="research-thumb" href="assets/research/fgnn-toc.png" target="_blank" rel="noopener"><img src="assets/research/fgnn-toc.png" alt="FGNN ToC with exact cover assignment, solute and solvent group graphs, GIN encoders, group contributions, and temperature curves" loading="lazy" decoding="async"><span class="figure-label"><span class="en">JCIM manuscript · ToC</span><span class="zh">JCIM 稿件 · ToC</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                        <div class="ri-title"><span class="en">Functional Group GNN for Solubility</span><span class="zh">官能团图神经网络与溶解度预测</span></div>
+                        <div class="ri-desc"><span class="en">Functional group graphs and an Apelblat temperature readout for molecular solubility. MAE 0.313 log units on held-out solute–solvent pairs.</span><span class="zh">以官能团图和 Apelblat 温度读出预测分子溶解度。未见溶质–溶剂配对上的 MAE 为 0.313 log 单位。</span></div>
+                        <span class="ri-badge ongoing"><span class="en">First author · UC Riverside</span><span class="zh">第一作者 · 加州大学河滨分校</span></span>
                     </div>
                     <div class="research-item purple">
-                        <div class="ri-icon">&#9879;</div>
-                        <div class="ri-title"><span class="en">Ethylene Furnace Optimization</span><span class="zh">乙烯裂解炉多目标优化</span></div>
-                        <div class="ri-desc"><span class="en">Multi-objective MINLP framework achieving 38.6% CO&#8322; reduction via ML surrogate models and dynamic decoking scheduling across multi-furnace systems.</span><span class="zh">构建多目标 MINLP 优化框架，结合 ML 代理模型和多炉动态清焦调度，实现 38.6% 的 CO&#8322; 减排。</span></div>
-                        <span class="ri-badge under-review"><span class="en">&#128196; Under Review &middot; Fuel Journal</span><span class="zh">&#128196; 审稿中 &middot; Fuel期刊</span></span>
+                        <a class="research-thumb" href="assets/research/moo-table1.svg" target="_blank" rel="noopener"><img src="assets/research/moo-table1.svg" alt="MOO Table 1 comparing clean-state and age-aware estimates for the same 368 day schedule" loading="lazy" decoding="async"><span class="figure-label"><span class="en">Current manuscript · Table 1</span><span class="zh">当前稿件 · Table 1</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                        <div class="ri-title"><span class="en">Coking-aware Multi-objective Scheduling</span><span class="zh">考虑结焦的裂解炉多目标调度</span></div>
+                        <div class="ri-desc"><span class="en">Coking-aware MINLP scheduling for eight ethylene cracking furnaces. Compare daily profit, CO₂ emissions, and ethylene production under matched operating conditions.</span><span class="zh">对八台乙烯裂解炉开展考虑结焦的 MINLP 调度优化，在相同运行条件下比较日利润、CO₂ 排放与乙烯产量。</span></div>
+                        <span class="ri-badge ongoing"><span class="en">First author · ECUST</span><span class="zh">第一作者 · 华东理工大学</span></span>
                     </div>
-                    <div class="research-item" style="border-top:2px solid rgba(42,255,160,0.3);">
-                        <div class="ri-icon">&#128300;</div>
-                        <div class="ri-title"><span class="en">Multiphase Catalytic Reactions (ML)</span><span class="zh">多相催化反应（机器学习）</span></div>
-                        <div class="ri-desc"><span class="en">Led Python implementation of volcano plot generation for high-throughput catalyst screening and descriptor identification. Applied ML to accelerate reaction pathway discovery.</span><span class="zh">负责以 Python 实现火山图生成，用于高通量催化剂筛选与描述符识别，并借助 ML 加速反应路径发现。</span></div>
-                        <span class="ri-badge" style="background:rgba(42,255,160,0.07);color:var(--accent-green);border:1px solid rgba(42,255,160,0.2);"><span class="en">&#10003; Completed &middot; ECUST 2024</span><span class="zh">&#10003; 已完成 &middot; 华理 2024</span></span>
-                    </div>
-                    <div class="research-item" style="border-top:2px solid rgba(255,179,71,0.3);">
-                        <div class="ri-icon">&#128202;</div>
-                        <div class="ri-title"><span class="en">Industrial Carbon Quota Optimization</span><span class="zh">工业碳配额优化</span></div>
-                        <div class="ri-desc"><span class="en">Developed carbon quota allocation algorithms using Genetic Algorithms for multi-plant industrial systems. Balancing emissions constraints with production efficiency.</span><span class="zh">为多工厂工业系统开发基于遗传算法的碳配额分配方法，在排放约束与生产效率之间寻求平衡。</span></div>
-                        <span class="ri-badge" style="background:rgba(255,179,71,0.07);color:var(--accent-amber);border:1px solid rgba(255,179,71,0.2);"><span class="en">&#9679; Ongoing &middot; ECUST 2025</span><span class="zh">&#9679; 进行中 &middot; 华理 2025</span></span>
+                    <div class="research-item research-text-only">
+                        <div class="ri-title"><span class="en">Multiphase Catalytic Reactions</span><span class="zh">多相催化反应</span></div>
+                        <div class="ri-desc"><span class="en">Implemented Python volcano plots for catalyst screening and explored descriptors in multiphase catalytic systems.</span><span class="zh">以 Python 实现用于催化剂筛选的火山图，并探索多相催化体系中的描述符。</span></div>
+                        <span class="ri-badge ongoing"><span class="en">Completed · ECUST 2024</span><span class="zh">已完成 · 华东理工大学 2024</span></span>
                     </div>
                 </div>
             </div>
@@ -654,7 +678,7 @@
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-cyan"><i class="fas fa-user-astronaut"></i> <span class="en">About Me</span><span class="zh">关于我</span></div>
                 <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I&rsquo;m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a 2026 graduate</span><span class="zh">我叫<strong style="color:var(--text-primary)">陈祎洋</strong>，于2026年毕业</span> <span class="en">with a dual background in Chemical Engineering (ECUST, Shanghai) and Computer Science &amp; AI (UC Riverside). I grew up in Fujian, China, ranked in the top 3% of 218,000 students in the college entrance exam &mdash; but what matters more to me is the direction I&rsquo;ve been building since.</span><span class="zh">在华东理工大学主修化学工程，同时在加州大学河滨分校修读计算机科学与AI。成长于福建，高考在21.8万考生中位列前3%——但对我而言更重要的，是此后一直在构建的方向。</span></p>
-                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">My research sits at the intersection of <strong style="color:var(--accent-cyan)">machine learning and natural science</strong>. I believe the most exciting frontier right now is teaching AI to respect physical laws &mdash; not just pattern-match on data. This led me to build physics-informed GNNs that embed thermodynamic constraints (Van&rsquo;t Hoff), and MINLP systems that jointly optimize carbon emissions and industrial efficiency.</span><span class="zh">我的研究聚焦于<strong style="color:var(--accent-cyan)">机器学习与自然科学</strong>的交叉领域。我相信当下最令人兴奋的前沿方向，是让AI学会遵循物理规律——而不仅仅是拟合数据。这驱使我构建了嵌入热力学约束（Van't Hoff方程）的物理信息图神经网络，以及同时优化碳排放与工业效率的MINLP系统。</span></p>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I develop machine learning methods for molecular systems and industrial processes. Under Professor Jianzhong Wu’s supervision, I built a functional group graph neural network that predicts solubility from molecular structure and temperature. In my work at ECUST, I model coke accumulation and optimize operating schedules for ethylene cracking furnaces. I also enjoy building interactive applications, from a 3D travel globe to tools for exploring workload and environmental exposure.</span><span class="zh">我的研究涉及分子系统与工业过程中的机器学习方法。在吴建中教授指导下，我开发了根据分子结构与温度预测溶解度的官能团图神经网络。在华东理工大学的研究中，我对裂解炉结焦过程建模，并优化炉群运行调度。我也喜欢开发交互式应用，包括三维旅行地球、认知负载模拟和环境暴露模拟工具。</span></p>
                 <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0;"><span class="en">Outside research, I like hiking (hence the tent button &#127957;), stargazing, and occasionally reminding myself that rest is productive. I&rsquo;m applying to MS and PhD programs in <strong style="color:var(--accent-green)">Computer Science / Machine Learning / AI for Science</strong> for Fall 2027.</span><span class="zh">科研之外，我喜欢徒步（所以有了那个搭帐篷按钮 &#127957;）、观星，偶尔提醒自己休息也是生产力。目前我正在申请2027年秋季入学的硕士及博士项目，方向为<strong style="color:var(--accent-green)">计算机科学 / 机器学习 / AI for Science</strong>。</span></p>
             </div>
             <div class="card" style="border-radius:16px;">
@@ -665,7 +689,7 @@
                     <div class="sk-item"><span class="sk-name"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span><span class="sk-stars" data-stars="4.5" data-color="#00d2ff"></span></div>
                     <div class="sk-item"><span class="sk-name"><span class="en">PyTorch / Deep Learning</span><span class="zh">PyTorch / 深度学习</span></span><span class="sk-stars" data-stars="4" data-color="#00d2ff"></span></div>
                     <div class="sk-item"><span class="sk-name"><span class="en">Scikit-learn / Classical ML</span><span class="zh">Scikit-learn / 传统机器学习</span></span><span class="sk-stars" data-stars="4" data-color="#00d2ff"></span></div>
-                    <div class="sk-item"><span class="sk-name"><span class="en">GradCAM / Interpretability</span><span class="zh">GradCAM / 可解释性</span></span><span class="sk-stars" data-stars="3.5" data-color="#00d2ff"></span></div>
+                    <div class="sk-item"><span class="sk-name"><span class="en">Group Attribution / Interpretability</span><span class="zh">官能团归因 / 可解释性</span></span><span class="sk-stars" data-stars="3.5" data-color="#00d2ff"></span></div>
                     <div class="sk-item"><span class="sk-name"><span class="en">Transformer / LLM</span><span class="zh">Transformer / 大语言模型</span></span><span class="sk-stars" data-stars="3" data-color="#00d2ff"></span></div>
                 </div>
                 <div class="sk-group-label" style="color:var(--accent-purple);margin-top:18px;"><span class="en">Programming</span><span class="zh">编程语言</span></div>
@@ -705,13 +729,13 @@
                 <p style="font-size:0.72rem;color:var(--text-secondary);margin:-10px 0 20px 0;"><span class="en">Most recent first &uarr;</span><span class="zh">最新在前 &uarr;</span></p>
                 <div class="timeline-item">
                     <div class="header-flex"><span><span class="en">University of California, Riverside</span><span class="zh">加州大学河滨分校</span></span><span class="date-tag"><span class="en">Sep 2025 &ndash; Jun 2026</span><span class="zh">2025年9月 &ndash; 2026年6月</span></span></div>
-                    <div class="sub-header"><span class="en">Exchange Student &middot; Graduate Preparation Program (AI &amp; Data Science)</span><span class="zh">交换生 &middot; 研究生预备项目（AI与数据科学）</span></div>
-                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Focused entirely on AI and CS coursework under faculty supervision. Conducting research on physics-informed graph neural networks for molecular property prediction and adversarial robustness of LLMs.</span><span class="zh">在教授指导下专注于AI和CS课程学习，同时开展物理信息图神经网络预测分子性质及大语言模型对抗鲁棒性相关研究。</span></p>
+                    <div class="sub-header"><span class="en">Exchange Student &middot; Graduate Preparation Program &middot; 39 units &middot; GPA 4.00 / 4.00</span><span class="zh">交换生 &middot; 研究生预备项目 &middot; 39 学分 &middot; GPA 4.00 / 4.00</span></div>
+                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Completed 39 units across computer science, engineering, and undergraduate research, with a GPA of 4.00 / 4.00 and all grades A or A+. Conducted molecular solubility research under Professor Jianzhong Wu’s supervision.</span><span class="zh">完成计算机、工程及本科科研课程共 39 学分，GPA 4.00 / 4.00，全部课程成绩为 A 或 A+。在吴建中教授指导下开展分子溶解度研究。</span></p>
                     <div>
                         <div class="grade-pill"><span><span class="en">Data Structures &amp; Algorithms</span><span class="zh">数据结构与算法</span></span><span class="val">A+</span></div>
                         <div class="grade-pill"><span><span class="en">Intro to ML &amp; Data Mining</span><span class="zh">机器学习与数据挖掘导论</span></span><span class="val">A+</span></div>
                         <div class="grade-pill"><span><span class="en">Intro to AI</span><span class="zh">人工智能导论</span></span><span class="val">A+</span></div>
-                        <div class="grade-pill"><span><span class="en">Deep Learning</span><span class="zh">深度学习</span></span><span class="val">A+</span></div>
+                        <div class="grade-pill"><span><span class="en">Deep Learning</span><span class="zh">深度学习</span></span><span class="val">A</span></div>
                         <div class="grade-pill"><span><span class="en">Discrete Mathematics</span><span class="zh">离散数学</span></span><span class="val">A+</span></div>
                         <div class="grade-pill"><span><span class="en">C++ for Programmers</span><span class="zh">C++ 程序设计</span></span><span class="val">A+</span></div>
                     </div>
@@ -719,16 +743,16 @@
                 <div class="timeline-item">
                     <div class="header-flex"><span><span class="en">University of Texas at Austin</span><span class="zh">德克萨斯大学奥斯汀分校</span></span><span class="date-tag"><span class="en">Jul 2024 &ndash; Aug 2024</span><span class="zh">2024年7月 &ndash; 2024年8月</span></span></div>
                     <div class="sub-header"><span class="en">Summer Visiting Student</span><span class="zh">暑期访问学生</span></div>
-                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Intensive summer program. Completed Data Analysis (R), Python Programming, and Academic Writing &mdash; all with A grades.</span><span class="zh">密集暑期课程，完成数据分析（R语言）、Python编程和学术写作三门课，均获A。</span></p>
+                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Intensive summer program. Completed Data Mining (R), Python Programming, and Academic Writing &mdash; all with A grades.</span><span class="zh">密集暑期课程，完成数据挖掘（R语言）、Python编程和学术写作三门课，均获A。</span></p>
                 </div>
                 <div class="timeline-item">
-                    <div class="header-flex"><span><span class="en">East China University of Science and Technology</span><span class="zh">华东理工大学</span></span><span class="date-tag"><span class="en">Sep 2022 &ndash; Jun 2026</span><span class="zh">2022年9月 &ndash; 2026年6月</span></span></div>
-                    <div class="sub-header"><span class="en">B.Eng. in Chemical Engineering &middot; GPA 3.61 / 4.00 &middot; Avg Score 85.7</span><span class="zh">化学工程工学学士 &middot; GPA 3.61 / 4.00 &middot; 均分 85.7</span></div>
+                    <div class="header-flex"><span><span class="en">East China University of Science and Technology</span><span class="zh">华东理工大学</span></span><span class="date-tag"><span class="en">Sep 2022 &ndash; Jul 2026</span><span class="zh">2022年9月 &ndash; 2026年7月</span></span></div>
+                    <div class="sub-header"><span class="en">B.Eng. in Chemical Engineering and Technology &middot; GPA 3.68 / 4.00 &middot; Average 89.16 / 100</span><span class="zh">化学工程与工艺工学学士 &middot; GPA 3.68 / 4.00 &middot; 均分 89.16 / 100</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Built a dual foundation in chemical engineering and computer science. CS-heavy curriculum alongside rigorous science and engineering fundamentals.</span><span class="zh">构建化学工程与计算机科学的双重知识体系，在扎实工程基础之上兼修大量CS课程。</span></p>
                     <div>
                         <div class="grade-pill"><span><span class="en">Big Data Algorithms</span><span class="zh">大数据算法</span></span><span class="val">100</span></div>
                         <div class="grade-pill"><span><span class="en">AI Language &amp; Ethics</span><span class="zh">人工智能语言与伦理</span></span><span class="val">100</span></div>
-                        <div class="grade-pill"><span><span class="en">Advanced Mathematics II</span><span class="zh">高等数学 II</span></span><span class="val">98</span></div>
+                        <div class="grade-pill"><span><span class="en">Advanced Mathematics I</span><span class="zh">高等数学 I</span></span><span class="val">98</span></div>
                         <div class="grade-pill"><span><span class="en">Data Structures</span><span class="zh">数据结构</span></span><span class="val">94</span></div>
                         <div class="grade-pill"><span><span class="en">Network &amp; Cloud Computing</span><span class="zh">网络与云计算</span></span><span class="val">92</span></div>
                         <div class="grade-pill"><span><span class="en">Simulation of ChemE Safety</span><span class="zh">化工安全仿真</span></span><span class="val">92</span></div>
@@ -751,16 +775,25 @@
         <!-- COURSES -->
         <div id="courses" class="tab-content" role="tabpanel" aria-labelledby="tab-courses">
             <div class="card" style="border-radius:16px;">
-                <div class="section-title s-cyan"><i class="fas fa-laptop-code"></i> <span class="en">Computer Science Coursework</span><span class="zh">计算机科学课程</span></div>
+                <div class="section-title s-cyan"><i class="fas fa-laptop-code"></i> <span class="en">Coursework &amp; Grades</span><span class="zh">课程与成绩</span></div>
                 <div class="courses-source"><span class="en">UC Riverside &nbsp;&middot;&nbsp; 2025&ndash;2026</span><span class="zh">加州大学河滨分校 &nbsp;&middot;&nbsp; 2025&ndash;2026</span></div>
+                <p class="academic-summary"><span class="en">UCR · 39 units completed · GPA 4.00 / 4.00 · All A / A+</span><span class="zh">UCR · 已完成 39 学分 · GPA 4.00 / 4.00 · 全部 A / A+</span></p>
                 <div class="courses-grid">
                     <div class="course-item"><span class="course-name"><span class="en">Intro to ML &amp; Data Mining</span><span class="zh">机器学习与数据挖掘导论</span></span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name"><span class="en">Deep Learning</span><span class="zh">深度学习</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Deep Learning</span><span class="zh">深度学习</span></span><span class="course-grade grade-ap">A</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Intro to Artificial Intelligence</span><span class="zh">人工智能导论</span></span><span class="course-grade grade-ap">A+</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Data Structures &amp; Algorithms</span><span class="zh">数据结构与算法</span></span><span class="course-grade grade-ap">A+</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Discrete Mathematics</span><span class="zh">离散数学</span></span><span class="course-grade grade-ap">A+</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">C++ for Programmers</span><span class="zh">C++ 程序设计</span></span><span class="course-grade grade-ap">A+</span></div>
-                    <div class="course-item"><span class="course-name"><span class="en">Problem Solving Lab</span><span class="zh">问题求解实验</span></span><span class="course-grade grade-ap">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Problem Solving Lab</span><span class="zh">问题求解实验</span></span><span class="course-grade grade-ap">A</span></div>
+                </div>
+                <div class="courses-source"><span class="en">UCR · Engineering &amp; Research</span><span class="zh">UCR · 工程与科研课程</span></div>
+                <div class="courses-grid">
+                    <div class="course-item"><span class="course-name"><span class="en">Chemical Process Analysis</span><span class="zh">化工过程分析</span></span><span class="course-grade grade-a">A</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Research for Undergraduates</span><span class="zh">本科生科研</span></span><span class="course-grade grade-a">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Green Engineering</span><span class="zh">绿色工程</span></span><span class="course-grade grade-a">A</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Structural Ordering in Colloidal Dispersions</span><span class="zh">胶体分散体系中的结构有序化</span></span><span class="course-grade grade-a">A+</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Chemical &amp; Environmental Engineering Lab</span><span class="zh">化学与环境工程实验</span></span><span class="course-grade grade-a">A+</span></div>
                 </div>
                 <div class="courses-source" style="margin-top:20px;"><span class="en">ECUST &nbsp;&middot;&nbsp; 2022&ndash;2026</span><span class="zh">华东理工大学 &nbsp;&middot;&nbsp; 2022&ndash;2026</span></div>
                 <div class="courses-grid">
@@ -775,14 +808,14 @@
                 </div>
                 <div class="courses-source" style="margin-top:20px;"><span class="en">UT Austin &nbsp;&middot;&nbsp; Summer 2024</span><span class="zh">德克萨斯大学奥斯汀分校 &nbsp;&middot;&nbsp; 2024年暑期</span></div>
                 <div class="courses-grid">
-                    <div class="course-item"><span class="course-name"><span class="en">Data Analysis (R)</span><span class="zh">数据分析（R）</span></span><span class="course-grade grade-a">A</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Data Mining (R)</span><span class="zh">数据挖掘（R）</span></span><span class="course-grade grade-a">A</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Python Programming</span><span class="zh">Python 编程</span></span><span class="course-grade grade-a">A</span></div>
                 </div>
             </div>
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-amber"><i class="fas fa-atom"></i> <span class="en">Science &amp; Engineering Fundamentals</span><span class="zh">理工基础课程</span></div>
                 <div class="courses-grid">
-                    <div class="course-item"><span class="course-name"><span class="en">Advanced Mathematics II</span><span class="zh">高等数学 II</span></span><span class="course-grade grade-num-high">98</span></div>
+                    <div class="course-item"><span class="course-name"><span class="en">Advanced Mathematics I</span><span class="zh">高等数学 I</span></span><span class="course-grade grade-num-high">98</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Probability &amp; Mathematical Statistics</span><span class="zh">概率论与数理统计</span></span><span class="course-grade grade-num-mid">90</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Chemical Engineering Principles</span><span class="zh">化工原理</span></span><span class="course-grade grade-num-mid">91</span></div>
                     <div class="course-item"><span class="course-name"><span class="en">Analytical Chemistry A1</span><span class="zh">分析化学 A1</span></span><span class="course-grade grade-num-mid">90</span></div>
@@ -797,137 +830,91 @@
         <!-- RESEARCH -->
         <div id="research" class="tab-content" role="tabpanel" aria-labelledby="tab-research">
             <div class="card" style="border-radius:16px;">
-                <div class="section-title s-purple"><i class="fas fa-terminal"></i> <span class="en">Research Experience</span><span class="zh">科研经历</span></div>
-                <div class="timeline-item">
-                    <div class="pub-badge"><i class="fas fa-flask"></i> <span class="en">Ongoing Research &middot; UC Riverside</span><span class="zh">进行中 &middot; 加州大学河滨分校</span></div>
-                    <div class="header-flex"><span><span class="en">Physics-Informed Multi-Modal GNN for Molecular Solubility</span><span class="zh">用于分子溶解度预测的物理信息多模态 GNN</span></span><span class="date-tag"><span class="en">Jan 2025 &ndash; Present</span><span class="zh">2025年1月 &ndash; 至今</span></span></div>
-                    <div class="sub-header"><span class="en">Advisor: Prof. Jianzhong Wu &middot; UC Riverside</span><span class="zh">导师：吴建中教授 &middot; 加州大学河滨分校</span></div>
-                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin:8px 0 12px 0;"><span class="en">Architected a multi-modal fusion GNN (~5.7M parameters, 5-fold ensemble) combining AttentiveFP solute encoder, GIN solvent encoder, and descriptor MLP. Embedded the Van&rsquo;t Hoff thermodynamic constraint as a physics-informed auxiliary loss. Achieved R&sup2;=0.968, RMSE=0.244 on held-out test set. Implemented GradCAM-based solvent-aware atomic attribution.</span><span class="zh">构建多模态融合GNN（约570万参数，5折集成），融合AttentiveFP溶质编码器、GIN溶剂编码器与描述符MLP。将Van't Hoff热力学约束嵌入为物理信息辅助损失函数，测试集R²=0.968，RMSE=0.244，并实现GradCAM溶剂感知原子归因。</span></p>
-                    <div><span class="tag">PyTorch Geometric</span><span class="tag">AttentiveFP</span><span class="tag">GIN</span><span class="tag">GradCAM</span><span class="tag"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span><span class="tag">RDKit</span></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="pub-badge"><i class="fas fa-file-alt"></i> <span class="en">Under Review &middot; Fuel Journal (JFUE-D-25-13575)</span><span class="zh">审稿中 &middot; Fuel期刊</span></div>
-                    <div class="header-flex"><span><span class="en">Multi-objective Optimization of Ethylene Cracking Furnaces</span><span class="zh">乙烯裂解炉多目标优化</span></span><span class="date-tag"><span class="en">Jan 2025 &ndash; Present</span><span class="zh">2025年1月 &ndash; 至今</span></span></div>
-                    <div class="sub-header"><span class="en">2nd Author &middot; Advisors: Prof. Du Wenli &amp; Prof. Zhao Liang &middot; ECUST</span><span class="zh">第二作者 &middot; 导师：杜文莉教授 &amp; 赵亮教授 &middot; 华东理工大学</span></div>
-                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin:8px 0 12px 0;"><span class="en">Developed a multi-objective MINLP optimization framework balancing economic efficiency and carbon emissions in petrochemical systems. Achieved 38.6% CO&#8322; reduction via dynamic coking mitigation. ML-based surrogate models handle coke thickness prediction and heat transfer optimization across multi-furnace systems.</span><span class="zh">构建石化系统多目标MINLP优化框架，实现经济效益与碳排放的协同优化，通过动态结焦调度实现CO₂减排38.6%。基于ML代理模型处理多炉系统的焦层厚度预测与传热优化。</span></p>
-                    <div><span class="tag">MINLP</span><span class="tag">DICOPT</span><span class="tag"><span class="en">Surrogate Modeling</span><span class="zh">代理建模</span></span><span class="tag"><span class="en">Genetic Algorithm</span><span class="zh">遗传算法</span></span><span class="tag">Aspen Plus</span></div>
-                </div>
-                <div class="timeline-item" style="margin-bottom:0;">
-                    <div class="pub-badge" style="background:rgba(42,255,160,0.07);color:var(--accent-green);border:1px solid rgba(42,255,160,0.2);"><i class="fas fa-check-circle"></i> <span class="en">Completed &middot; ECUST</span><span class="zh">已完成 &middot; 华东理工大学</span></div>
-                    <div class="header-flex"><span><span class="en">Multiphase Catalytic Reactions &mdash; ML Screening</span><span class="zh">多相催化反应 &mdash; ML 筛选</span></span><span class="date-tag"><span class="en">Mar 2024 &ndash; Aug 2024</span><span class="zh">2024年3月 &ndash; 2024年8月</span></span></div>
-                    <div class="sub-header"><span class="en">Undergraduate Researcher &middot; ECUST</span><span class="zh">本科生科研助理 &middot; 华东理工大学</span></div>
-                    <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin:8px 0 12px 0;"><span class="en">Led Python implementation of volcano plot generation for high-throughput catalyst screening and descriptor identification in multiphase catalytic systems. Applied ML methods to identify key descriptors and accelerate reaction pathway discovery.</span><span class="zh">主导多相催化体系中火山图生成的Python实现，用于高通量催化剂筛选与描述符识别，应用ML方法加速反应路径发现。</span></p>
-                    <div><span class="tag">Python</span><span class="tag"><span class="en">Volcano Plots</span><span class="zh">火山图</span></span><span class="tag"><span class="en">Catalyst Screening</span><span class="zh">催化剂筛选</span></span><span class="tag"><span class="en">Descriptor Analysis</span><span class="zh">描述符分析</span></span><span class="tag">Scikit-learn</span></div>
-                </div>
+                <div class="section-title s-purple"><i class="fas fa-flask"></i> <span class="en">Research Experience</span><span class="zh">科研经历</span></div>
+                <article class="timeline-item">
+                    <div class="pub-badge"><span class="en">First author · JCIM manuscript</span><span class="zh">第一作者 · JCIM 稿件</span></div>
+                    <div class="header-flex"><span><span class="en">Thermodynamics-Guided Functional Group Graph Neural Network for Molecular Solubility Prediction</span><span class="zh">热力学引导的官能团图神经网络用于分子溶解度预测</span></span><span class="date-tag"><span class="en">2025 – Present</span><span class="zh">2025年 – 至今</span></span></div>
+                    <div class="sub-header"><span class="en">Under Professor Jianzhong Wu’s supervision · UC Riverside</span><span class="zh">导师 吴建中教授 · 加州大学河滨分校</span></div>
+                    <a class="research-figure" href="assets/research/fgnn-toc.png" target="_blank" rel="noopener"><img src="assets/research/fgnn-toc.png" alt="FGNN ToC with exact cover assignment, solute and solvent group graphs, GIN encoders, group contributions, and temperature curves" loading="lazy" decoding="async"><span class="figure-label"><span class="en">View ToC</span><span class="zh">查看 ToC</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                    <p class="research-description"><span class="en">I developed a deterministic exact cover assignment that partitions each molecule into nonoverlapping functional groups. Separate four-layer GIN encoders process solute and solvent group graphs, and an Apelblat readout predicts temperature-dependent solubility. The study uses 182,608 measurements. Across five held-out solute–solvent pair splits, MAE is 0.313 ± 0.013 log units. Solvent-conditioned group terms are examined against established chemical trends.</span><span class="zh">我开发了确定性的 exact cover 分组方法，将分子划分为互不重叠的官能团。溶质和溶剂的官能团图分别经四层 GIN 编码，再通过 Apelblat 读出预测随温度变化的溶解度。研究采用 182,608 条测量记录。在五次未见溶质–溶剂配对划分中，MAE 为 0.313 ± 0.013 log 单位，并将溶剂相关的官能团项与已有化学趋势进行比较。</span></p>
+                    <div class="project-stack"><span class="tag">FGNN</span><span class="tag">GIN</span><span class="tag">Exact cover</span><span class="tag">Apelblat</span><span class="tag">PyTorch Geometric</span><span class="tag">RDKit</span></div>
+                    <a class="research-code" href="https://github.com/cyy-07/FGNN-Solubility_public" target="_blank" rel="noopener"><i class="fab fa-github"></i> <span class="en">Public code, trained models &amp; prediction example</span><span class="zh">公开代码、训练模型与预测示例</span></a>
+                </article>
+                <article class="timeline-item">
+                    <div class="pub-badge"><span class="en">First author · Research manuscript · ECUST</span><span class="zh">第一作者 · 研究稿件 · 华东理工大学</span></div>
+                    <div class="header-flex"><span><span class="en">Coking-aware Multi-objective Scheduling of Ethylene Cracking Furnace Clusters</span><span class="zh">考虑结焦的乙烯裂解炉群多目标调度</span></span><span class="date-tag"><span class="en">2025 – Present</span><span class="zh">2025年 – 至今</span></span></div>
+                    <div class="sub-header"><span class="en">Advisors · Prof. Wenli Du &amp; Prof. Liang Zhao · ECUST</span><span class="zh">导师 杜文莉教授与赵亮教授 · 华东理工大学</span></div>
+                    <a class="research-figure" href="assets/research/moo-table1.svg" target="_blank" rel="noopener"><img src="assets/research/moo-table1.svg" alt="MOO Table 1 comparing clean-state and age-aware estimates for the same 368 day schedule" loading="lazy" decoding="async"><span class="figure-label"><span class="en">View manuscript Table 1</span><span class="zh">查看论文 Table 1</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                    <p class="research-description"><span class="en">I model furnace-specific coke accumulation and operating-age responses, and solve single-furnace operating optimization and MINLP scheduling for eight heterogeneous furnaces with the ε-constraint method. For the same 368 day schedule in Table 1, clean-state estimates overpredict daily profit by 1.10% and underpredict daily CO₂ by 1.26%. Across the evaluated cluster endpoints, daily CO₂ decreases by 2.692% with a 1.859% profit reduction. Ethylene production decreases more than emissions in that comparison, so CO₂ intensity increases.</span><span class="zh">我对各裂解炉的结焦累积与运行时间相关响应建模，并采用 ε 约束法求解单炉运行优化与八台异构裂解炉的 MINLP 调度。在 Table 1 的同一套 368 天调度下，洁净状态估计高估日利润 1.10%，低估日 CO₂ 排放 1.26%。在所评估的炉群端点之间，日 CO₂ 排放下降 2.692%，日利润下降 1.859%。该比较中乙烯产量的降幅大于排放降幅，因此 CO₂ 排放强度上升。</span></p>
+                    <div><span class="tag">MINLP</span><span class="tag">GAMS / DICOPT</span><span class="tag">ε-constraint</span><span class="tag">CoilSim</span><span class="tag">Python</span></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="pub-badge"><span class="en">Completed · ECUST</span><span class="zh">已完成 · 华东理工大学</span></div>
+                    <div class="header-flex"><span><span class="en">Multiphase Catalytic Reactions</span><span class="zh">多相催化反应</span></span><span class="date-tag"><span class="en">Mar – Aug 2024</span><span class="zh">2024年3月 – 8月</span></span></div>
+                    <p class="research-description"><span class="en">Implemented Python volcano plots for catalyst screening and explored descriptors in multiphase catalytic systems.</span><span class="zh">以 Python 实现用于催化剂筛选的火山图，并探索多相催化体系中的描述符。</span></p>
+                    <div><span class="tag">Python</span><span class="tag"><span class="en">Volcano Plots</span><span class="zh">火山图</span></span><span class="tag"><span class="en">Catalyst Screening</span><span class="zh">催化剂筛选</span></span></div>
+                </article>
             </div>
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-green"><i class="fas fa-lightbulb"></i> <span class="en">Research Interests</span><span class="zh">研究兴趣</span></div>
-                <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.9;margin:0;"><span class="en">My work sits at the intersection of <strong style="color:var(--text-primary)">machine learning</strong> and <strong style="color:var(--text-primary)">natural science</strong>. I focus on developing AI methods grounded in physical and chemical principles &mdash; particularly <strong style="color:var(--accent-cyan)">physics-informed ML</strong>, <strong style="color:var(--accent-cyan)">graph neural networks for molecular systems</strong>, and <strong style="color:var(--accent-cyan)">AI-driven scientific discovery</strong>. My dual training in chemical engineering and CS gives me both thermodynamics/reaction domain knowledge and hands-on deep learning experience. Long-term goal: interpretable, physically consistent AI that accelerates chemistry, drug design, and energy systems.</span><span class="zh">我的研究聚焦于<strong style="color:var(--text-primary)">机器学习</strong>与<strong style="color:var(--text-primary)">自然科学</strong>的交汇处，致力于开发以物理和化学原理为基础的AI方法——尤其是<strong style="color:var(--accent-cyan)">物理信息机器学习</strong>、<strong style="color:var(--accent-cyan)">分子系统图神经网络</strong>和<strong style="color:var(--accent-cyan)">AI驱动的科学发现</strong>。化工与计算机的双重训练让我兼具热力学/反应域知识和深度学习实战经验。长期目标：构建可解释、物理自洽的AI，加速化学、药物设计和能源系统的研究进程。</span></p>
+                <p class="research-description"><span class="en">I am interested in machine learning for molecular systems and scientific applications, with an emphasis on chemically defined representations and interpretable predictions. I also work on industrial optimization and explore how interactive AI applications can help people understand complex choices.</span><span class="zh">我关注分子系统与科学应用中的机器学习，尤其是具有明确化学含义的表示与可解释预测。我也开展工业优化研究，并探索如何通过交互式 AI 应用帮助人们理解复杂选择。</span></p>
             </div>
         </div>
 
         <!-- PROJECTS -->
         <div id="projects" class="tab-content" role="tabpanel" aria-labelledby="tab-projects">
-
-            <!-- FLUXMIND card -->
-            <div class="project-card">
-                <div class="project-card-top" style="background:linear-gradient(90deg,#00E5CC,#9B5DE5,#00E5CC);"></div>
+            <div class="projects-intro"><span class="en">Hackathons &amp; Interactive Applications</span><span class="zh">黑客松与交互式应用</span></div>
+            <article class="project-card">
+                <div class="project-card-top"></div>
                 <div class="project-card-body">
-                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
-                        <span class="project-live-badge"><span class="project-live-dot"></span><span class="en">Live &middot; Deployed</span><span class="zh">已上线 &middot; 已部署</span></span>
-                        <span style="font-size:0.68rem;color:var(--text-secondary);font-style:italic;"><span class="en">CitrusHack 2025 &middot; UC Riverside</span><span class="zh">CitrusHack 2025 &middot; 加州大学河滨分校</span></span>
-                    </div>
-                    <div class="hackathon-strip" style="background:linear-gradient(135deg,rgba(0,229,204,0.06),rgba(155,93,229,0.06));border-color:rgba(0,229,204,0.2);">
-                        <div class="hackathon-icon">&#129504;</div>
-                        <div class="hackathon-text">
-                            <div class="hackathon-name" style="color:var(--accent-cyan);">CitrusHack &middot; UCR &middot; 2025</div>
-                            <div class="hackathon-detail"><span class="en">End-to-end cognitive simulation system shipped under 24h &middot; Interactive presentation + live demo</span><span class="zh">24小时内完成的认知负载模拟系统 &middot; 交互演示 + 现场Demo</span></div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:4px;">
-                        <div class="project-title" style="font-family:'JetBrains Mono',monospace;letter-spacing:2px;color:var(--accent-cyan);text-shadow:0 0 20px rgba(0,210,255,0.4);">FLUXMIND</div>
-                        <div style="font-size:0.72rem;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;letter-spacing:1px;">&mdash; OVERLOAD RADAR</div>
-                    </div>
-                    <div class="project-subtitle"><span class="en">Cognitive Load Simulation System &amp; Decision Engine</span><span class="zh">认知负载模拟系统与决策引擎</span></div>
-                    <p class="project-desc"><span class="en">FluxMind is a cognitive load simulator that models how stress accumulates across competing life decisions. Given your schedule, exams, and life events, it runs three parallel &ldquo;what-if&rdquo; futures &mdash; simulating stress trajectories over time using a probabilistic uncertainty engine and a constraint-based decision solver. The goal: not to tell you what to do, but to make the invisible cognitive cost of choices <strong style="color:var(--text-primary)">visible before you commit to them.</strong></span><span class="zh">FluxMind 是一个认知负载模拟器，模拟压力在相互竞争的生活决策中如何积累。输入你的日程、考试和生活事件，它会运行三条并行的"假设"未来——通过概率性不确定性引擎和约束决策求解器模拟压力轨迹。目标不是告诉你该怎么做，而是让选择背后隐形的认知代价<strong style="color:var(--text-primary)">在你做决定之前变得可见。</strong></span></p>
-                    <div class="project-stats">
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-cyan);">3</div><div class="pstat-lab"><span class="en">Parallel Futures</span><span class="zh">并行未来</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-green);">&infin;</div><div class="pstat-lab"><span class="en">What-if Scenarios</span><span class="zh">假设场景</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-purple);">70%</div><div class="pstat-lab"><span class="en">Overload Boundary</span><span class="zh">过载边界</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-amber);">&lt;24h</div><div class="pstat-lab"><span class="en">Built &amp; Shipped</span><span class="zh">构建完成</span></div></div>
-                    </div>
-                    <div class="project-highlights">
-                        <div class="highlight-item"><div class="highlight-icon">&#128202;</div><div class="highlight-text"><strong><span class="en">Stress Curve Engine</span><span class="zh">压力曲线引擎</span></strong><span class="en">Renders 3 plan trajectories with animated curves &mdash; showing when each path breaches the 70% overload threshold.</span><span class="zh">渲染3条计划轨迹动画曲线，展示每条路径何时突破70%过载阈值。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#127922;</div><div class="highlight-text"><strong><span class="en">Uncertainty Engine</span><span class="zh">不确定性引擎</span></strong><span class="en">Probabilistic min/max distributions model variance in task difficulty, deadline proximity, and life disruptions.</span><span class="zh">概率性最大/最小分布建模任务难度、截止日期临近程度和生活干扰的方差。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#128506;</div><div class="highlight-text"><strong><span class="en">Architecture Mind-Map</span><span class="zh">架构思维导图</span></strong><span class="en">Interactive hierarchical diagram showing Input &rarr; Parsing &rarr; Simulation &rarr; Decision &rarr; Output pipeline.</span><span class="zh">交互式层级图，展示输入→解析→模拟→决策→输出的完整流程。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#10024;</div><div class="highlight-text"><strong><span class="en">Star-Field Background</span><span class="zh">星空背景</span></strong><span class="en">Canvas-based constellation system &mdash; stars drift autonomously, connect to each other and to your cursor in real time.</span><span class="zh">基于Canvas的星座系统——星星自主漂移，实时与彼此及鼠标连线。</span></div></div>
-                    </div>
-                    <div style="font-size:0.72rem;color:var(--text-secondary);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;"><span class="en">Tech Stack</span><span class="zh">技术栈</span></div>
-                    <div class="project-stack">
-                        <span class="stack-tag frontend">HTML / CSS / JS</span>
-                        <span class="stack-tag frontend">Canvas API</span>
-                        <span class="stack-tag frontend"><span class="en">SVG Animation</span><span class="zh">SVG 动画</span></span>
-                        <span class="stack-tag data"><span class="en">Stress Simulation</span><span class="zh">压力模拟</span></span>
-                        <span class="stack-tag data"><span class="en">Uncertainty Modeling</span><span class="zh">不确定性建模</span></span>
-                        <span class="stack-tag backend"><span class="en">Decision Solver</span><span class="zh">决策求解器</span></span>
-                        <span class="stack-tag infra">Vercel</span>
-                    </div>
-                    <div class="project-cta">
-                        <a href="#" target="_blank" rel="noopener" class="cta-btn cta-primary" style="background:var(--accent-cyan);color:#000;"><i class="fas fa-external-link-alt"></i> <span class="en">Launch Demo</span><span class="zh">在线演示</span></a>
-                        <a href="https://github.com/cyy-07/overload-radar" target="_blank" rel="noopener" class="cta-btn cta-secondary"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
+                    <div class="project-event"><span class="en">DesignVerse 2026 · Independent project</span><span class="zh">DesignVerse 2026 · 独立项目</span></div>
+                    <h2 class="project-title">TerraPulse</h2>
+                    <div class="project-subtitle"><span class="en">A 3D globe for travel and community discovery</span><span class="zh">从三维地球探索城市与社区</span></div>
+                    <p class="project-desc"><span class="en">I built a globe-based travel experience where visitors explore city markers, open magazine-style city covers, and browse landmarks, food, weather, trends, and community stories. Landmark images open as postcards, with animated transitions between views.</span><span class="zh">我独立开发了以三维地球为入口的旅行探索应用。用户可以选择城市标记，打开杂志式城市封面，浏览地标、美食、天气、热门内容和社区故事。地标图片可展开为明信片，并通过动画在不同视图之间切换。</span></p>
+                    <div class="project-stack"><span class="stack-tag frontend">JavaScript</span><span class="stack-tag frontend">Three.js</span><span class="stack-tag frontend">HTML / CSS</span><span class="stack-tag frontend">Vercel</span></div>
+                    <div class="project-cta"><a href="https://design-a-hack.vercel.app/Globe%20loader/terrapulse/TerraPulse" target="_blank" rel="noopener" class="cta-btn cta-secondary"><span class="en">Live site</span><span class="zh">在线体验</span></a><a href="https://design-a-hack.vercel.app/Globe%20loader/terrapulse/presentation.html" target="_blank" rel="noopener" class="cta-btn cta-secondary"><span class="en">Presentation</span><span class="zh">项目演示</span></a><a href="https://github.com/cyy-07/design-a-hack" target="_blank" rel="noopener" class="cta-btn cta-primary"><i class="fab fa-github"></i> GitHub</a></div>
                 </div>
-            </div>
-
-            <!-- ECOLUNG card -->
-            <div class="project-card">
-                <div class="project-card-top" style="background:linear-gradient(90deg,#028090,#00c9b1,#2affa0);"></div>
+            </article>
+            <article class="project-card">
+                <div class="project-card-top"></div>
                 <div class="project-card-body">
-                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
-                        <span class="project-live-badge"><span class="project-live-dot"></span><span class="en">Live &middot; Deployed on Vercel</span><span class="zh">已上线 &middot; 部署于Vercel</span></span>
-                        <span style="font-size:0.68rem;color:var(--text-secondary);font-style:italic;"><span class="en">UCR BearHacks 2025</span><span class="zh">UCR BearHacks 2025</span></span>
-                    </div>
-                    <div class="hackathon-strip">
-                        <div class="hackathon-icon">&#127942;</div>
-                        <div class="hackathon-text">
-                            <div class="hackathon-name"><span class="en">UCR BearHacks Hackathon &middot; 2025</span><span class="zh">UCR BearHacks 黑客松 &middot; 2025</span></div>
-                            <div class="hackathon-detail"><span class="en">Built and shipped end-to-end in under 24 hours &middot; Full-stack, live deployment, real external data</span><span class="zh">24小时内完成全栈开发与部署 &middot; 真实外部数据</span></div>
-                        </div>
-                    </div>
-                    <div class="project-title">EcoLung</div>
-                    <div class="project-subtitle"><span class="en">Personal Exposure &amp; Sustainable Action Simulator</span><span class="zh">个人暴露量与可持续行动模拟器</span></div>
-                    <p class="project-desc"><span class="en">EcoLung turns invisible long-term air pollution exposure into a visible, personal story. Users select a real location, define their current daily routine, and compare it to a better one &mdash; then watch the difference play out on an interactive 3D lung that changes color, particle density, and airflow over a continuous year timeline. The app pulls live environmental data from OpenAQ and uses a behavior-parameterized exposure engine to project long-term respiratory burden. <strong style="color:var(--text-primary)">Not a dashboard. Not a diagnostic. A simulator that makes the invisible visible.</strong></span><span class="zh">EcoLung 将无形的长期空气污染暴露转化为可感知的个人故事。用户选择真实地点、设定当前日常习惯，与改善后的习惯对比——在交互式3D肺部模型上实时看到差异，颜色、粒子密度和气流随着年份时间轴动态演变。应用从OpenAQ获取实时环境数据，通过行为参数化暴露引擎预测长期呼吸负担。<strong style="color:var(--text-primary)">不是仪表板，不是诊断工具，而是让隐形可见的模拟器。</strong></span></p>
-                    <div class="project-stats">
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-green);">4.2M</div><div class="pstat-lab"><span class="en">Deaths/yr addressed</span><span class="zh">每年相关死亡</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-cyan);"><span class="en">Live</span><span class="zh">实时</span></div><div class="pstat-lab"><span class="en">OpenAQ data</span><span class="zh">OpenAQ数据</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-purple);">3D</div><div class="pstat-lab"><span class="en">Lung visualization</span><span class="zh">肺部可视化</span></div></div>
-                        <div class="pstat"><div class="pstat-val" style="color:var(--accent-amber);">&lt;24h</div><div class="pstat-lab"><span class="en">Built &amp; shipped</span><span class="zh">构建完成</span></div></div>
-                    </div>
-                    <div class="project-highlights">
-                        <div class="highlight-item"><div class="highlight-icon">&#127758;</div><div class="highlight-text"><strong><span class="en">Real Environmental Data</span><span class="zh">真实环境数据</span></strong><span class="en">Live PM2.5, PM10, and O&#8323; measurements pulled from OpenAQ API for any selected region.</span><span class="zh">从OpenAQ API实时获取任意地区的PM2.5、PM10和O₃浓度数据。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#129753;</div><div class="highlight-text"><strong><span class="en">3D Lung Scene</span><span class="zh">3D肺部场景</span></strong><span class="en">Three.js visualization &mdash; color, particle density, and airflow shift as years accumulate.</span><span class="zh">Three.js可视化——随着年份累积，颜色、粒子密度和气流动态变化。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#9879;</div><div class="highlight-text"><strong><span class="en">Exposure Engine</span><span class="zh">暴露量引擎</span></strong><span class="en">Behavior &times; pollutant model using CDC/NIOSH/EPA-calibrated filtration parameters, not assumptions.</span><span class="zh">行为×污染物模型，采用CDC/NIOSH/EPA校准的过滤参数，非假设推断。</span></div></div>
-                        <div class="highlight-item"><div class="highlight-icon">&#128202;</div><div class="highlight-text"><strong><span class="en">Before vs. After</span><span class="zh">前后对比</span></strong><span class="en">Compare current routine vs. improved routine &mdash; mask, HEPA, outdoor hours &mdash; across a year slider.</span><span class="zh">通过年份滑块对比当前与改善后的日常习惯——口罩、空气净化器、户外时间。</span></div></div>
-                    </div>
-                    <div style="font-size:0.72rem;color:var(--text-secondary);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;"><span class="en">Tech Stack</span><span class="zh">技术栈</span></div>
-                    <div class="project-stack">
-                        <span class="stack-tag frontend">React</span><span class="stack-tag frontend">Vite</span><span class="stack-tag frontend">Three.js</span>
-                        <span class="stack-tag backend">FastAPI</span><span class="stack-tag backend">Python</span>
-                        <span class="stack-tag data">OpenAQ API</span><span class="stack-tag data"><span class="en">Exposure Engine</span><span class="zh">暴露量引擎</span></span>
-                        <span class="stack-tag infra">Vercel</span>
-                    </div>
-                    <div class="project-cta">
-                        <a href="https://ucr-bearhack-ecolung.vercel.app/" target="_blank" rel="noopener" class="cta-btn cta-primary"><i class="fas fa-external-link-alt"></i> <span class="en">Launch App</span><span class="zh">打开应用</span></a>
-                        <a href="https://github.com/cyy-07/UCR-Bearhack-Ecolung" target="_blank" rel="noopener" class="cta-btn cta-secondary"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
+                    <div class="project-event"><span class="en">CitrusHack · UC Riverside</span><span class="zh">CitrusHack · 加州大学河滨分校</span></div>
+                    <h2 class="project-title">FluxMind / Overload Radar</h2>
+                    <div class="project-subtitle"><span class="en">Explore workload decisions and alternative plans</span><span class="zh">比较认知负载与不同计划</span></div>
+                    <p class="project-desc"><span class="en">Students enter their workload and compare three alternative plans, stress trajectories, and recommendations about what to cut. The application combines a Next.js interface with server-side Gemini analysis and optional ElevenLabs voice support. A separate interactive presentation explains the simulation and decision flow.</span><span class="zh">学生输入任务安排后，可以比较三种计划、压力变化曲线以及任务取舍建议。应用采用 Next.js 界面、服务端 Gemini 分析和可选的 ElevenLabs 语音支持，另有交互式演示介绍模拟与决策流程。</span></p>
+                    <div class="project-stack"><span class="stack-tag frontend">Next.js</span><span class="stack-tag frontend">TypeScript</span><span class="stack-tag frontend">Gemini</span><span class="stack-tag frontend">ElevenLabs</span></div>
+                    <div class="project-cta"><a href="https://overload-radar.vercel.app" target="_blank" rel="noopener" class="cta-btn cta-secondary"><span class="en">Live app</span><span class="zh">打开应用</span></a><a href="https://github.com/cyy-07/Fluxminddemo" target="_blank" rel="noopener" class="cta-btn cta-secondary"><span class="en">Presentation source</span><span class="zh">演示源码</span></a><a href="https://github.com/cyy-07/overload-radar" target="_blank" rel="noopener" class="cta-btn cta-primary"><i class="fab fa-github"></i> GitHub</a></div>
                 </div>
-            </div>
-
-            <div class="more-projects-card">
-                <div class="more-icon">&#128679;</div>
-                <div class="more-text">
-                    <h3><span class="en">More projects coming soon</span><span class="zh">更多项目即将上线</span></h3>
-                    <p><span class="en">Additional side projects and open-source work will be added here. In the meantime, check GitHub for recent activity.</span><span class="zh">更多项目与开源工作持续更新中，欢迎访问 GitHub 查看近期动态。</span></p>
+            </article>
+            <article class="project-card">
+                <div class="project-card-top"></div>
+                <div class="project-card-body">
+                    <div class="project-event"><span class="en">BearHack · UC Riverside</span><span class="zh">BearHack · 加州大学河滨分校</span></div>
+                    <h2 class="project-title">EcoLung</h2>
+                    <div class="project-subtitle"><span class="en">Environmental exposure and sustainable action simulator</span><span class="zh">环境暴露与可持续行动模拟器</span></div>
+                    <p class="project-desc"><span class="en">Users choose a location and compare current and improved daily routines through a Three.js lung visualization. A FastAPI service retrieves nearby OpenAQ measurements and computes simulated exposure scenarios. This is an educational simulation, with demo data available when live data cannot be retrieved.</span><span class="zh">用户选择地点后，可以通过 Three.js 肺部可视化比较当前与改善后的日常习惯。FastAPI 服务读取附近的 OpenAQ 测量数据并计算暴露模拟情景。项目用于科普模拟，无法获取实时数据时可使用演示数据。</span></p>
+                    <div class="project-stack"><span class="stack-tag frontend">React</span><span class="stack-tag frontend">Vite</span><span class="stack-tag frontend">Three.js</span><span class="stack-tag frontend">FastAPI</span><span class="stack-tag frontend">OpenAQ</span></div>
+                    <div class="project-cta"><a href="https://ucr-bearhack-ecolung.vercel.app/" target="_blank" rel="noopener" class="cta-btn cta-secondary"><span class="en">Live app</span><span class="zh">打开应用</span></a><a href="https://github.com/cyy-07/UCR-Bearhack-Ecolung" target="_blank" rel="noopener" class="cta-btn cta-primary"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+            </article>
+            <article class="project-card">
+                <div class="project-card-top"></div>
+                <div class="project-card-body">
+                    <div class="project-event"><span class="en">RoseHack · Team project</span><span class="zh">RoseHack · 团队项目</span></div>
+                    <h2 class="project-title">Voidtalk-lab</h2>
+                    <div class="project-subtitle"><span class="en">Feedback matched to the author’s intent</span><span class="zh">根据发帖意图组织匿名反馈</span></div>
+                    <p class="project-desc"><span class="en">Our team explored anonymous sharing with four feedback modes, from practical advice to empathy, constructive challenge, or journaling. I worked on a Flask comment moderation prototype that scores replies against the selected mode and organizes them into featured, more, or hidden categories. The repository includes the prototype and project presentation.</span><span class="zh">团队围绕匿名分享设计了建议、共情、建设性反对与日记四种反馈模式。我负责 Flask 评论审核原型，按照发帖者选择的模式评估回复，并分为精选、更多或折叠类别。仓库包含原型代码与项目演示。</span></p>
+                    <div class="project-stack"><span class="stack-tag frontend">Python</span><span class="stack-tag frontend">Flask</span><span class="stack-tag frontend">Prompt Engineering</span><span class="stack-tag frontend">Comment Moderation</span></div>
+                    <div class="project-cta"><a href="https://github.com/cyy-07/rosehack/blob/main/rosehack/presentation-demo.pdf" target="_blank" rel="noopener" class="cta-btn cta-secondary"><span class="en">Project presentation</span><span class="zh">项目演示</span></a><a href="https://github.com/cyy-07/rosehack" target="_blank" rel="noopener" class="cta-btn cta-primary"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+            </article>
+            <div class="card" style="border-radius:16px;">
+                <div class="section-title s-cyan"><i class="fas fa-code"></i> <span class="en">Selected Course Projects</span><span class="zh">课程项目选集</span></div>
+                <div class="course-projects">
+                    <a class="course-project" href="https://github.com/cyy-07/UCR-CS228-Project" target="_blank" rel="noopener"><strong><span class="en">Energy Forecasting</span><span class="zh">能耗预测</span> <i class="fab fa-github" aria-hidden="true"></i></strong><span><span class="en">Deep learning comparisons on the UCI Appliances dataset, including Transformer models and forecast-horizon studies.</span><span class="zh">在 UCI Appliances 数据集上比较深度学习方法，包含 Transformer 模型与不同预测时域。</span></span></a>
+                    <a class="course-project" href="https://github.com/cyy-07/Flight-Online-Comparing-Platform" target="_blank" rel="noopener"><strong><span class="en">Flight Compare</span><span class="zh">航班比价平台</span> <i class="fab fa-github" aria-hidden="true"></i></strong><span><span class="en">C++ object-oriented flight search and fare comparison with polymorphic pricing.</span><span class="zh">采用面向对象 C++ 实现航班检索、票价比较与多态定价。</span></span></a>
+                    <a class="course-project" href="https://github.com/cyy-07/UCR-CS170Project1_8puzzle" target="_blank" rel="noopener"><strong><span class="en">8-Puzzle Search</span><span class="zh">八数码搜索</span> <i class="fab fa-github" aria-hidden="true"></i></strong><span><span class="en">CS170 artificial intelligence search project.</span><span class="zh">CS170 人工智能搜索课程项目。</span></span></a>
+                    <a class="course-project" href="https://github.com/cyy-07/UCR-CS170-Project2_ML" target="_blank" rel="noopener"><strong><span class="en">Feature Selection</span><span class="zh">特征选择</span> <i class="fab fa-github" aria-hidden="true"></i></strong><span><span class="en">CS170 machine learning course project.</span><span class="zh">CS170 机器学习课程项目。</span></span></a>
                 </div>
             </div>
         </div>
@@ -1095,24 +1082,8 @@ function renderStars() {
     });
 }
 
-function animCounter(el, target, dec, suffix) {
-    if (reducedMotionQuery.matches) {
-        el.textContent = target.toFixed(dec) + (suffix || '');
-        return;
-    }
-    const dur = 1200, start = performance.now();
-    (function step(now) {
-        const p = Math.min((now - start) / dur, 1), e = 1 - Math.pow(1 - p, 3);
-        el.textContent = (target * e).toFixed(dec) + (suffix || '');
-        if (p < 1) requestAnimationFrame(step);
-    })(performance.now());
-}
-
 window.addEventListener('DOMContentLoaded', () => {
     renderStars();
-    const nums = document.querySelectorAll('.stat-num');
-    if (nums[0]) animCounter(nums[0], 3.61, 2, '');
-    if (nums[2]) animCounter(nums[2], 2026, 0, '');
 });
 
 /* ===== EMAIL COPY ===== */
