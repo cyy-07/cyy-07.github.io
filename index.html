@@ -296,6 +296,10 @@
         .award-item:hover { border-color: rgba(42,255,160,0.3); }
         .award-name { font-size: 0.78rem; color: var(--text-primary); margin-bottom: 4px; }
         .award-detail { font-size: 0.68rem; color: var(--accent-green); }
+        .education-order { display:flex; flex-wrap:wrap; gap:8px; margin:-10px 0 20px; }
+        .education-order button { border:1px solid var(--border-bright); border-radius:7px; padding:7px 11px; background:var(--bg-card2); color:var(--text-secondary); font:600 0.7rem/1.5 Inter,sans-serif; cursor:pointer; }
+        .education-order button[aria-pressed="true"] { color:var(--accent-cyan); border-color:var(--accent-cyan); }
+        .education-order button:focus-visible { outline:2px solid var(--accent-cyan); outline-offset:3px; }
         .timeline-item { position: relative; padding-left: 24px; border-left: 1px solid var(--border); margin-bottom: 26px; }
         .timeline-item:last-child { margin-bottom: 0; }
         .timeline-item::before {
@@ -640,7 +644,7 @@
             <div class="hero-banner">
                 <div class="hero-label"><span class="en">Portfolio &middot; 2026</span><span class="zh">个人主页 &middot; 2026</span></div>
                 <h1 class="hero-h1"><span class="en">Where Chemistry Meets Machine Learning</span><span class="zh">化学工程与<br>机器学习的交汇</span></h1>
-                <p class="hero-desc"><span class="en">I’m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a Chemical Engineering graduate from ECUST with additional academic training in Computer Science and AI at UC Riverside. At UCR’s Professional and Global Education, I built a university knowledge base and designed prompting workflows for a multilingual AI academic adviser in NotebookLM. I evaluated its responses against official sources to support reliable guidance on university procedures and course planning.</span><span class="zh">我是<strong style="color:var(--text-primary)">陈祎洋</strong>，毕业于华东理工大学化学工程专业，并在加州大学河滨分校修读计算机科学与 AI 课程。在 UCR Professional and Global Education，我为基于 NotebookLM 的多语言 AI 学业咨询助手构建学校知识库，并设计提示词工作流。我对照官方来源评估回答，以支持学生查询学校事务和规划课程。</span></p>
+                <p class="hero-desc"><span class="en">I’m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a Chemical Engineering graduate from ECUST with additional academic training in Computer Science and AI at UC Riverside. At UCR’s Professional and Global Education, I built a university knowledge base and designed prompting workflows for a multilingual AI academic adviser in NotebookLM. I evaluated its responses against official sources to support reliable guidance on university procedures and course planning. The adviser was also integrated into UCR’s website.</span><span class="zh">我是<strong style="color:var(--text-primary)">陈祎洋</strong>，毕业于华东理工大学化学工程专业，并在加州大学河滨分校修读计算机科学与 AI 课程。在 UCR Professional and Global Education，我为基于 NotebookLM 的多语言 AI 学业咨询助手构建学校知识库，并设计提示词工作流。我对照官方来源评估回答，以支持学生查询学校事务和规划课程。该助手还整合到了 UCR 的网站中。</span></p>
                 <p class="hero-desc"><span class="en">I develop machine learning methods for molecular systems and industrial processes. Under Professor Jianzhong Wu’s supervision, I built a functional group graph neural network that predicts solubility from molecular structure and temperature. In my work at ECUST, I model coke accumulation and optimize operating schedules for ethylene cracking furnaces. I also enjoy building interactive applications, from a 3D travel globe to tools for exploring workload and environmental exposure.</span><span class="zh">我的研究涉及分子系统与工业过程中的机器学习方法。在吴建中教授指导下，我开发了根据分子结构与温度预测溶解度的官能团图神经网络。在华东理工大学的研究中，我对裂解炉结焦过程建模，并优化炉群运行调度。我也喜欢开发交互式应用，包括三维旅行地球、认知负载模拟和环境暴露模拟工具。</span></p>
                 <p class="hero-desc"><span class="en">Outside research, I like hiking (hence the tent button &#127957;), swimming, stargazing, and occasionally reminding myself that rest is productive. I&rsquo;m applying to MS and PhD programs in <strong style="color:var(--accent-green)">Computer Science</strong> for Fall 2027, with a focus on machine learning for scientific applications (AI for Science).</span><span class="zh">科研之外，我喜欢徒步（所以有了那个搭帐篷按钮 &#127957;）、游泳和观星，偶尔提醒自己休息也是生产力。目前我正在申请 2027 年秋季入学的<strong style="color:var(--accent-green)">计算机科学</strong>硕士及博士项目，研究重点为机器学习在科学问题中的应用（AI for Science）。</span></p>
                 <div class="hero-tags">
@@ -692,7 +696,7 @@
         <div id="about" class="tab-content" role="tabpanel" aria-labelledby="tab-about">
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-cyan"><i class="fas fa-user-astronaut"></i> <span class="en">About Me</span><span class="zh">关于我</span></div>
-                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I’m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a Chemical Engineering graduate from ECUST with additional academic training in Computer Science and AI at UC Riverside. At UCR’s Professional and Global Education, I built a university knowledge base and designed prompting workflows for a multilingual AI academic adviser in NotebookLM. I evaluated its responses against official sources to support reliable guidance on university procedures and course planning.</span><span class="zh">我是<strong style="color:var(--text-primary)">陈祎洋</strong>，毕业于华东理工大学化学工程专业，并在加州大学河滨分校修读计算机科学与 AI 课程。在 UCR Professional and Global Education，我为基于 NotebookLM 的多语言 AI 学业咨询助手构建学校知识库，并设计提示词工作流。我对照官方来源评估回答，以支持学生查询学校事务和规划课程。</span></p>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I’m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a Chemical Engineering graduate from ECUST with additional academic training in Computer Science and AI at UC Riverside. At UCR’s Professional and Global Education, I built a university knowledge base and designed prompting workflows for a multilingual AI academic adviser in NotebookLM. I evaluated its responses against official sources to support reliable guidance on university procedures and course planning. The adviser was also integrated into UCR’s website.</span><span class="zh">我是<strong style="color:var(--text-primary)">陈祎洋</strong>，毕业于华东理工大学化学工程专业，并在加州大学河滨分校修读计算机科学与 AI 课程。在 UCR Professional and Global Education，我为基于 NotebookLM 的多语言 AI 学业咨询助手构建学校知识库，并设计提示词工作流。我对照官方来源评估回答，以支持学生查询学校事务和规划课程。该助手还整合到了 UCR 的网站中。</span></p>
                 <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I develop machine learning methods for molecular systems and industrial processes. Under Professor Jianzhong Wu’s supervision, I built a functional group graph neural network that predicts solubility from molecular structure and temperature. In my work at ECUST, I model coke accumulation and optimize operating schedules for ethylene cracking furnaces. I also enjoy building interactive applications, from a 3D travel globe to tools for exploring workload and environmental exposure.</span><span class="zh">我的研究涉及分子系统与工业过程中的机器学习方法。在吴建中教授指导下，我开发了根据分子结构与温度预测溶解度的官能团图神经网络。在华东理工大学的研究中，我对裂解炉结焦过程建模，并优化炉群运行调度。我也喜欢开发交互式应用，包括三维旅行地球、认知负载模拟和环境暴露模拟工具。</span></p>
                 <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0;"><span class="en">Outside research, I like hiking (hence the tent button &#127957;), swimming, stargazing, and occasionally reminding myself that rest is productive. I&rsquo;m applying to MS and PhD programs in <strong style="color:var(--accent-green)">Computer Science</strong> for Fall 2027, with a focus on machine learning for scientific applications (AI for Science).</span><span class="zh">科研之外，我喜欢徒步（所以有了那个搭帐篷按钮 &#127957;）、游泳和观星，偶尔提醒自己休息也是生产力。目前我正在申请 2027 年秋季入学的<strong style="color:var(--accent-green)">计算机科学</strong>硕士及博士项目，研究重点为机器学习在科学问题中的应用（AI for Science）。</span></p>
             </div>
@@ -741,8 +745,11 @@
         <div id="education" class="tab-content" role="tabpanel" aria-labelledby="tab-education">
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-cyan"><i class="fas fa-graduation-cap"></i> <span class="en">Education</span><span class="zh">教育背景</span></div>
-                <p style="font-size:0.72rem;color:var(--text-secondary);margin:-10px 0 20px 0;"><span class="en">Most recent first &uarr;</span><span class="zh">最新在前 &uarr;</span></p>
-                <div class="timeline-item">
+                <div class="education-order" role="group" aria-label="Education timeline order">
+                    <button type="button" data-education-order="latest" aria-pressed="true"><span class="en">Most recent first ↑</span><span class="zh">最新在前 ↑</span></button>
+                    <button type="button" data-education-order="earliest" aria-pressed="false"><span class="en">Earliest first ↓</span><span class="zh">最早在前 ↓</span></button>
+                </div>
+                <div class="timeline-item" data-start="2025-09">
                     <div class="header-flex"><span><span class="en">University of California, Riverside</span><span class="zh">加州大学河滨分校</span></span><span class="date-tag"><span class="en">Sep 2025 &ndash; Jun 2026</span><span class="zh">2025年9月 &ndash; 2026年6月</span></span></div>
                     <div class="sub-header"><span class="en">Exchange Student &middot; Graduate Preparation Program &middot; 39 units &middot; GPA 4.00 / 4.00</span><span class="zh">交换生 &middot; 研究生预备项目 &middot; 39 学分 &middot; GPA 4.00 / 4.00</span></div>
                     <p class="academic-summary"><span class="en">Earned the <a href="https://gpp.ucr.edu/sites/default/files/2019-01/UCR_GPPE_2018_FINAL.pdf" target="_blank" rel="noopener">Advanced Certificate in Engineering</a> through the Graduate Preparation Program.</span><span class="zh">通过研究生预备项目获得 <a href="https://gpp.ucr.edu/sites/default/files/2019-01/UCR_GPPE_2018_FINAL.pdf" target="_blank" rel="noopener">Advanced Certificate in Engineering（高级工程证书）</a>。</span></p>
@@ -757,12 +764,12 @@
                         <div class="grade-pill"><span><span class="en">C++ for Programmers</span><span class="zh">C++ 程序设计</span></span><span class="val">A+</span></div>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-start="2024-07">
                     <div class="header-flex"><span><span class="en">University of Texas at Austin</span><span class="zh">德克萨斯大学奥斯汀分校</span></span><span class="date-tag"><span class="en">Jul 2024 &ndash; Aug 2024</span><span class="zh">2024年7月 &ndash; 2024年8月</span></span></div>
                     <div class="sub-header"><span class="en">Summer Visiting Student</span><span class="zh">暑期访问学生</span></div>
                     <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin:8px 0;"><span class="en">Completed 12 units over a two month summer program in Data Mining (R), Python Programming, and Academic Writing. All courses were graded A.</span><span class="zh">在两个月的暑期项目中完成数据挖掘（R）、Python 编程与学术写作，共 12 学分，全部课程成绩为 A。</span></p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-start="2022-09">
                     <div class="header-flex"><span><span class="en">East China University of Science and Technology</span><span class="zh">华东理工大学</span></span><span class="date-tag"><span class="en">Sep 2022 &ndash; Jul 2026</span><span class="zh">2022年9月 &ndash; 2026年7月</span></span></div>
                     <div class="sub-header"><span class="en">B.Eng. in Chemical Engineering and Technology &middot; GPA 3.68 / 4.00 &middot; Average 89.16 / 100</span><span class="zh">化学工程与工艺工学学士 &middot; GPA 3.68 / 4.00 &middot; 均分 89.16 / 100</span></div>
 <details class="credit-breakdown" id="ecust-education-cs"><summary><span class="en">178.5 degree credits · View the 20 CS/computing credits</span><span class="zh">学位课程共 178.5 学分 · 查看 20 学分 CS 与计算课程</span></summary><table class="ucr-grade-table"><thead><tr><th scope="col"><span class="en">Course</span><span class="zh">课程</span></th><th scope="col"><span class="en">Units</span><span class="zh">学分</span></th><th scope="col"><span class="en">Grade</span><span class="zh">成绩</span></th></tr></thead><tbody><tr data-units="3"><th scope="row"><span class="en">The fundamentals of programming</span><span class="zh">程序设计基础</span></th><td>3</td><td>98</td></tr><tr data-units="2"><th scope="row"><span class="en">Data Structure and Algorithm</span><span class="zh">数据结构与算法</span></th><td>2</td><td>94</td></tr><tr data-units="2"><th scope="row"><span class="en">Principles of Operating Systems</span><span class="zh">操作系统原理</span></th><td>2</td><td>85</td></tr><tr data-units="2"><th scope="row"><span class="en">Computer Network &amp; Cloud Computing</span><span class="zh">计算机网络及云计算</span></th><td>2</td><td>92</td></tr><tr data-units="1"><th scope="row"><span class="en">Big Data Algorithm</span><span class="zh">大数据算法</span></th><td>1</td><td>100</td></tr><tr data-units="2"><th scope="row"><span class="en">Big Data Visualization</span><span class="zh">大数据可视化</span></th><td>2</td><td>91</td></tr><tr data-units="1"><th scope="row"><span class="en">Machine Learning</span><span class="zh">机器学习</span></th><td>1</td><td>98</td></tr><tr data-units="2"><th scope="row"><span class="en">Artificial intelligence technology and Application</span><span class="zh">人工智能技术与应用</span></th><td>2</td><td>91</td></tr><tr data-units="2"><th scope="row"><span class="en">Artificial Intelligence, Language and Ethics</span><span class="zh">人工智能，语言与伦理</span></th><td>2</td><td>100</td></tr><tr data-units="2"><th scope="row"><span class="en">Computer Applications to Chemical Engineering</span><span class="zh">计算机化工应用</span></th><td>2</td><td>82</td></tr><tr data-units="1"><th scope="row"><span class="en">Information Retrieval</span><span class="zh">文献检索</span></th><td>1</td><td>85</td></tr></tbody></table><p><span class="en">The remaining 158.5 credits include the Chemical Engineering curriculum, mathematics, languages, and general education. Each retaken course is counted once.</span><span class="zh">其余 158.5 学分包含化工、数学、语言和通识课程。重修课程只计一次学分。</span></p></details>
@@ -782,7 +789,7 @@
                         <div class="grade-pill"><span><span class="en">Information Retrieval</span><span class="zh">信息检索</span></span><span class="val">85</span></div>
                     </div>
                 </div>
-                <div class="timeline-item dim">
+                <div class="timeline-item dim" data-start="2022-06">
                     <div class="header-flex"><span><span class="en">Fujian Gaokao (College Entrance Exam)</span><span class="zh">福建高考</span></span><span class="date-tag">2022</span></div>
                     <div class="sub-header" style="color:var(--text-secondary);"><span class="en">Ranked 6,802 / 218,000 students &middot; Top 3%</span><span class="zh">福建高考 21.8万人中排名第6802 &middot; 前3%</span></div>
                     <div class="quote-block"><span class="en">&ldquo;While I was not always the most disciplined student, I gradually learned how to build systems for myself and take ownership of my growth.&rdquo;</span><span class="zh">“我并不总是最自律的学生，但我逐渐学会为自己建立有效的方法，并主动为自己的成长负责。”</span></div>
@@ -1005,6 +1012,21 @@ function openResearchRoute() {
 }
 window.addEventListener('hashchange', openResearchRoute);
 window.addEventListener('DOMContentLoaded', openResearchRoute);
+
+const educationItems = [...document.querySelectorAll('#education .timeline-item')];
+document.querySelectorAll('[data-education-order]').forEach(button => {
+    button.addEventListener('click', () => {
+        const latest = button.dataset.educationOrder === 'latest';
+        document.querySelectorAll('[data-education-order]').forEach(option => {
+            option.setAttribute('aria-pressed', String(option === button));
+        });
+        const parent = educationItems[0].parentElement;
+        [...educationItems].sort((a, b) => latest
+            ? b.dataset.start.localeCompare(a.dataset.start)
+            : a.dataset.start.localeCompare(b.dataset.start)
+        ).forEach(item => parent.appendChild(item));
+    });
+});
 
 /* Tabs remain visually unchanged; add keyboard support for Enter/Space and arrow navigation. */
 document.querySelectorAll('.tab-btn').forEach((tab, index, all) => {
