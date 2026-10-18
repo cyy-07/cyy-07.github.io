@@ -8,7 +8,9 @@
     const bilingual = value => `<span class="en">${esc(value.en)}</span><span class="zh">${esc(value.zh)}</span>`;
     const label = (en, zh) => bilingual({en, zh});
     const tags = record => `<div class="project-stack">${record.tags.map(tag => `<span class="stack-tag frontend">${esc(tag)}</span>`).join('')}</div>`;
-    const links = record => `<div class="project-cta">${record.links.map(link => `<a class="cta-btn cta-secondary" href="${esc(link.url)}" target="_blank" rel="noopener">${bilingual(link.label)} <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`).join('')}</div>`;
+    const linkButton = link => `<a class="cta-btn cta-secondary" href="${esc(link.url)}" target="_blank" rel="noopener">${bilingual(link.label)} <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`;
+    const links = record => `<div class="project-cta">${record.links.map(linkButton).join('')}</div>`;
+    const shortcuts = record => (record.quickLinks || []).map(index => linkButton(record.links[index])).join('');
     const figure = (src, caption, title) => `<figure class="project-detail-figure"><a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(title)}" loading="lazy" decoding="async"></a><figcaption>${bilingual(caption)}</figcaption></figure>`;
 
     function renderList(category) {
@@ -21,7 +23,10 @@
                         <div class="project-subtitle">${bilingual(record.subtitle)}</div>
                         <p class="project-desc">${bilingual(record.summary)}</p>
                         ${tags(record)}
-                        <button class="cta-btn cta-primary project-open" type="button" data-open-project="${esc(record.slug)}">${label('Project details', '项目详情')} <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                        <div class="project-actions">
+                            <button class="cta-btn cta-primary project-open" type="button" data-open-project="${esc(record.slug)}">${label('Project details', '项目详情')} <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                            ${shortcuts(record)}
+                        </div>
                     </div>
                     <button class="project-preview" type="button" data-open-project="${esc(record.slug)}" aria-label="View ${esc(record.title)} project details">
                         <img src="${esc(record.image)}" alt="${esc(record.title)}" loading="lazy" decoding="async">
@@ -61,7 +66,7 @@
             <div class="project-event">${bilingual(record.event)}</div>
             <h2 id="project-detail-title" class="project-detail-title" tabindex="-1">${esc(record.title)}</h2>
             <p class="project-subtitle">${bilingual(record.subtitle)}</p>
-            ${figure(record.image, record.caption, record.title)}
+            ${figure(record.image, record.figureCaption || record.caption, record.title)}
             <p class="project-detail-intro">${bilingual(record.summary)}</p>
             ${tags(record)}
             ${record.sections.map(section => `<section class="project-detail-section"><h3>${bilingual(section.title)}</h3><p>${bilingual(section.text)}</p></section>`).join('')}

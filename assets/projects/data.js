@@ -23,8 +23,8 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "image": "assets/projects/terrapulse.png",
     "caption": {
-      "en": "Live application screenshot",
-      "zh": "实际应用截图"
+      "en": "City discovery on an interactive globe",
+      "zh": "交互式地球上的城市探索"
     },
     "sections": [
       {
@@ -78,7 +78,16 @@ window.PORTFOLIO_PROJECTS = [
         "url": "https://devpost.com/software/terrapulse-i593bl"
       }
     ],
-    "gallery": []
+    "gallery": [],
+    "quickLinks": [
+      0,
+      1,
+      2
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Globe navigation with selectable city markers. Each destination opens a city cover and sections for landmarks, food, weather, and community stories.",
+      "zh": "图 1. 通过地球上的城市标记选择目的地，进入城市封面及地标、美食、天气和社区故事。"
+    }
   },
   {
     "slug": "fluxmind",
@@ -104,8 +113,8 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "image": "assets/projects/fluxmind-plans.png",
     "caption": {
-      "en": "Plan comparison in the live application",
-      "zh": "实际应用中的计划比较"
+      "en": "Weekly plans and stress trajectories",
+      "zh": "周计划与压力变化曲线"
     },
     "sections": [
       {
@@ -163,11 +172,19 @@ window.PORTFOLIO_PROJECTS = [
       {
         "image": "assets/projects/fluxmind.png",
         "caption": {
-          "en": "Workload and weekly planner inputs",
-          "zh": "任务与周计划输入界面"
+          "en": "Figure 2. Workload entry for schedules, deadlines, and competing commitments used to generate alternative weekly plans.",
+          "zh": "图 2. 课程、截止日期及冲突安排的输入界面，用于生成不同的周计划。"
         }
       }
-    ]
+    ],
+    "quickLinks": [
+      0,
+      1
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Comparison of three weekly plans with projected stress trajectories and task tradeoffs. Users can compare the alternatives before accepting another commitment.",
+      "zh": "图 1. 三种周计划的压力变化与任务取舍比较，帮助用户在接受新安排前判断不同选择。"
+    }
   },
   {
     "slug": "ecolung",
@@ -194,8 +211,8 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "image": "assets/projects/ecolung-scene.png",
     "caption": {
-      "en": "3D lung view from the live application",
-      "zh": "实际应用中的三维肺部视图"
+      "en": "3D lung response to exposure scenarios",
+      "zh": "暴露情景下的三维肺部变化"
     },
     "sections": [
       {
@@ -239,11 +256,19 @@ window.PORTFOLIO_PROJECTS = [
       {
         "image": "assets/projects/ecolung.png",
         "caption": {
-          "en": "Location and routine inputs in the actual interface",
-          "zh": "实际界面中的地点与习惯输入"
+          "en": "Figure 2. Location and routine controls for comparing outdoor time, mask use, and filtration with nearby air-quality observations.",
+          "zh": "图 2. 地点与日常习惯的控制界面，将附近空气质量观测与户外时间、口罩使用及空气过滤情景结合。"
         }
       }
-    ]
+    ],
+    "quickLinks": [
+      0,
+      1
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Three-dimensional lung scene for comparing environmental exposure under selected routines and projection years. The scene is part of an educational simulation.",
+      "zh": "图 1. 比较不同日常习惯与预测年份下环境暴露的三维肺部场景，用于科普模拟。"
+    }
   },
   {
     "slug": "voidtalk",
@@ -269,8 +294,8 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "image": "assets/projects/voidtalk.png",
     "caption": {
-      "en": "Original RoseHack presentation",
-      "zh": "原 RoseHack 项目演示"
+      "en": "Intent-driven discussion and reply visibility",
+      "zh": "围绕发帖意图组织讨论与回复"
     },
     "sections": [
       {
@@ -317,23 +342,31 @@ window.PORTFOLIO_PROJECTS = [
         "url": "https://devpost.com/software/sona-j84von"
       }
     ],
-    "gallery": []
+    "gallery": [],
+    "quickLinks": [
+      0,
+      2
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Intent-driven feedback in VoidTalk. The selected posting mode determines how replies are evaluated and organized into visibility tiers.",
+      "zh": "图 1. VoidTalk 中围绕发帖意图组织的反馈机制。系统根据所选模式评估回复，并按可见等级组织内容。"
+    }
   },
   {
     "slug": "energy",
     "group": "coursework",
-    "title": "Energy Forecasting / TC-SS-DPMixer",
+    "title": "TC-SS-DPMixer for Energy Forecasting",
     "event": {
       "en": "UCR CS228 · Independent course project",
       "zh": "UCR CS228 · 独立课程项目"
     },
     "subtitle": {
-      "en": "Compact forecasting models and controlled comparisons",
-      "zh": "紧凑预测模型与控制条件下的比较"
+      "en": "Time-conditioned routing and spike-aware load decomposition",
+      "zh": "时间条件路由与尖峰感知负载分解"
     },
     "summary": {
-      "en": "I compared neural forecasting models on the UCI Appliances dataset and investigated why a persistence baseline outperformed several initial models on MAE. I then tested matched losses, feature sets, and forecast horizons, and developed a compact mixer with time-conditioned branch weights and a separate path for appliance-use spikes.",
-      "zh": "我在 UCI Appliances 数据集上比较神经网络预测方法，并追查持久性基线为何在 MAE 上优于初版模型。随后统一损失函数，比较输入特征与预测时域，并开发了包含时间条件分支权重和独立用电尖峰路径的紧凑 mixer 模型。"
+      "en": "I developed TC-SS-DPMixer for appliance energy forecasting, combining time-conditioned branch gates with separate modeling of smooth demand and usage spikes. On the four-hour UCI Appliances forecasting task, the model achieved 34.83 Wh MAE with 68K parameters, about one sixth of the parameter count of the 412K-parameter iTransformer. I also built a reproducible benchmark and interactive tools for exploring predictions and sensor data.",
+      "zh": "我开发了用于家电能耗预测的 TC-SS-DPMixer，将时间条件分支门控与平稳负载、用电尖峰的独立建模结合。在 UCI Appliances 四小时预测任务上，模型以 6.8 万参数取得 34.83 Wh MAE，参数量约为 41.2 万参数 iTransformer 的六分之一。我还完成了可复现的比较实验，以及用于探索预测结果和传感器数据的交互工具。"
     },
     "tags": [
       "PyTorch",
@@ -341,40 +374,40 @@ window.PORTFOLIO_PROJECTS = [
       "Transformers",
       "Self-supervised Learning"
     ],
-    "image": "assets/projects/energy-efficiency.png",
+    "image": "assets/projects/energy.png",
     "caption": {
-      "en": "Accuracy and model-cost comparison from the coursework",
-      "zh": "原课程项目中的精度与模型成本比较"
+      "en": "Time-conditioned mixer architecture",
+      "zh": "时间条件 mixer 架构"
     },
     "sections": [
       {
         "title": {
-          "en": "Problem and evaluation",
-          "zh": "问题与评估"
+          "en": "Architectural contribution",
+          "zh": "架构贡献"
         },
         "text": {
-          "en": "The primary task predicts four hours of appliance energy use from sixteen hours of sensor history. Chronological training, validation, and test partitions prevent future records from entering training. A second task aggregates the series hourly and predicts the following week from the previous week.",
-          "zh": "主要任务利用过去十六小时的传感器记录预测未来四小时的家电能耗。训练、验证与测试按时间顺序划分，避免未来记录进入训练。另一个任务按小时聚合序列，以过去一周预测下一周。"
+          "en": "I introduced time-conditioned routing across heterogeneous forecasting branches. A small MLP maps forecast-step time features to branch weights, so the learned routing can be inspected over a daily cycle. In TC-SS-DPMixer, smooth base demand is modeled separately from a spike classifier and magnitude regressor. This separates recurring load patterns from intermittent appliance use.",
+          "zh": "我为不同类型的预测分支设计了时间条件路由。小型 MLP 将各预测时刻的时间特征映射为分支权重，可以按日周期检查学习到的路由。在 TC-SS-DPMixer 中，平稳基础负载与尖峰分类器、幅度回归器分别建模，以区分周期性负载和间歇性家电使用。"
         }
       },
       {
         "title": {
-          "en": "Model and experiments",
-          "zh": "模型与实验"
+          "en": "Forecasting accuracy and parameter efficiency",
+          "zh": "预测精度与参数效率"
         },
         "text": {
-          "en": "TC-SS-DPMixer uses time-dependent gates and separates smooth load from appliance-use spikes. The study compares linear, recurrent, mixer, and Transformer families. Experiments examine losses, inputs, component ablations, masked-patch pretraining, parameter cost, and performance across forecast horizons.",
-          "zh": "TC-SS-DPMixer 使用随时间变化的门控，并区分平稳负载与家电使用尖峰。研究比较线性、循环网络、mixer 和 Transformer 方法，并考察损失函数、输入特征、组件消融、掩码片段预训练、参数成本和预测时域。"
+          "en": "On the reported four-hour test configuration, MAE was 34.83 Wh with approximately 68K parameters for TC-SS-DPMixer and 34.19 Wh with approximately 412K parameters for iTransformer. In the low-label experiment, masked-patch pretraining reduced PatchTST MAE from 63.9 to 54.1 Wh when 20% of labels were used. The report includes the training settings and component ablations.",
+          "zh": "在报告的四小时测试配置中，TC-SS-DPMixer 约有 6.8 万参数，MAE 为 34.83 Wh；iTransformer 约有 41.2 万参数，MAE 为 34.19 Wh。在仅使用 20% 标签的实验中，掩码片段预训练将 PatchTST 的 MAE 从 63.9 降至 54.1 Wh。报告包含训练设置与组件消融。"
         }
       },
       {
         "title": {
-          "en": "Reported results",
-          "zh": "报告中的结果"
+          "en": "Reproducible evaluation and interactive analysis",
+          "zh": "可复现评估与交互分析"
         },
         "text": {
-          "en": "In the reported four-hour configuration, TC-SS-DPMixer reached 34.83 Wh MAE with about 68K parameters, compared with 34.19 Wh and about 412K parameters for iTransformer. With 20% of labels, masked-patch pretraining reduced PatchTST MAE from 63.9 to 54.1 Wh. The complete report includes the experimental conditions, additional tasks, figures, and interpretation.",
-          "zh": "在报告的四小时配置中，TC-SS-DPMixer 约有 6.8 万参数，MAE 为 34.83 Wh；iTransformer 约有 41.2 万参数，MAE 为 34.19 Wh。仅使用 20% 标签时，掩码片段预训练将 PatchTST 的 MAE 从 63.9 降至 54.1 Wh。完整报告包含实验条件、其他任务、图表和解释。"
+          "en": "I implemented comparisons across linear, recurrent, mixer, and Transformer models with controlled losses and input features. The four-hour task uses sixteen hours of sensor history, with chronological training, validation, and test partitions to exclude future observations from training. A separate task predicts the next week from the previous week at hourly resolution. The interactive report and dataset explorer connect model comparisons to the underlying sensor records.",
+          "zh": "我实现了线性、循环网络、mixer 和 Transformer 模型的比较，并控制损失函数与输入特征。四小时任务使用过去十六小时的传感器记录，按时间顺序划分训练、验证与测试集，防止未来观测进入训练。另一个任务按小时聚合序列，以前一周预测下一周。交互报告与数据浏览器将模型比较和原始传感器记录连接起来。"
         }
       }
     ],
@@ -403,13 +436,21 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "gallery": [
       {
-        "image": "assets/projects/energy.png",
+        "image": "assets/projects/energy-efficiency.png",
         "caption": {
-          "en": "Time-conditioned mixer architecture from the original report",
-          "zh": "原报告中的时间条件 mixer 架构"
+          "en": "Figure 2. Forecasting error and model cost in the CS228 report, comparing predictive accuracy with parameter count and inference latency.",
+          "zh": "图 2. CS228 报告中的预测误差与模型成本比较，包括精度、参数量及推理延迟。"
         }
       }
-    ]
+    ],
+    "quickLinks": [
+      0,
+      1
+    ],
+    "figureCaption": {
+      "en": "Figure 1. TC-DPMixer architecture from my CS228 report. Sensor history enters persistence, decomposition, channel-mixing, and time-mixing branches; a small network uses time features to weight their forecasts. TC-SS-DPMixer extends this design with separate smooth-load and spike prediction paths.",
+      "zh": "图 1. 我的 CS228 报告中的 TC-DPMixer 架构。历史传感器数据进入持久性、分解、通道混合与时间混合分支，小型网络根据时间特征为各分支预测分配权重。TC-SS-DPMixer 在此基础上加入独立的平稳负载与尖峰预测路径。"
+    }
   },
   {
     "slug": "features",
@@ -436,8 +477,8 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "image": "assets/projects/features.png",
     "caption": {
-      "en": "Forward-selection trace from the original assignment",
-      "zh": "原作业中的前向选择轨迹"
+      "en": "Forward-selection validation accuracy",
+      "zh": "前向特征选择的验证准确率"
     },
     "sections": [
       {
@@ -491,11 +532,19 @@ window.PORTFOLIO_PROJECTS = [
       {
         "image": "assets/projects/features-scatter.png",
         "caption": {
-          "en": "Selected features 37 and 58 in the original assignment",
-          "zh": "原作业中的特征 37 与 58"
+          "en": "Figure 2. Class distribution in the space of selected features 37 and 58 from the CS170 report.",
+          "zh": "图 2. CS170 报告中所选特征 37 与 58 构成的特征空间及类别分布。"
         }
       }
-    ]
+    ],
+    "quickLinks": [
+      0,
+      1
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Validation accuracy along forward feature selection on the large assignment dataset, reproduced from my CS170 report.",
+      "zh": "图 1. 大规模作业数据上前向特征选择各阶段的验证准确率，取自我的 CS170 报告。"
+    }
   },
   {
     "slug": "puzzle",
@@ -519,10 +568,10 @@ window.PORTFOLIO_PROJECTS = [
       "Uniform-cost Search",
       "Heuristics"
     ],
-    "image": "assets/projects/puzzle.svg",
+    "image": "assets/projects/puzzle-expansion.jpg",
     "caption": {
-      "en": "Search structure illustrated from the implementation",
-      "zh": "根据实现绘制的搜索结构"
+      "en": "Search expansions across solution depths",
+      "zh": "不同解深度下的搜索扩展节点数"
     },
     "sections": [
       {
@@ -556,13 +605,21 @@ window.PORTFOLIO_PROJECTS = [
       },
       {
         "label": {
-          "en": "Original report",
-          "zh": "原始作业报告"
+          "en": "Full report PDF",
+          "zh": "完整作业 PDF"
         },
-        "url": "https://github.com/cyy-07/UCR-CS170Project1_8puzzle/blob/main/Project_1_report_Yiyang_Chen.doc"
+        "url": "reports/puzzle/report.pdf"
       }
     ],
-    "gallery": []
+    "gallery": [],
+    "quickLinks": [
+      1,
+      0
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Expanded nodes versus solution depth for uniform-cost search and A* with misplaced-tile or Manhattan-distance heuristics. The vertical axis is logarithmic. This is Figure 6 from my CS170 report.",
+      "zh": "图 1. 统一代价搜索、错位数 A* 与曼哈顿距离 A* 在不同解深度下的扩展节点数，纵轴采用对数刻度。取自我的 CS170 报告图 6。"
+    }
   },
   {
     "slug": "flight",
@@ -577,8 +634,8 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "比较航司与第三方报价的完整费用"
     },
     "summary": {
-      "en": "I designed a C++ flight-comparison program after noticing that lower advertised fares can hide additional charges. It loads simulated offers from CSV, filters routes and departure periods, and compares total costs including baggage, insurance, and service fees. Five classes separate user accounts, flight orders, and polymorphic Economy and First Class pricing.",
-      "zh": "我在比较机票时发现，较低的展示票价可能隐藏额外收费，因此设计了这个 C++ 航班比价程序。程序从 CSV 读取模拟报价，按航线和出发时段筛选，并比较包含行李、保险与服务费的总价。五个类分别处理用户、航班订单及经济舱和头等舱的多态定价。"
+      "en": "I built a C++ flight-comparison application that calculates complete fares across airline and third-party offers. It loads simulated records from CSV, filters routes and departure periods, and includes baggage, insurance, and service fees in the total. Five classes separate account management, flight orders, and polymorphic Economy and First Class pricing.",
+      "zh": "我开发了比较航司与第三方完整票价的 C++ 应用。程序从 CSV 读取模拟记录，按航线和出发时段筛选，并将行李、保险和服务费计入总价。五个类分别处理账户管理、航班订单，以及经济舱和头等舱的多态定价。"
     },
     "tags": [
       "C++",
@@ -630,6 +687,14 @@ window.PORTFOLIO_PROJECTS = [
         "url": "https://github.com/cyy-07/Flight-Online-Comparing-Platform"
       }
     ],
-    "gallery": []
+    "gallery": [],
+    "quickLinks": [
+      0,
+      1
+    ],
+    "figureCaption": {
+      "en": "Figure 1. Class relationships in Flight Compare, drawn from the submitted C++ implementation. UserAccount works with FlightOrder; EconomyClass and FirstClass implement the FareType pricing interface.",
+      "zh": "图 1. 根据 Flight Compare 提交源码绘制的类关系。UserAccount 与 FlightOrder 连接，EconomyClass 和 FirstClass 实现 FareType 定价接口。"
+    }
   }
 ];

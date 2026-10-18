@@ -201,8 +201,14 @@
             display: flex; gap: 4px; background: var(--bg-card);
             backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 14px 14px 0 0;
             border: 1px solid var(--border); border-bottom: none; padding: 8px 8px 0 8px;
-            overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+            overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; scrollbar-color: var(--border-bright) var(--bg-card2); -webkit-overflow-scrolling: touch;
         }
+        .tab-nav::-webkit-scrollbar { height:8px; }
+        .tab-nav::-webkit-scrollbar-track { background:var(--bg-card2); }
+        .tab-nav::-webkit-scrollbar-thumb { background:var(--border-bright); border:2px solid var(--bg-card2); border-radius:8px; }
+        .tab-nav::-webkit-scrollbar-thumb:hover { background:var(--text-secondary); }
+        html[data-theme="dark"] .tab-nav { color-scheme:dark; }
+        html[data-theme="light"] .tab-nav { color-scheme:light; }
         .tab-btn {
             padding: 10px 18px; cursor: pointer; color: var(--text-secondary);
             font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
@@ -254,6 +260,9 @@
             background: var(--bg-card2); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
             transition: 0.3s; position: relative; overflow: hidden;
         }
+        a.research-item { display:block; color:inherit; text-decoration:none; }
+        a.research-item:focus-visible { outline:3px solid var(--accent-cyan); outline-offset:3px; }
+        #research .timeline-item { scroll-margin-top:24px; }
         .research-item:hover { border-color: var(--border-bright); transform: translateY(-2px); }
         .research-item::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
         .research-item.cyan::before { background: linear-gradient(90deg, var(--accent-cyan), transparent); }
@@ -631,7 +640,7 @@
             <div class="hero-banner">
                 <div class="hero-label"><span class="en">Portfolio &middot; 2026</span><span class="zh">个人主页 &middot; 2026</span></div>
                 <h1 class="hero-h1"><span class="en">Where Chemistry Meets Machine Learning</span><span class="zh">化学工程与<br>机器学习的交汇</span></h1>
-                <p class="hero-desc"><span class="en">I studied Chemical Engineering at ECUST and Computer Science and AI through UCR’s Graduate Preparation Program. I develop graph neural networks for molecular solubility, optimize industrial furnace schedules, and build interactive applications. I am applying for graduate study in Computer Science, Machine Learning, and AI for Science for Fall 2027.</span><span class="zh">我在华东理工大学学习化学工程，并通过 UCR 研究生预备项目修读计算机与 AI 课程。目前的工作包括分子溶解度图神经网络、工业炉群调度优化和交互式应用开发，正在申请 2027 年秋季入学的计算机科学、机器学习及 AI for Science 研究生项目。</span></p>
+                <p class="hero-desc"><span class="en">I’m Yiyang Chen, a Chemical Engineering graduate from ECUST with additional training in Computer Science and AI at UC Riverside. I develop graph neural networks for molecular property prediction and optimization methods for industrial processes. I also build interactive applications for exploring data and everyday decisions. I am applying for graduate study in Computer Science, Machine Learning, and AI for Science for Fall 2027.</span><span class="zh">我是陈祎洋，毕业于华东理工大学化学工程专业，并在加州大学河滨分校修读计算机科学与 AI 课程。我开发用于分子性质预测的图神经网络和工业过程优化方法，也开发帮助用户探索数据与日常决策的交互应用。目前正在申请 2027 年秋季入学的计算机科学、机器学习及 AI for Science 研究生项目。</span></p>
                 <div class="hero-tags">
                     <span class="hero-tag cyan"><span class="en">Physics-Informed ML</span><span class="zh">物理信息机器学习</span></span>
                     <span class="hero-tag purple"><span class="en">Graph Neural Networks</span><span class="zh">图神经网络</span></span>
@@ -648,22 +657,22 @@
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-purple"><i class="fas fa-flask"></i> <span class="en">Research Spotlight</span><span class="zh">科研亮点</span></div>
                 <div class="research-grid">
-                    <div class="research-item cyan">
-                        <a class="research-thumb" href="assets/research/fgnn-toc.png" target="_blank" rel="noopener"><img src="assets/research/fgnn-toc.png" alt="FGNN ToC with exact cover assignment, solute and solvent group graphs, GIN encoders, group contributions, and temperature curves" loading="lazy" decoding="async"><span class="figure-label"><span class="en">JCIM manuscript · ToC</span><span class="zh">JCIM 稿件 · ToC</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                    <a class="research-item cyan" href="#research/fgnn">
+                        <div class="research-thumb"><img src="assets/research/fgnn-toc.png" alt="FGNN ToC with exact cover assignment, solute and solvent group graphs, GIN encoders, group contributions, and temperature curves" loading="lazy" decoding="async"><span class="figure-label"><span class="en">JCIM manuscript · ToC</span><span class="zh">JCIM 稿件 · ToC</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                         <div class="ri-title"><span class="en">Functional Group GNN for Solubility</span><span class="zh">官能团图神经网络与溶解度预测</span></div>
                         <div class="ri-desc"><span class="en">Functional group graphs and an Apelblat temperature readout for molecular solubility. MAE 0.313 log units on held-out solute–solvent pairs.</span><span class="zh">以官能团图和 Apelblat 温度读出预测分子溶解度。未见溶质–溶剂配对上的 MAE 为 0.313 log 单位。</span></div>
                         <span class="ri-badge ongoing"><span class="en">First author · UC Riverside</span><span class="zh">第一作者 · 加州大学河滨分校</span></span>
-                    </div>
-                    <div class="research-item purple">
-                        <a class="research-thumb" href="assets/research/moo-fig1.png" target="_blank" rel="noopener"><img src="assets/research/moo-fig1.png" alt="MOO Figure 1 showing feed allocation, cracking furnaces, downstream processing, cyclic scheduling, and the DICOPT solution structure" loading="lazy" decoding="async"><span class="figure-label"><span class="en">Figure 1 · System architecture</span><span class="zh">图 1 · 系统架构</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                    </a>
+                    <a class="research-item purple" href="#research/moo">
+                        <div class="research-thumb"><img src="assets/research/moo-fig1.png" alt="MOO Figure 1 showing feed allocation, cracking furnaces, downstream processing, cyclic scheduling, and the DICOPT solution structure" loading="lazy" decoding="async"><span class="figure-label"><span class="en">Figure 1 · System architecture</span><span class="zh">图 1 · 系统架构</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                         <div class="ri-title"><span class="en">Coking-aware Multi-objective Scheduling</span><span class="zh">考虑结焦的裂解炉多目标调度</span></div>
                         <div class="ri-desc"><span class="en">Coking-aware MINLP scheduling for eight ethylene cracking furnaces. Compare daily profit, CO₂ emissions, and ethylene production under matched operating conditions.</span><span class="zh">对八台乙烯裂解炉开展考虑结焦的 MINLP 调度优化，在相同运行条件下比较日利润、CO₂ 排放与乙烯产量。</span></div>
                         <span class="ri-badge ongoing"><span class="en">First author · ECUST</span><span class="zh">第一作者 · 华东理工大学</span></span>
-                    </div>
-                    <div class="research-item cyan">
-                        <a class="research-thumb" href="assets/research/catalysis-volcano.png" target="_blank" rel="noopener"><img src="assets/research/catalysis-volcano.png" alt="Catalytic activity surface against methyl and hydrogen adsorption-energy descriptors" loading="lazy"><span class="figure-label"><span class="en">Catalytic activity surface</span><span class="zh">催化活性火山型曲面</span> <i class="fas fa-expand" aria-hidden="true"></i></span></a>
+                    </a>
+                    <a class="research-item cyan" href="#research/catalysis">
+                        <div class="research-thumb"><img src="assets/research/catalysis-volcano.png" alt="Catalytic activity surface against methyl and hydrogen adsorption-energy descriptors" loading="lazy"><span class="figure-label"><span class="en">Catalytic activity surface</span><span class="zh">催化活性火山型曲面</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                         <div class="ri-title"><span class="en">Volcano Surfaces &amp; Scientific Visualization</span><span class="zh">火山型曲面与科学可视化</span></div><div class="ri-desc"><span class="en">Built a Python workflow for adsorption-energy regression and volcano-surface visualization, alongside the team’s software copyright outcome at ECUST.</span><span class="zh">开发吸附能回归与火山型曲面可视化的 Python 流程，团队另取得华理名下的软件著作权成果。</span></div><span class="ri-badge ongoing"><span class="en">Completed · ECUST · 2024–2025</span><span class="zh">已结项 · 华东理工大学 · 2024–2025</span></span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="card" style="border-radius:16px;">
@@ -681,9 +690,9 @@
         <div id="about" class="tab-content" role="tabpanel" aria-labelledby="tab-about">
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-cyan"><i class="fas fa-user-astronaut"></i> <span class="en">About Me</span><span class="zh">关于我</span></div>
-                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I&rsquo;m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a 2026 graduate</span><span class="zh">我叫<strong style="color:var(--text-primary)">陈祎洋</strong>，于2026年毕业</span> <span class="en">with a dual background in Chemical Engineering (ECUST, Shanghai) and Computer Science &amp; AI (UC Riverside). I grew up in Fujian, China, ranked in the top 3% of 218,000 students in the college entrance exam &mdash; but what matters more to me is the direction I&rsquo;ve been building since.</span><span class="zh">在华东理工大学主修化学工程，同时在加州大学河滨分校修读计算机科学与AI。成长于福建，高考在21.8万考生中位列前3%——但对我而言更重要的，是此后一直在构建的方向。</span></p>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I&rsquo;m <strong style="color:var(--text-primary)">Yiyang Chen</strong>, a 2026 graduate</span><span class="zh">我叫<strong style="color:var(--text-primary)">陈祎洋</strong>，于2026年毕业</span> <span class="en">with a background in Chemical Engineering at ECUST and additional training in Computer Science and AI through UC Riverside’s Graduate Preparation Program. I am interested in combining chemical knowledge with computational methods to understand molecular behavior and improve decisions in engineering.</span><span class="zh">在华东理工大学主修化学工程，并通过加州大学河滨分校研究生预备项目修读计算机科学与 AI 课程。我关注如何结合化学知识与计算方法，理解分子行为并改进工程决策。</span></p>
                 <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0 0 18px 0;"><span class="en">I develop machine learning methods for molecular systems and industrial processes. Under Professor Jianzhong Wu’s supervision, I built a functional group graph neural network that predicts solubility from molecular structure and temperature. In my work at ECUST, I model coke accumulation and optimize operating schedules for ethylene cracking furnaces. I also enjoy building interactive applications, from a 3D travel globe to tools for exploring workload and environmental exposure.</span><span class="zh">我的研究涉及分子系统与工业过程中的机器学习方法。在吴建中教授指导下，我开发了根据分子结构与温度预测溶解度的官能团图神经网络。在华东理工大学的研究中，我对裂解炉结焦过程建模，并优化炉群运行调度。我也喜欢开发交互式应用，包括三维旅行地球、认知负载模拟和环境暴露模拟工具。</span></p>
-                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0;"><span class="en">Outside research, I like hiking (hence the tent button &#127957;), stargazing, and occasionally reminding myself that rest is productive. I&rsquo;m applying to MS and PhD programs in <strong style="color:var(--accent-green)">Computer Science / Machine Learning / AI for Science</strong> for Fall 2027.</span><span class="zh">科研之外，我喜欢徒步（所以有了那个搭帐篷按钮 &#127957;）、观星，偶尔提醒自己休息也是生产力。目前我正在申请2027年秋季入学的硕士及博士项目，方向为<strong style="color:var(--accent-green)">计算机科学 / 机器学习 / AI for Science</strong>。</span></p>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.95;margin:0;"><span class="en">Outside research, I like hiking (hence the tent button &#127957;), swimming, stargazing, and occasionally reminding myself that rest is productive. I&rsquo;m applying to MS and PhD programs in <strong style="color:var(--accent-green)">Computer Science / Machine Learning / AI for Science</strong> for Fall 2027.</span><span class="zh">科研之外，我喜欢徒步（所以有了那个搭帐篷按钮 &#127957;）、游泳和观星，偶尔提醒自己休息也是生产力。目前我正在申请2027年秋季入学的硕士及博士项目，方向为<strong style="color:var(--accent-green)">计算机科学 / 机器学习 / AI for Science</strong>。</span></p>
             </div>
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-purple">&#9670; <span class="en">Skills &amp; Proficiency</span><span class="zh">技能熟练度</span></div>
@@ -837,7 +846,7 @@
         <div id="research" class="tab-content" role="tabpanel" aria-labelledby="tab-research">
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-purple"><i class="fas fa-flask"></i> <span class="en">Research Experience</span><span class="zh">科研经历</span></div>
-                <article class="timeline-item">
+                <article class="timeline-item" id="research-fgnn" tabindex="-1">
                     <div class="pub-badge"><span class="en">First author · JCIM manuscript</span><span class="zh">第一作者 · JCIM 稿件</span></div>
                     <div class="header-flex"><span><span class="en">Thermodynamics-Guided Functional Group Graph Neural Network for Molecular Solubility Prediction</span><span class="zh">热力学引导的官能团图神经网络用于分子溶解度预测</span></span><span class="date-tag"><span class="en">2025 – Present</span><span class="zh">2025年 – 至今</span></span></div>
                     <div class="sub-header"><span class="en">Under Professor Jianzhong Wu’s supervision · UC Riverside</span><span class="zh">导师 吴建中教授 · 加州大学河滨分校</span></div>
@@ -846,7 +855,7 @@
                     <div class="project-stack"><span class="tag">FGNN</span><span class="tag">GIN</span><span class="tag">Exact cover</span><span class="tag">Apelblat</span><span class="tag">PyTorch Geometric</span><span class="tag">RDKit</span></div>
                     <a class="research-code" href="https://github.com/cyy-07/FGNN-Solubility_public" target="_blank" rel="noopener"><i class="fab fa-github"></i> <span class="en">Public code, trained models &amp; prediction example</span><span class="zh">公开代码、训练模型与预测示例</span></a>
                 </article>
-                <article class="timeline-item">
+                <article class="timeline-item" id="research-moo" tabindex="-1">
                     <div class="pub-badge"><span class="en">First author · Research manuscript · ECUST</span><span class="zh">第一作者 · 研究稿件 · 华东理工大学</span></div>
                     <div class="header-flex"><span><span class="en">Coking-aware Multi-objective Scheduling of Ethylene Cracking Furnace Clusters</span><span class="zh">考虑结焦的乙烯裂解炉群多目标调度</span></span><span class="date-tag"><span class="en">2025 – Present</span><span class="zh">2025年 – 至今</span></span></div>
                     <div class="sub-header"><span class="en">Advisors · Prof. Wenli Du &amp; Prof. Liang Zhao · ECUST</span><span class="zh">导师 杜文莉教授与赵亮教授 · 华东理工大学</span></div>
@@ -854,7 +863,7 @@
                     <p class="research-description"><span class="en">I model furnace-specific coke accumulation and operating-age responses, and solve single-furnace operating optimization and MINLP scheduling for eight heterogeneous furnaces with the ε-constraint method. For the same 368 day schedule in Table 1, clean-state estimates overpredict daily profit by 1.10% and underpredict daily CO₂ by 1.26%. Across the evaluated cluster endpoints, daily CO₂ decreases by 2.692% with a 1.859% profit reduction. Ethylene production decreases more than emissions in that comparison, so CO₂ intensity increases.</span><span class="zh">我对各裂解炉的结焦累积与运行时间相关响应建模，并采用 ε 约束法求解单炉运行优化与八台异构裂解炉的 MINLP 调度。在 Table 1 的同一套 368 天调度下，洁净状态估计高估日利润 1.10%，低估日 CO₂ 排放 1.26%。在所评估的炉群端点之间，日 CO₂ 排放下降 2.692%，日利润下降 1.859%。该比较中乙烯产量的降幅大于排放降幅，因此 CO₂ 排放强度上升。</span></p>
                     <div><span class="tag">MINLP</span><span class="tag">GAMS / DICOPT</span><span class="tag">ε-constraint</span><span class="tag">CoilSim</span><span class="tag">Python</span></div>
                 </article>
-                <article class="timeline-item">
+                <article class="timeline-item" id="research-catalysis" tabindex="-1">
                     <div class="pub-badge"><span class="en">Completed student research · Software copyright outcome</span><span class="zh">大学生创新研究已结项 · 软件著作权成果</span></div>
                     <div class="header-flex"><span><span class="en">Volcano Surface Generation for Heterogeneous Catalysis</span><span class="zh">多相催化反应火山型曲面的自动生成</span></span><span class="date-tag">2024–2025</span></div>
                     <div class="sub-header"><span class="en">Project member · Advisor Prof. Yian Zhu · ECUST</span><span class="zh">项目成员 · 指导教师 朱贻安教授 · 华东理工大学</span></div>
@@ -1004,10 +1013,24 @@ function switchTab(tabId, event) {
     document.getElementById(tabId).classList.add('active');
     const btn = document.querySelector('.tab-btn[data-tab="' + tabId + '"]');
     if (btn) btn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-    if (tabId !== 'projects' && location.hash.startsWith('#projects/')) history.replaceState(null, '', '#' + tabId);
+    if ((tabId !== 'projects' && location.hash.startsWith('#projects/')) || (tabId !== 'research' && location.hash.startsWith('#research/'))) history.replaceState(null, '', '#' + tabId);
     if (tabId === 'about') setTimeout(renderStars, 50);
     document.querySelector('.content').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+function openResearchRoute() {
+    const [section, slug] = location.hash.slice(1).split('/');
+    if (section !== 'research' || !slug) return;
+    const target = document.getElementById('research-' + slug);
+    if (!target) return;
+    switchTab('research');
+    requestAnimationFrame(() => {
+        target.scrollIntoView({behavior:'instant', block:'start'});
+        target.focus({preventScroll:true});
+    });
+}
+window.addEventListener('hashchange', openResearchRoute);
+window.addEventListener('DOMContentLoaded', openResearchRoute);
 
 /* Tabs remain visually unchanged; add keyboard support for Enter/Space and arrow navigation. */
 document.querySelectorAll('.tab-btn').forEach((tab, index, all) => {

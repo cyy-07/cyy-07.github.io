@@ -25,7 +25,11 @@
 .project-preview img { width:100%; height:auto; max-height:240px; object-fit:contain; display:block; }
 .project-preview > span { display:block; width:100%; padding:9px 7px; background:#f8fafc; font:400 0.62rem/1.6 Inter,sans-serif; }
 .project-open { font-family:Inter,sans-serif; }
-.project-back { border:0; padding:0; margin-bottom:24px; background:transparent; color:var(--accent-cyan); font:600 0.77rem/1.8 Inter,sans-serif; cursor:pointer; }
+.project-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.project-actions .cta-btn { padding:10px 12px; font-size:0.66rem; letter-spacing:0.2px; }
+.project-back { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border-bright); border-radius:8px; padding:9px 14px; margin-bottom:24px; background:#1e293b; color:#e2e8f0; font:600 0.77rem/1.8 Inter,sans-serif; cursor:pointer; transition:background .2s,border-color .2s; }
+html[data-theme="light"] .project-back { background:#e2e8f0; color:#334155; border-color:#94a3b8; }
+.project-back:hover { border-color:var(--accent-cyan); }
 .project-detail { scroll-margin-top:20px; }
 .project-case-study { border-radius:16px; }
 .project-detail-title { margin:0 0 12px; font-size:1.55rem; line-height:1.4; }
