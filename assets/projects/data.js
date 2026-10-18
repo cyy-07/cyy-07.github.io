@@ -434,15 +434,7 @@ window.PORTFOLIO_PROJECTS = [
         "url": "https://github.com/cyy-07/UCR-CS228-Project"
       }
     ],
-    "gallery": [
-      {
-        "image": "assets/projects/energy-efficiency.png",
-        "caption": {
-          "en": "Figure 2. Forecasting error and model cost in the CS228 report, comparing predictive accuracy with parameter count and inference latency.",
-          "zh": "图 2. CS228 报告中的预测误差与模型成本比较，包括精度、参数量及推理延迟。"
-        }
-      }
-    ],
+    "gallery": [],
     "quickLinks": [
       0,
       1
