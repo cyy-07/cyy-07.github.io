@@ -1,0 +1,51 @@
+[hidden] { display:none !important; }
+.stat-item { display:grid; grid-template-rows:24px 18px 20px 20px; align-items:center; }
+.stat-item .stat-lab, .stat-item .stat-note { margin:0; white-space:nowrap; }
+.stat-item .stat-note { font-size:0.57rem; }
+.academic-summary a { color:var(--accent-cyan); text-underline-offset:3px; }
+.credit-breakdown { margin:12px 0; font-size:0.76rem; color:var(--text-secondary); line-height:1.8; }
+.credit-breakdown summary { color:var(--accent-cyan); cursor:pointer; }
+.credit-breakdown ul { margin:12px 0; padding:0; list-style:none; }
+.credit-breakdown li { display:flex; justify-content:space-between; gap:14px; border-bottom:1px solid var(--border); padding:5px 0; }
+.credit-breakdown li > span:last-child { color:var(--text-primary); font-weight:600; }
+.research-outcome { padding:16px 18px; background:var(--bg-card2); border:1px solid var(--border); border-radius:10px; margin:14px 0; }
+.research-outcome h3 { margin:0 0 8px; font-size:0.82rem; color:var(--text-primary); }
+.research-outcome p { margin:0; font-size:0.78rem; line-height:1.9; color:var(--text-secondary); }
+#lang-btn { min-width:46px; min-height:36px; font-size:1.15rem; }
+.project-tabs { display:flex; flex-wrap:wrap; gap:10px; padding:8px 0 4px; scroll-margin-top:20px; }
+.project-group-tab { background:var(--bg-card); color:var(--text-secondary); border:1px solid var(--border-bright); border-radius:9px; padding:12px 16px; font:600 0.76rem/1.5 Inter,sans-serif; cursor:pointer; text-align:left; }
+.project-group-tab.active { color:var(--accent-cyan); border-color:var(--accent-cyan); background:var(--bg-card2); }
+.project-list { display:grid; gap:18px; }
+.project-row { display:grid; grid-template-columns:minmax(0,3fr) minmax(0,1fr); gap:24px; align-items:center; padding:26px; }
+.project-copy { min-width:0; }
+.project-summary .project-title { font-size:1.17rem; line-height:1.4; }
+.project-summary .project-desc { margin-bottom:16px; font-size:0.8rem; line-height:1.85; }
+.project-summary .project-stack { margin-bottom:16px; }
+.project-preview { min-width:0; width:100%; padding:0; display:flex; flex-direction:column; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:#fff; cursor:pointer; color:#526174; }
+.project-preview img { width:100%; height:auto; max-height:240px; object-fit:contain; display:block; }
+.project-preview > span { display:block; width:100%; padding:9px 7px; background:#f8fafc; font:400 0.62rem/1.6 Inter,sans-serif; }
+.project-open { font-family:Inter,sans-serif; }
+.project-back { border:0; padding:0; margin-bottom:24px; background:transparent; color:var(--accent-cyan); font:600 0.77rem/1.8 Inter,sans-serif; cursor:pointer; }
+.project-detail { scroll-margin-top:20px; }
+.project-case-study { border-radius:16px; }
+.project-detail-title { margin:0 0 12px; font-size:1.55rem; line-height:1.4; }
+.project-detail-intro, .project-detail-section p { font-size:0.82rem; line-height:1.95; color:var(--text-secondary); }
+.project-detail-section { margin-top:24px; }
+.project-detail-section h3 { color:var(--text-primary); margin:0 0 10px; font-size:0.92rem; line-height:1.5; }
+.project-detail-figure { margin:22px 0; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:#fff; }
+.project-detail-figure img { width:100%; height:auto; display:block; }
+.project-detail-figure figcaption { background:#f8fafc; color:#526174; font-size:0.7rem; line-height:1.8; padding:10px 14px; text-align:center; }
+.project-group-tab:focus-visible, .project-preview:focus-visible, .project-back:focus-visible { outline:2px solid var(--accent-cyan); outline-offset:4px; }
+@media (max-width:580px) {
+    .project-row { grid-template-columns:minmax(0,3fr) minmax(0,1fr); gap:12px; padding:20px 16px; }
+    .project-summary .project-title { font-size:1rem; overflow-wrap:anywhere; }
+    .project-summary .project-desc { font-size:0.76rem; }
+    .project-event, .project-subtitle { font-size:0.7rem; }
+    .project-preview > span { padding:7px 4px; font-size:0.55rem; }
+    .project-summary .stack-tag { padding:3px 6px; font-size:0.6rem; }
+    .project-open { font-size:0.67rem; padding:10px 12px; }
+    .project-tabs { gap:8px; }
+    .project-group-tab { flex:1 1 140px; padding:10px 12px; font-size:0.7rem; }
+    .project-detail-title { font-size:1.3rem; }
+    .project-detail-intro, .project-detail-section p { font-size:0.8rem; }
+}
