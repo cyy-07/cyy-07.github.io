@@ -10,6 +10,15 @@
 .credit-breakdown ul { margin:12px 0; padding:0; list-style:none; }
 .credit-breakdown li { display:flex; justify-content:space-between; gap:14px; border-bottom:1px solid var(--border); padding:5px 0; }
 .credit-breakdown li > span:last-child { color:var(--text-primary); font-weight:600; }
+.ucr-credit-breakdown h4 { margin:18px 0 6px; color:var(--text-primary); font-size:0.77rem; }
+.ucr-grade-table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:0.73rem; }
+.ucr-grade-table th, .ucr-grade-table td { border-bottom:1px solid var(--border); padding:8px 6px; text-align:left; vertical-align:top; }
+.ucr-grade-table th { font-weight:400; overflow-wrap:anywhere; }
+.ucr-grade-table thead th { color:var(--text-secondary); font-size:0.67rem; }
+.ucr-grade-table th:first-child { width:76%; padding-left:0; }
+.ucr-grade-table th:not(:first-child), .ucr-grade-table td { width:12%; text-align:right; }
+.ucr-grade-table td:last-child { color:var(--accent-green); font-weight:700; }
+.ucr-course-code { display:block; color:var(--text-primary); font-size:0.67rem; font-weight:600; }
 .research-outcome { padding:16px 18px; background:var(--bg-card2); border:1px solid var(--border); border-radius:10px; margin:14px 0; }
 .research-outcome h3 { margin:0 0 8px; font-size:0.82rem; color:var(--text-primary); }
 .research-outcome p { margin:0; font-size:0.78rem; line-height:1.9; color:var(--text-secondary); }
