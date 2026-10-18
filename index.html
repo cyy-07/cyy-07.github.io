@@ -296,10 +296,8 @@
         .award-item:hover { border-color: rgba(42,255,160,0.3); }
         .award-name { font-size: 0.78rem; color: var(--text-primary); margin-bottom: 4px; }
         .award-detail { font-size: 0.68rem; color: var(--accent-green); }
-        .education-order { display:flex; flex-wrap:wrap; gap:8px; margin:-10px 0 20px; }
-        .education-order button { border:1px solid var(--border-bright); border-radius:7px; padding:7px 11px; background:var(--bg-card2); color:var(--text-secondary); font:600 0.7rem/1.5 Inter,sans-serif; cursor:pointer; }
-        .education-order button[aria-pressed="true"] { color:var(--accent-cyan); border-color:var(--accent-cyan); }
-        .education-order button:focus-visible { outline:2px solid var(--accent-cyan); outline-offset:3px; }
+        .education-order { display:block; border:0; padding:0; margin:-10px 0 20px; background:transparent; color:var(--text-secondary); font:inherit; font-size:0.72rem; text-align:left; cursor:pointer; }
+        .education-order:focus-visible { outline:2px solid var(--accent-cyan); outline-offset:3px; }
         .timeline-item { position: relative; padding-left: 24px; border-left: 1px solid var(--border); margin-bottom: 26px; }
         .timeline-item:last-child { margin-bottom: 0; }
         .timeline-item::before {
@@ -745,10 +743,7 @@
         <div id="education" class="tab-content" role="tabpanel" aria-labelledby="tab-education">
             <div class="card" style="border-radius:16px;">
                 <div class="section-title s-cyan"><i class="fas fa-graduation-cap"></i> <span class="en">Education</span><span class="zh">教育背景</span></div>
-                <div class="education-order" role="group" aria-label="Education timeline order">
-                    <button type="button" data-education-order="latest" aria-pressed="true"><span class="en">Most recent first ↑</span><span class="zh">最新在前 ↑</span></button>
-                    <button type="button" data-education-order="earliest" aria-pressed="false"><span class="en">Earliest first ↓</span><span class="zh">最早在前 ↓</span></button>
-                </div>
+                <button class="education-order" type="button" data-education-order="latest"><span class="en">Most recent first ↑</span><span class="zh">最新在前 ↑</span></button>
                 <div class="timeline-item" data-start="2025-09">
                     <div class="header-flex"><span><span class="en">University of California, Riverside</span><span class="zh">加州大学河滨分校</span></span><span class="date-tag"><span class="en">Sep 2025 &ndash; Jun 2026</span><span class="zh">2025年9月 &ndash; 2026年6月</span></span></div>
                     <div class="sub-header"><span class="en">Exchange Student &middot; Graduate Preparation Program &middot; 39 units &middot; GPA 4.00 / 4.00</span><span class="zh">交换生 &middot; 研究生预备项目 &middot; 39 学分 &middot; GPA 4.00 / 4.00</span></div>
@@ -1014,18 +1009,17 @@ window.addEventListener('hashchange', openResearchRoute);
 window.addEventListener('DOMContentLoaded', openResearchRoute);
 
 const educationItems = [...document.querySelectorAll('#education .timeline-item')];
-document.querySelectorAll('[data-education-order]').forEach(button => {
-    button.addEventListener('click', () => {
-        const latest = button.dataset.educationOrder === 'latest';
-        document.querySelectorAll('[data-education-order]').forEach(option => {
-            option.setAttribute('aria-pressed', String(option === button));
-        });
-        const parent = educationItems[0].parentElement;
-        [...educationItems].sort((a, b) => latest
-            ? b.dataset.start.localeCompare(a.dataset.start)
-            : a.dataset.start.localeCompare(b.dataset.start)
-        ).forEach(item => parent.appendChild(item));
-    });
+const educationOrder = document.querySelector('[data-education-order]');
+educationOrder.addEventListener('click', () => {
+    const latest = educationOrder.dataset.educationOrder !== 'latest';
+    educationOrder.dataset.educationOrder = latest ? 'latest' : 'earliest';
+    educationOrder.querySelector('.en').textContent = latest ? 'Most recent first ↑' : 'Earliest first ↓';
+    educationOrder.querySelector('.zh').textContent = latest ? '最新在前 ↑' : '最早在前 ↓';
+    const parent = educationItems[0].parentElement;
+    [...educationItems].sort((a, b) => latest
+        ? b.dataset.start.localeCompare(a.dataset.start)
+        : a.dataset.start.localeCompare(b.dataset.start)
+    ).forEach(item => parent.appendChild(item));
 });
 
 /* Tabs remain visually unchanged; add keyboard support for Enter/Space and arrow navigation. */
