@@ -1,8 +1,9 @@
 [hidden] { display:none !important; }
-.stat-item { display:grid; grid-template-rows:24px 18px 20px 20px; align-items:center; }
+.stat-item { display:grid; grid-template-rows:24px 18px 20px 20px; align-items:center; min-width:0; }
 .stat-item .stat-lab, .stat-item .stat-note { margin:0; white-space:nowrap; }
 .stat-item .stat-note { font-size:0.57rem; }
 .stat-item .ucr-units { font-size:0.52rem; }
+.stat-item .degree-units { font-size:0.49rem; letter-spacing:-0.15px; }
 .academic-summary a { color:var(--accent-cyan); text-underline-offset:3px; }
 .credit-breakdown { margin:12px 0; font-size:0.76rem; color:var(--text-secondary); line-height:1.8; }
 .credit-breakdown summary { color:var(--accent-cyan); cursor:pointer; }
