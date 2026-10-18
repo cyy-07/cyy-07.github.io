@@ -19,6 +19,8 @@
 .ucr-grade-table th:not(:first-child), .ucr-grade-table td { width:12%; text-align:right; }
 .ucr-grade-table td:last-child { color:var(--accent-green); font-weight:700; }
 .ucr-course-code { display:block; color:var(--text-primary); font-size:0.67rem; font-weight:600; }
+.course-divider { display:flex; align-items:center; gap:12px; margin-top:24px; }
+.course-divider::after { content:""; flex:1; min-width:20px; border-top:1px solid var(--border-bright); }
 .research-outcome { padding:16px 18px; background:var(--bg-card2); border:1px solid var(--border); border-radius:10px; margin:14px 0; }
 .research-outcome h3 { margin:0 0 8px; font-size:0.82rem; color:var(--text-primary); }
 .research-outcome p { margin:0; font-size:0.78rem; line-height:1.9; color:var(--text-secondary); }
