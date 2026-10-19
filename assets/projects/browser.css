@@ -6,7 +6,7 @@
 .stat-item .degree-units { font-size:0.49rem; letter-spacing:-0.15px; }
 .academic-summary a { color:var(--accent-cyan); text-underline-offset:3px; }
 .credit-breakdown { margin:12px 0; font-size:0.76rem; color:var(--text-secondary); line-height:1.8; }
-.credit-breakdown summary { color:var(--accent-cyan); cursor:pointer; }
+.credit-breakdown summary { color:var(--text-primary); cursor:pointer; }
 .credit-breakdown ul { margin:12px 0; padding:0; list-style:none; }
 .credit-breakdown li { display:flex; justify-content:space-between; gap:14px; border-bottom:1px solid var(--border); padding:5px 0; }
 .credit-breakdown li > span:last-child { color:var(--text-primary); font-weight:600; }
