@@ -8,12 +8,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "DesignVerse 2026 · 独立项目"
     },
     "subtitle": {
-      "en": "A living globe for travel and community discovery",
-      "zh": "以三维地球探索城市与社区"
+      "en": "A visual starting point for visiting a new city",
+      "zh": "初到陌生城市时的可视化旅行入口"
     },
     "summary": {
-      "en": "I built a Three.js travel globe with 78 selectable cities. Visitors open city covers, explore landmarks and food, and browse weather and community stories. I designed the globe-to-city transitions and an image pipeline with cached destination photos and climate-specific fallbacks.",
-      "zh": "我独立开发了包含 78 个可选城市的 Three.js 旅行地球。用户从城市封面进入地标、美食、天气和社区故事。我完成了地球与城市视图的切换设计，并加入目的地图片缓存及与气候对应的缺图替代方案。"
+      "en": "I built TerraPulse for arriving in an unfamiliar city and deciding where to go. Visitors choose among 78 cities on a Three.js globe, then browse places to visit and local food. I developed the globe interactions and city pages as an independent DesignVerse project.",
+      "zh": "我想为初到陌生城市、还不知道去哪玩的人做一个直观的旅行入口。TerraPulse 可以在 Three.js 地球上选择 78 个城市，再查看当地景点与美食。我在 DesignVerse 中独立完成了地球交互和城市页面。"
     },
     "tags": [
       "JavaScript",
@@ -29,22 +29,22 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "From globe to city",
-          "zh": "从地球进入城市"
+          "en": "Why I built TerraPulse",
+          "zh": "为什么做 TerraPulse"
         },
         "text": {
-          "en": "The globe is the navigation surface. City markers lead to magazine-style covers, followed by focused sections for landmarks, trending places, food, weather, and community posts. Landmark photographs open as postcards rather than separate map pins.",
-          "zh": "地球本身承担导航功能。城市标记连接杂志式封面，再进入地标、热门地点、美食、天气和社区内容。地标照片可以展开为明信片，而不只是地图上的独立标记。"
+          "en": "When I arrive in a new city, I want to get a sense of the place before deciding where to spend the day. A photograph can give me an idea of a neighborhood or landmark much faster than a long description. I built TerraPulse around that way of exploring. You start with a globe, choose a city, and look through its photographs and local information before planning a visit.",
+          "zh": "到了一个新城市，我想先直观地看看这个地方，再决定一天去哪里。照片往往比一大段介绍更容易让我了解一个街区或景点。因此我把 TerraPulse 做成了一个可以从地球进入城市的应用，让用户先看照片和当地信息，再安排游览。"
         }
       },
       {
         "title": {
-          "en": "Implementation",
-          "zh": "实现方式"
+          "en": "Connecting the globe to the city pages",
+          "zh": "把地球交互和城市页面接起来"
         },
         "text": {
-          "en": "I developed the city cards, landmark views, and climate-dependent color schemes. A destination-image pipeline caches photographs and substitutes climate-specific placeholders when an image is missing. The project also includes an interactive presentation of the experience.",
-          "zh": "我开发了城市卡片、地标视图和随气候变化的配色。目的地图片流程会缓存照片，并在缺图时使用对应气候的替代图。项目另有介绍交互体验的演示页面。"
+          "en": "I used Three.js for the globe and React for the city interface. Raycasting identifies the selected city, and projected screen coordinates keep the opening panels attached to the right place as the view changes. I gave cities different color palettes according to their climate and cached destination photographs so the pages would not depend on every image request succeeding. I also connected a Gemini assistant to the interface. Its responses include city or section identifiers that the application can use to open the corresponding view.",
+          "zh": "我用 Three.js 绘制地球，用 React 实现城市界面。射线检测用于识别选中的城市，再将空间坐标投影到屏幕上，使展开面板在视角变化时仍对应正确的位置。我根据气候设置城市配色，并缓存目的地照片，减少单次图片请求失败对页面的影响。我还将 Gemini 助手与界面连接，解析回答中的城市或栏目标识，打开相应视图。"
         }
       }
     ],
@@ -98,12 +98,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "CitrusHack 2026 · 独立项目"
     },
     "subtitle": {
-      "en": "Compare a week before committing to it",
-      "zh": "在作出安排前比较不同的一周"
+      "en": "Deciding what can fit into an overloaded week",
+      "zh": "决定忙碌的一周里哪些事情还能安排"
     },
     "summary": {
-      "en": "I built a student workload planner that turns deadlines, available time, and competing commitments into three alternative plans. The interface compares stress trajectories and explains what to keep, delay, or drop. A structured analysis API connects the Next.js interface to Gemini, with optional ElevenLabs voice support.",
-      "zh": "我独立开发了学生任务规划应用，将截止日期、可用时间和相互冲突的安排转化为三种计划。界面比较压力变化，并说明哪些任务应继续、推迟或放弃。Next.js 界面通过结构化分析 API 连接 Gemini，并提供可选的 ElevenLabs 语音支持。"
+      "en": "I built FluxMind for students deciding what to give up when a week is already full. It compares three plans for the same workload and makes the proposed delays or cuts explicit. I developed the Next.js interface and connected it to Gemini through server APIs, with optional ElevenLabs voice support.",
+      "zh": "我做 FluxMind，是想帮助学生在一周已经排满时决定放下哪些事情。应用会针对同一组任务比较三种计划，明确列出需要推迟或放弃的安排。我开发了 Next.js 界面，通过服务端 API 接入 Gemini，并加入可选的 ElevenLabs 语音支持。"
     },
     "tags": [
       "Next.js",
@@ -119,22 +119,22 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "Workload and alternatives",
-          "zh": "任务输入与计划比较"
+          "en": "Choosing what to give up",
+          "zh": "忙不过来时，先决定放下什么"
         },
         "text": {
-          "en": "Users enter course schedules, assignments, exams, work commitments, and life events. The output combines a risk summary with three plans and explicit tradeoffs. The weekly view makes conflicts visible before an additional commitment is accepted.",
-          "zh": "用户可以输入课程、作业、考试、工作和生活安排。输出包含风险概述、三种计划及具体取舍。周视图用于在接受新安排之前发现冲突。"
+          "en": "A list of deadlines does not tell a student whether there is enough time to meet them. I wanted to make that decision easier before another commitment was added. In FluxMind, the student enters their workload and available hours, then compares three possible weeks. Each plan explains which tasks stay, which move, and which are dropped. The stress curves are estimates for comparing those choices.",
+          "zh": "截止日期清单不能说明自己究竟有没有时间完成所有事情。我想让学生在答应下一件事之前，先看清现有安排的取舍。用户输入任务和可用时间后，可以比较三种不同的周计划。每个计划都会说明哪些任务继续、哪些推迟、哪些放弃，压力曲线用于比较这些选择的估计影响。"
         }
       },
       {
         "title": {
-          "en": "API integration and continuity",
-          "zh": "API 集成与演示流程"
+          "en": "Making the analysis usable in the interface",
+          "zh": "把模型分析接到可以操作的界面上"
         },
         "text": {
-          "en": "I mapped structured analysis responses into risk scores, plan breakdowns, and comparison screens. Local example results keep the demonstration usable when Gemini or ElevenLabs is unavailable. A separate interactive presentation explains the simulation and decision flow.",
-          "zh": "我将结构化分析结果映射为风险分数、计划明细和比较界面。Gemini 或 ElevenLabs 不可用时，可通过本地示例结果继续演示。项目另有交互式演示介绍模拟与决策流程。"
+          "en": "I built the input and plan comparison screens in Next.js and TypeScript. Gemini runs behind a server API, and I map its structured responses into risk scores and task decisions that the interface can display consistently. I added optional ElevenLabs audio for users who want to hear the advice. Saved example responses let the same demonstration work when an external API is unavailable.",
+          "zh": "我用 Next.js 和 TypeScript 开发任务输入与计划比较页面。Gemini 通过服务端 API 调用，我将其结构化回答映射为风险分数和具体任务安排，使前端能按固定格式展示结果。用户也可以选择通过 ElevenLabs 听取建议。外部 API 不可用时，已保存的示例结果可用于完成同一套演示流程。"
         }
       }
     ],
@@ -191,16 +191,16 @@ window.PORTFOLIO_PROJECTS = [
     "group": "hackathons",
     "title": "EcoLung",
     "event": {
-      "en": "BearHacks · UC Riverside",
-      "zh": "BearHacks · 加州大学河滨分校"
+      "en": "BearHacks · Independent project",
+      "zh": "BearHacks · 独立项目"
     },
     "subtitle": {
-      "en": "Explore environmental exposure through two daily routines",
-      "zh": "通过两种日常习惯探索环境暴露"
+      "en": "Seeing how everyday habits affect exposure",
+      "zh": "看清日常习惯对环境暴露的影响"
     },
     "summary": {
-      "en": "I connected OpenAQ air-quality measurements to a FastAPI service and a React/Three.js interface. Users choose a location, compare current and improved routines, and inspect their simulated effects in a 3D lung scene. The project combines external data, scenario controls, and a visual explanation of cumulative exposure.",
-      "zh": "我将 OpenAQ 空气质量测量数据连接到 FastAPI 服务和 React/Three.js 界面。用户选择地点后，可以对比当前与改善后的日常习惯，并在三维肺部场景中观察模拟差异。项目将外部数据、情景控制和累积暴露的可视化解释结合起来。"
+      "en": "I built EcoLung to help people compare the exposure associated with their daily routines. After choosing a location, a visitor can change outdoor time or protective habits and compare the estimates in a 3D lung scene. I independently developed the React and Three.js frontend and connected a FastAPI backend to OpenAQ measurements.",
+      "zh": "我做 EcoLung，是想让人们更直观地比较日常习惯对应的环境暴露。选择地点后，用户可以调整户外时间或防护习惯，在三维肺部场景中比较估计结果。我独立开发了 React 和 Three.js 前端，并通过 FastAPI 后端接入 OpenAQ 测量数据。"
     },
     "tags": [
       "React",
@@ -217,22 +217,22 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "Location and routine comparison",
-          "zh": "地点与习惯比较"
+          "en": "Making an air-quality reading easier to interpret",
+          "zh": "让空气质量数字更容易理解"
         },
         "text": {
-          "en": "The interface accepts a region or custom coordinates and compares scenarios such as different outdoor hours, mask use, and air filtration. The lung scene changes with the selected routine and projection year. The display is an educational exposure simulation.",
-          "zh": "界面支持地区或自定义坐标，并比较户外时间、口罩和空气过滤等情景。肺部场景随所选习惯和预测年份变化，用于环境暴露的科普模拟。"
+          "en": "An air-quality reading tells you about the air at a particular place and time. I wanted to help a visitor think about what repeated exposure could mean for their own routine. I used a lung scene to illustrate the estimates and put the current and proposed routines side by side. That makes it possible to compare changes such as spending less time outdoors or using a mask without losing track of the original scenario.",
+          "zh": "空气质量读数对应的是某个地点、某个时刻的空气状况。我希望用户能进一步考虑，持续暴露与自己的生活习惯有什么关系。因此我用肺部场景表达估计结果，并将当前习惯和调整后的习惯并排显示。这样可以比较减少户外时间、使用口罩等选择，同时看到原始情景作为参照。"
         }
       },
       {
         "title": {
-          "en": "Data and visualization",
-          "zh": "数据与可视化"
+          "en": "From local observations to the 3D comparison",
+          "zh": "把当地观测数据接入三维比较"
         },
         "text": {
-          "en": "The backend retrieves nearby OpenAQ observations and passes scenario results to the frontend. Three.js renders the visual comparison. Fallback sample data allow the visualization to run when the external air-quality feed cannot be retrieved.",
-          "zh": "后端读取附近的 OpenAQ 观测记录，并将情景计算结果传给前端。Three.js 负责视觉比较；外部空气质量数据无法获取时，可使用备用示例数据运行。"
+          "en": "I wrote the FastAPI service that retrieves nearby OpenAQ observations and calculates the exposure scenarios. On the frontend, React handles the location and routine controls, while Three.js draws the lung scene for the selected year. The calculations are an educational illustration of exposure. I included sample data so visitors can still explore the controls when a live observation is unavailable.",
+          "zh": "我编写了 FastAPI 服务，读取附近的 OpenAQ 观测并计算暴露情景。前端由 React 处理地点和习惯设置，Three.js 绘制所选年份对应的肺部场景。计算结果用于环境暴露的科普说明。我也准备了示例数据，使实时观测不可用时仍能体验这些设置和比较。"
         }
       }
     ],
@@ -279,12 +279,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "RoseHack 2026 · 团队项目"
     },
     "subtitle": {
-      "en": "Anonymous discussion shaped by the author’s intent",
-      "zh": "围绕发帖意图组织匿名讨论"
+      "en": "Letting the author say what kind of reply they want",
+      "zh": "让发帖人先说清楚自己需要怎样的回复"
     },
     "summary": {
-      "en": "In a three-person team, I built posting and reply screens and connected the Next.js interface to Supabase. I proposed matching replies to the author’s intent, such as advice, empathy, disagreement, or journaling, and wrote mode-specific prompts plus a Flask moderation endpoint for three visibility tiers.",
-      "zh": "我在三人团队中开发发帖与回复界面，并将 Next.js 前端连接到 Supabase。我提出根据建议、共情、反对或日记等发帖意图组织回复，并编写各模式的提示词及 Flask 审核接口，将回复分为三个可见等级。"
+      "en": "Sona is an anonymous discussion app where authors choose the kind of response they want. In our three-person RoseHack team, I built the posting and reply views in Next.js and connected them to Supabase. I also wrote prompts for the posting modes and a Flask moderation prototype that assigns replies to three visibility levels.",
+      "zh": "Sona 是一个允许发帖人选择回复类型的匿名讨论应用。我在三人 RoseHack 团队中开发了 Next.js 发帖与回复页面，并将前端连接到 Supabase。我还编写了对应不同发帖模式的提示词，以及将回复划分为三个可见等级的 Flask 审核原型。"
     },
     "tags": [
       "Next.js",
@@ -300,22 +300,22 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "My contribution",
-          "zh": "个人贡献"
+          "en": "Why the posting mode matters",
+          "zh": "为什么先让用户选择发帖意图"
         },
         "text": {
-          "en": "I implemented posting and reply views and worked on their connection to the data backend. For response organization, I wrote prompts that evaluate a reply against the selected posting mode and a prototype endpoint that assigns featured, more, or hidden visibility.",
-          "zh": "我实现了发帖与回复视图，并参与其与数据后端的连接。针对回复组织，我编写了按发帖模式评估回复的提示词，以及将回复划分为精选、更多或折叠类别的原型接口。"
+          "en": "Someone asking for practical advice may be frustrated by a reply that only offers sympathy. Someone who wants to be heard may not want a list of solutions. That was the starting point for Sona. We let authors choose advice, empathy, opposition, or journal mode when they post. I proposed using that choice when evaluating replies, so that a response is judged in the context of what the author asked for.",
+          "zh": "想要实际建议的人，可能不会满足于一句安慰；只想倾诉的人，也未必希望收到一份解决方案。这是 Sona 的出发点。我们让用户在发帖时选择建议、共情、反对意见或日记模式。我提出在评估回复时使用这个选择，让回复是否合适与发帖人的具体需求对应起来。"
         }
       },
       {
         "title": {
-          "en": "Team product and materials",
-          "zh": "团队产品与材料"
+          "en": "My work across the frontend and backend",
+          "zh": "我在前后端之间完成的工作"
         },
         "text": {
-          "en": "The team’s public submission is named Sona, while the repository and original presentation use VoidTalk. The product combines anonymous posting and private author–respondent conversations. The repository contains the moderation prototype and presentation, and Devpost documents the submitted team application.",
-          "zh": "团队公开提交的产品名为 Sona，仓库和原演示中使用 VoidTalk。产品结合匿名发帖和作者与回复者之间的私密对话。仓库包含审核原型与演示材料，Devpost 记录了团队提交的应用。"
+          "en": "I developed the posting and reply screens in Next.js and connected the views to Supabase for storing and retrieving discussion data. I also worked on the boundary between the interface and moderation service. My Flask prototype accepts the reply together with the original post and selected mode, then returns a visibility category and a reason. I wrote different prompts for the four modes and mapped the results to featured, more, or hidden replies. The team submitted the app as Sona. The repository and presentation use the earlier name VoidTalk.",
+          "zh": "我用 Next.js 开发发帖和回复页面，并将这些视图连接到 Supabase，完成讨论数据的存取。我也负责界面与审核服务之间的连接。编写的 Flask 原型接收回复、原帖内容和所选模式，再返回可见等级及原因。我为四种模式分别编写提示词，将结果对应到精选、更多或折叠回复。团队提交时使用 Sona 这个名字，仓库和演示材料沿用了早期名称 VoidTalk。"
         }
       }
     ],
@@ -361,12 +361,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "UCR CS228 · 独立课程项目"
     },
     "subtitle": {
-      "en": "Time-conditioned routing and spike-aware load decomposition",
-      "zh": "时间条件路由与尖峰感知负载分解"
+      "en": "A small forecasting model for daily demand and usage spikes",
+      "zh": "同时预测日常负载和用电尖峰的小型模型"
     },
     "summary": {
-      "en": "I developed TC-SS-DPMixer for appliance energy forecasting, combining time-conditioned branch gates with separate modeling of smooth demand and usage spikes. On the four-hour UCI Appliances forecasting task, the model achieved 34.83 Wh MAE with 68K parameters, about one sixth of the parameter count of the 412K-parameter iTransformer. I also built a reproducible benchmark and interactive tools for exploring predictions and sensor data.",
-      "zh": "我开发了用于家电能耗预测的 TC-SS-DPMixer，将时间条件分支门控与平稳负载、用电尖峰的独立建模结合。在 UCI Appliances 四小时预测任务上，模型以 6.8 万参数取得 34.83 Wh MAE，参数量约为 41.2 万参数 iTransformer 的六分之一。我还完成了可复现的比较实验，以及用于探索预测结果和传感器数据的交互工具。"
+      "en": "I designed TC-SS-DPMixer to forecast household appliance use with a compact model. It combines time dependent branch weights with separate predictions for smooth demand and usage spikes. On the four-hour UCI Appliances task, it achieved 34.83 Wh MAE with 68K parameters, compared with 34.19 Wh and 412K parameters for iTransformer.",
+      "zh": "我设计 TC-SS-DPMixer，是想用紧凑模型预测家庭电器能耗。模型结合随时间变化的分支权重，分别预测平稳负载与用电尖峰。在 UCI Appliances 四小时预测任务上，模型以 6.8 万参数取得 34.83 Wh MAE；iTransformer 对应为 41.2 万参数和 34.19 Wh。"
     },
     "tags": [
       "PyTorch",
@@ -382,32 +382,32 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "Architectural contribution",
-          "zh": "架构贡献"
+          "en": "A compact model for uneven demand",
+          "zh": "用紧凑模型处理不均匀的用电需求"
         },
         "text": {
-          "en": "I introduced time-conditioned routing across heterogeneous forecasting branches. A small MLP maps forecast-step time features to branch weights, so the learned routing can be inspected over a daily cycle. In TC-SS-DPMixer, smooth base demand is modeled separately from a spike classifier and magnitude regressor. This separates recurring load patterns from intermittent appliance use.",
-          "zh": "我为不同类型的预测分支设计了时间条件路由。小型 MLP 将各预测时刻的时间特征映射为分支权重，可以按日周期检查学习到的路由。在 TC-SS-DPMixer 中，平稳基础负载与尖峰分类器、幅度回归器分别建模，以区分周期性负载和间歇性家电使用。"
+          "en": "Household energy use has recurring daily patterns as well as short bursts when appliances are switched on. I wanted a small forecasting model that could account for both. For CS228, I developed TC-SS-DPMixer around separate smooth-load and spike predictions, with branch weights that depend on the time being forecast. I compared it with linear, recurrent, mixer, and Transformer models on the same household sensor dataset.",
+          "zh": "家庭用电既有重复出现的日常规律，也有电器开启时的短暂尖峰。我希望用一个小型预测模型同时处理这两类变化。在 CS228 项目中，我设计了分别预测平稳负载与尖峰的 TC-SS-DPMixer，并根据预测时刻计算分支权重，再与线性、循环网络、mixer 和 Transformer 模型在同一传感器数据上比较。"
         }
       },
       {
         "title": {
-          "en": "Forecasting accuracy and parameter efficiency",
-          "zh": "预测精度与参数效率"
+          "en": "Time dependent weights and separate spike predictions",
+          "zh": "随时间变化的权重与独立尖峰预测"
         },
         "text": {
-          "en": "On the reported four-hour test configuration, MAE was 34.83 Wh with approximately 68K parameters for TC-SS-DPMixer and 34.19 Wh with approximately 412K parameters for iTransformer. In the low-label experiment, masked-patch pretraining reduced PatchTST MAE from 63.9 to 54.1 Wh when 20% of labels were used. The report includes the training settings and component ablations.",
-          "zh": "在报告的四小时测试配置中，TC-SS-DPMixer 约有 6.8 万参数，MAE 为 34.83 Wh；iTransformer 约有 41.2 万参数，MAE 为 34.19 Wh。在仅使用 20% 标签的实验中，掩码片段预训练将 PatchTST 的 MAE 从 63.9 降至 54.1 Wh。报告包含训练设置与组件消融。"
+          "en": "I used a small MLP to compute branch weights from the forecast step's time features. The weights can be plotted over a day to inspect how the model combines its branches at different hours. For the spike path, I combined a classifier for whether a spike occurs with a regressor for its magnitude. A separate head predicts smooth base demand. I implemented component ablations to examine what each part contributes and compared models under controlled losses and input features.",
+          "zh": "我用小型 MLP 根据各预测时刻的时间特征计算分支权重，再按一天中的时刻绘制权重，检查模型如何组合不同分支。尖峰路径由是否出现尖峰的分类器和幅度回归器组成，另一个预测头处理平稳基础负载。我实现了组件消融，并在控制损失函数和输入特征的条件下比较各部分的作用。"
         }
       },
       {
         "title": {
-          "en": "Reproducible evaluation and interactive analysis",
-          "zh": "可复现评估与交互分析"
+          "en": "Evaluation on household sensor data",
+          "zh": "在家庭传感器数据上的评估"
         },
         "text": {
-          "en": "I implemented comparisons across linear, recurrent, mixer, and Transformer models with controlled losses and input features. The four-hour task uses sixteen hours of sensor history, with chronological training, validation, and test partitions to exclude future observations from training. A separate task predicts the next week from the previous week at hourly resolution. The interactive report and dataset explorer connect model comparisons to the underlying sensor records.",
-          "zh": "我实现了线性、循环网络、mixer 和 Transformer 模型的比较，并控制损失函数与输入特征。四小时任务使用过去十六小时的传感器记录，按时间顺序划分训练、验证与测试集，防止未来观测进入训练。另一个任务按小时聚合序列，以前一周预测下一周。交互报告与数据浏览器将模型比较和原始传感器记录连接起来。"
+          "en": "The four-hour task uses sixteen hours of history, with training, validation, and test records separated chronologically. TC-SS-DPMixer reached 34.83 Wh MAE with about 68K parameters. iTransformer reached 34.19 Wh with about 412K. I also tested masked-patch pretraining for PatchTST. With 20% of labels, MAE fell from 63.9 to 54.1 Wh. A separate hourly task predicts the next week from the previous week. I built an interactive report and dataset explorer so readers can inspect the experiments and sensor series themselves.",
+          "zh": "四小时任务使用过去十六小时的记录，并按时间顺序划分训练、验证与测试数据。TC-SS-DPMixer 约有 6.8 万参数，MAE 为 34.83 Wh；iTransformer 约有 41.2 万参数，MAE 为 34.19 Wh。我还测试了 PatchTST 的掩码片段预训练，仅使用 20% 标签时，MAE 从 63.9 降到 54.1 Wh。另一个任务按小时聚合数据，以过去一周预测下一周。我制作了交互报告和数据浏览器，便于读者直接查看实验与传感器序列。"
         }
       }
     ],
@@ -440,8 +440,8 @@ window.PORTFOLIO_PROJECTS = [
       1
     ],
     "figureCaption": {
-      "en": "Figure 1. TC-DPMixer architecture from my CS228 report. Sensor history enters persistence, decomposition, channel-mixing, and time-mixing branches; a small network uses time features to weight their forecasts. TC-SS-DPMixer extends this design with separate smooth-load and spike prediction paths.",
-      "zh": "图 1. 我的 CS228 报告中的 TC-DPMixer 架构。历史传感器数据进入持久性、分解、通道混合与时间混合分支，小型网络根据时间特征为各分支预测分配权重。TC-SS-DPMixer 在此基础上加入独立的平稳负载与尖峰预测路径。"
+      "en": "Figure 1. TC-DPMixer architecture from my CS228 report. Time features determine the weights of four forecasting branches. TC-SS-DPMixer uses separate predictions for smooth demand and usage spikes.",
+      "zh": "图 1. CS228 报告中的 TC-DPMixer 架构。时间特征决定四个预测分支的权重，TC-SS-DPMixer 则分别预测平稳负载与用电尖峰。"
     }
   },
   {
@@ -453,12 +453,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "UCR CS170 · 独立课程项目"
     },
     "subtitle": {
-      "en": "Search for informative features instead of using every column",
-      "zh": "通过搜索识别有效特征"
+      "en": "Finding which inputs help a nearest neighbor classifier",
+      "zh": "找出真正有助于近邻分类的输入特征"
     },
     "summary": {
-      "en": "I implemented forward selection and backward elimination with a one-nearest-neighbor classifier and leave-one-out validation. On the 3,000-row, 64-feature assignment dataset, forward selection found two features with 97.3% validation accuracy, compared with 68.0% using all features. I analyzed the search traces, runtime, and geometry of the selected feature space.",
-      "zh": "我实现了结合 1 近邻分类器和留一验证的前向选择与后向消除。在包含 3,000 条记录、64 个特征的作业数据上，前向选择找到两个特征，验证准确率为 97.3%，使用全部特征时为 68.0%。我进一步分析了搜索轨迹、运行时间和所选特征空间的几何结构。"
+      "en": "I built a feature-search program to test how much a nearest neighbor classifier benefits from a smaller input set. On the 3,000-row assignment dataset, forward selection found two of 64 features with 97.3% validation accuracy, compared with 68.0% using all features. I implemented both forward selection and backward elimination with leave-one-out evaluation.",
+      "zh": "我编写了特征搜索程序，研究减少输入特征能否改善近邻分类。在包含 3,000 条记录的作业数据上，前向选择从 64 个特征中选出两个，验证准确率为 97.3%，使用全部特征时为 68.0%。我实现了前向选择和后向消除，并用留一验证评估候选子集。"
     },
     "tags": [
       "Python",
@@ -475,32 +475,32 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "Search implementation",
-          "zh": "搜索实现"
+          "en": "Finding a useful subset",
+          "zh": "寻找有用的特征子集"
         },
         "text": {
-          "en": "Forward selection starts with an empty set and adds the best candidate at each level. Backward elimination starts with every feature and removes one at a time. Each candidate is scored by leave-one-out nearest-neighbor accuracy, and the best subset across all levels is recorded. NumPy array operations replace nested Python distance loops.",
-          "zh": "前向选择从空集开始，每层加入当前最优候选；后向消除从完整特征集开始，每次移除一个特征。候选子集通过留一近邻准确率评估，并记录所有层中的最佳子集。距离计算使用 NumPy 数组运算替代嵌套 Python 循环。"
+          "en": "Nearest neighbor classification depends on distances between examples, so the choice of input features matters. I wanted to test whether searching for a smaller subset could improve classification. I implemented forward selection starting from an empty set and backward elimination starting from all features. At each step, I evaluate the candidate subsets with leave-one-out 1-NN accuracy and record the best subset found across the search.",
+          "zh": "近邻分类取决于样本之间的距离，因此输入哪些特征会影响结果。我想检验搜索更小的特征子集能否改善分类。我分别实现了从空集出发的前向选择和从完整集合出发的后向消除，每一步都用留一 1 近邻准确率评估候选子集，并记录搜索中找到的最佳组合。"
         }
       },
       {
         "title": {
-          "en": "What the search found",
-          "zh": "搜索结果"
+          "en": "What the selected features changed",
+          "zh": "选出的特征带来了什么变化"
         },
         "text": {
-          "en": "On the 500-row small dataset, both methods selected features 2 and 12 with 96.6% validation accuracy. On the larger dataset, forward selection selected features 37 and 58 with 97.3%, while backward elimination reached 85.1% with feature 58 alone. These are assignment validation results under the feature-search procedure.",
-          "zh": "在 500 条记录的小数据集上，两种方法都选择了特征 2 和 12，验证准确率为 96.6%。大数据集上，前向选择选出特征 37 和 58，准确率为 97.3%；后向消除仅留下特征 58，准确率为 85.1%。这些数值是作业特征搜索流程中的验证结果。"
+          "en": "On the 500-row dataset, both methods selected features 2 and 12 with 96.6% validation accuracy. On the 3,000-row dataset, forward selection chose features 37 and 58 and reached 97.3%, compared with 68.0% using all 64 features. Backward elimination selected feature 58 alone with 85.1%. I plotted the selected feature pairs to see how the two classes were distributed in those spaces.",
+          "zh": "在 500 条记录的数据集上，两种方法都选出特征 2 和 12，验证准确率为 96.6%。在 3,000 条记录的数据集上，前向选择选出特征 37 和 58，准确率为 97.3%，使用全部 64 个特征时为 68.0%。后向消除仅选出特征 58，准确率为 85.1%。我绘制了所选特征对的散点图，检查两个类别在这些空间中的分布。"
         }
       },
       {
         "title": {
-          "en": "Full submission",
-          "zh": "完整作业"
+          "en": "Distance calculation and search records",
+          "zh": "距离计算与搜索记录"
         },
         "text": {
-          "en": "The report includes the algorithm explanation, feature-space plots, search traces, runtime comparison, implementation, and a banknote-authentication extension. The full submission and reproducible logs are linked below.",
-          "zh": "报告包含算法说明、特征空间图、搜索轨迹、运行时间比较、实现代码和钞票鉴别数据扩展。下方可查看完整作业及可复现日志。"
+          "en": "I used NumPy array operations for the distance calculations and saved the accuracy trace at every search level. The report compares running time as well as the selected subsets, and includes the feature-space plots and a banknote-authentication extension. The linked source and logs show how the reported subsets were obtained.",
+          "zh": "我使用 NumPy 数组运算计算距离，并保存每一层搜索的准确率记录。报告比较了运行时间和最终选出的子集，也包含特征空间图及钞票鉴别数据扩展。下方源代码和日志记录了这些特征组合的具体搜索过程。"
         }
       }
     ],
@@ -547,12 +547,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "UCR CS170 · 独立课程项目"
     },
     "subtitle": {
-      "en": "Compare blind search and two A* heuristics",
-      "zh": "比较盲目搜索与两种 A* 启发式"
+      "en": "How a heuristic changes the amount of search",
+      "zh": "启发式信息如何改变搜索量"
     },
     "summary": {
-      "en": "I implemented uniform-cost search and A* with misplaced-tile and Manhattan-distance heuristics. A shared search routine tracks path cost, heuristic estimates, expanded nodes, and maximum queue size. Users can select graded benchmark puzzles or enter a custom board, then inspect the expansion trace and solution depth.",
-      "zh": "我实现了统一代价搜索，以及使用错位数和曼哈顿距离启发式的 A*。共用搜索流程记录路径代价、启发式估计、扩展节点数与最大队列规模。用户可以选择作业测试棋盘或输入自定义棋盘，检查扩展轨迹和解的深度。"
+      "en": "I implemented three ways to solve the 8-puzzle and compared how many states each explores. In the depth 24 assignment case, A* with Manhattan distance expanded 1,869 nodes, compared with 234,994 for uniform-cost search. All three methods use the same search routine, with counters for expanded nodes and maximum queue size.",
+      "zh": "我实现了三种八数码求解方法，并比较各自需要探索多少状态。在解深度为 24 的作业测试中，曼哈顿距离 A* 扩展了 1,869 个节点，统一代价搜索为 234,994 个。三种方法使用同一搜索流程，并记录扩展节点数与最大队列规模。"
     },
     "tags": [
       "Python",
@@ -568,22 +568,22 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "State and search",
-          "zh": "状态与搜索"
+          "en": "From Klotski to the 8-puzzle",
+          "zh": "从小时候的华容道到八数码"
         },
         "text": {
-          "en": "A puzzle stores the board and legal moves. A node stores its parent and the g, h, and f values used during expansion. All three methods share the same search routine. Uniform-cost search sets h to zero, while the two A* variants supply different heuristic functions.",
-          "zh": "棋盘对象保存状态及合法移动，节点保存父节点和扩展时使用的 g、h、f 值。三种方法共用搜索流程。统一代价搜索将 h 设为零，两种 A* 分别调用不同的启发式函数。"
+          "en": "My grandmother taught me to play Klotski when I was young, and I used to wonder how to solve it without repeating moves. For CS170, I used the smaller 8-puzzle to compare search strategies. I implemented uniform-cost search and A* with misplaced-tile and Manhattan-distance heuristics. Keeping the state representation and search loop the same let me compare the effect of the heuristic directly.",
+          "zh": "小时候祖母教我玩华容道，我曾想过能否不反复移动就找到解。在 CS170 项目中，我用规模更小的八数码比较搜索策略，实现了统一代价搜索，以及采用错位数和曼哈顿距离启发式的 A*。三种方法使用相同的状态表示与搜索循环，以便直接比较启发式信息的作用。"
         }
       },
       {
         "title": {
-          "en": "Comparison and submission",
-          "zh": "比较与作业材料"
+          "en": "Comparing the search effort",
+          "zh": "比较找到解所需的搜索量"
         },
         "text": {
-          "en": "The program includes benchmark boards with solution depths from 0 to 24 and supports custom input. It prints the chosen state, accumulated cost, heuristic value, final depth, expanded-node count, and maximum queue size. The original coursework report is available with the repository, which identifies the graded submission separately from later personal improvements.",
-          "zh": "程序内置解深度从 0 到 24 的测试棋盘，并支持自定义输入。输出包含被选状态、累计代价、启发式值、解深度、扩展节点数与最大队列规模。仓库附有原始作业报告，并区分了评分版本和之后的个人改进。"
+          "en": "I tested assignment boards with solution depths from 0 to 24 and recorded expanded nodes, maximum queue size, and execution time. At depth 24, Manhattan-distance A* expanded 1,869 nodes and uniform-cost search expanded 234,994. The program also accepts a custom board and prints the state selected at each step with its path cost and heuristic estimate. The report contains the comparisons, while the repository identifies the graded submission separately from later personal changes.",
+          "zh": "我测试了解深度从 0 到 24 的作业棋盘，记录扩展节点数、最大队列规模和运行时间。在深度 24 的测试中，曼哈顿距离 A* 扩展 1,869 个节点，统一代价搜索扩展 234,994 个。程序也接受自定义棋盘，并输出每一步选中的状态、路径代价和启发式估计。报告包含完整比较，仓库则区分了评分版本与后来的个人改动。"
         }
       }
     ],
@@ -622,12 +622,12 @@ window.PORTFOLIO_PROJECTS = [
       "zh": "UCR CS009C · 独立课程项目"
     },
     "subtitle": {
-      "en": "Compare the full fare across airline and third-party offers",
-      "zh": "比较航司与第三方报价的完整费用"
+      "en": "Comparing ticket prices after the extra fees",
+      "zh": "把附加费算进去之后再比较票价"
     },
     "summary": {
-      "en": "I built a C++ flight-comparison application that calculates complete fares across airline and third-party offers. It loads simulated records from CSV, filters routes and departure periods, and includes baggage, insurance, and service fees in the total. Five classes separate account management, flight orders, and polymorphic Economy and First Class pricing.",
-      "zh": "我开发了比较航司与第三方完整票价的 C++ 应用。程序从 CSV 读取模拟记录，按航线和出发时段筛选，并将行李、保险和服务费计入总价。五个类分别处理账户管理、航班订单，以及经济舱和头等舱的多态定价。"
+      "en": "While booking a trip for winter break, I noticed that an offer with a low base fare could become more expensive after extra fees. I built Flight Compare to put baggage, insurance, and service charges into the comparison. The C++ program filters simulated flight offers and calculates totals for Economy and First Class.",
+      "zh": "订寒假旅行机票时，我注意到一些起步票价较低的报价，加上额外费用后反而更贵。因此我做了 Flight Compare，把行李、保险和服务费纳入比较。这个 C++ 程序可以筛选模拟航班报价，并计算经济舱和头等舱的总价。"
     },
     "tags": [
       "C++",
@@ -644,22 +644,22 @@ window.PORTFOLIO_PROJECTS = [
     "sections": [
       {
         "title": {
-          "en": "Object model",
-          "zh": "对象设计"
+          "en": "The price that prompted the project",
+          "zh": "从订票时遇到的价格问题开始"
         },
         "text": {
-          "en": "UserAccount handles account interaction, while FlightOrder stores the provider, route, schedule, and fee breakdown. FareType defines a common pricing interface. EconomyClass and FirstClass override the calculation and feature display, so the selected fare is resolved through polymorphism.",
-          "zh": "UserAccount 处理账户交互，FlightOrder 保存供应商、航线、时刻和费用明细。FareType 定义统一定价接口，EconomyClass 和 FirstClass 分别重写价格计算与特性显示，通过多态调用所选票价类型。"
+          "en": "When I compared tickets for a trip during winter break, some third-party offers looked cheaper until baggage or other charges were added. I wanted to compare the amount I would actually pay before choosing a provider. That became the idea for my CS009C project. I built a command-line program that lets a user select a route and departure period, inspect the fee breakdown, and add a flight to a cart.",
+          "zh": "比较寒假机票时，一些第三方报价起初更低，加上行李等费用之后却未必划算。我希望在选择购票渠道之前，就能比较自己最终需要付多少钱。这成了 CS009C 项目的起点。我编写了命令行程序，让用户选择航线和出发时段、查看费用明细，再将航班加入购物车。"
         }
       },
       {
         "title": {
-          "en": "User flow and materials",
-          "zh": "使用流程与作业材料"
+          "en": "How I represented fares in C++",
+          "zh": "用 C++ 表达不同舱位的计价规则"
         },
         "text": {
-          "en": "Users select a departure city, destination, time period, flight, and fare type, then inspect the detailed total before adding an option to the cart. The project uses simulated flight records for testing. The linked proposal explains the class design, while the repository contains the final source and mock data.",
-          "zh": "用户依次选择出发地、目的地、时段、航班和舱位，查看详细总价后再加入购物车。项目采用模拟航班记录测试。下方提案说明类设计，仓库包含最终源码与模拟数据。"
+          "en": "I stored route, schedule, and fee information in FlightOrder and put the fare calculations behind a common FareType interface. EconomyClass and FirstClass implement their own pricing rules through inheritance and virtual functions. UserAccount handles the account interaction. I used CSV records to test route filtering and price comparisons, so the example offers are simulated. The proposal explains the class design, and the repository contains the submitted implementation.",
+          "zh": "我将航线、时刻和费用信息保存在 FlightOrder 中，通过统一的 FareType 接口调用舱位计价规则。EconomyClass 和 FirstClass 使用继承与虚函数分别实现价格计算，UserAccount 处理账户交互。我用 CSV 记录测试航线筛选与价格比较，因此页面材料中的示例报价来自模拟数据。提案说明类设计，仓库包含最终提交的实现。"
         }
       }
     ],
@@ -685,8 +685,8 @@ window.PORTFOLIO_PROJECTS = [
       1
     ],
     "figureCaption": {
-      "en": "Figure 1. Class relationships in Flight Compare, drawn from the submitted C++ implementation. UserAccount works with FlightOrder; EconomyClass and FirstClass implement the FareType pricing interface.",
-      "zh": "图 1. 根据 Flight Compare 提交源码绘制的类关系。UserAccount 与 FlightOrder 连接，EconomyClass 和 FirstClass 实现 FareType 定价接口。"
+      "en": "Figure 1. Class relationships drawn from the submitted C++ code. UserAccount works with FlightOrder. EconomyClass and FirstClass implement the FareType pricing interface.",
+      "zh": "图 1. 根据提交的 C++ 代码绘制的类关系。UserAccount 与 FlightOrder 连接，EconomyClass 和 FirstClass 实现 FareType 定价接口。"
     }
   }
 ];
