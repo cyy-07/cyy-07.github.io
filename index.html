@@ -599,8 +599,8 @@
             <p class="name-sub"><span class="en">ChemE @ ECUST &nbsp;&middot;&nbsp; CS &amp; AI @ UCR</span><span class="zh">华东理工大学化工 &nbsp;&middot;&nbsp; UCR 计算机与AI</span></p>
             <div class="aifs-badge"><div class="dot"></div><span class="en">AI for Science Researcher</span><span class="zh">AI for Science 研究者</span></div>
             <div class="stat-bar">
-                <div class="stat-item"><span class="stat-num">3.68<span class="stat-scale"> / 4.00</span></span><span class="stat-lab">ECUST GPA</span><span class="stat-note"><span class="en">Average 89.16 / 100</span><span class="zh">均分 89.16 / 100</span></span><span class="stat-note degree-units" title="178.5 degree credits, divided into 158.5 degree/general credits and 20 CS/computing credits. Retaken courses counted once."><span class="en">ChemE 158.5 · CS 20 units</span><span class="zh">化工 158.5 · CS 20 学分</span></span></div>
-                <div class="stat-item"><span class="stat-num">4.00<span class="stat-scale"> / 4.00</span></span><span class="stat-lab">UCR GPA</span><span class="stat-note ucr-units"><span class="en">39 CS &amp; AI units · All A/A+</span><span class="zh">39 CS/AI 学分 · 全 A/A+</span></span><span class="stat-note"><span class="en">Engineering Certificate</span><span class="zh">高级工程证书</span></span></div>
+                <div class="stat-item"><span class="stat-num"><span class="gpa-counter" data-count-to="3.68">0.00</span><span class="stat-scale"> / 4.00</span></span><span class="stat-lab">ECUST GPA</span><span class="stat-note"><span class="en">Average 89.16 / 100</span><span class="zh">均分 89.16 / 100</span></span><span class="stat-note degree-units" title="178.5 degree credits, divided into 158.5 degree/general credits and 20 CS/computing credits. Retaken courses counted once."><span class="en">ChemE 158.5 · CS 20 units</span><span class="zh">化工 158.5 · CS 20 学分</span></span></div>
+                <div class="stat-item"><span class="stat-num"><span class="gpa-counter" data-count-to="4.00">0.00</span><span class="stat-scale"> / 4.00</span></span><span class="stat-lab">UCR GPA</span><span class="stat-note ucr-units"><span class="en">39 CS &amp; AI units · All A/A+</span><span class="zh">39 CS/AI 学分 · 全 A/A+</span></span><span class="stat-note"><span class="en">Engineering Certificate</span><span class="zh">高级工程证书</span></span></div>
             </div>
             <a href="mailto:ychen1420@ucr.edu" class="info-link" id="emailLink" data-tooltip="Click to copy email" data-tooltip-zh="点击复制邮箱"><i class="fas fa-envelope"></i> ychen1420@ucr.edu</a>
             <a href="https://github.com/cyy-07" target="_blank" rel="noopener" class="info-link"><i class="fab fa-github"></i> github.com/cyy-07</a>
@@ -1187,6 +1187,27 @@ function toggleLang() {
     syncLanguageUI();
 }
 document.addEventListener('DOMContentLoaded', syncLanguageUI);
+/* ===== GPA COUNTERS ===== */
+function animateGpaCounters() {
+    document.querySelectorAll('.gpa-counter[data-count-to]').forEach(counter => {
+        const target = Number(counter.dataset.countTo);
+        if (!Number.isFinite(target)) return;
+        if (reducedMotionQuery.matches) {
+            counter.textContent = target.toFixed(2);
+            return;
+        }
+        const duration = 1400;
+        const start = performance.now();
+        const tick = now => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 4);
+            counter.textContent = (target * eased).toFixed(2);
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    });
+}
+animateGpaCounters();
 /* ===== STAR TOGGLE ===== */
 document.getElementById('star-toggle-btn').addEventListener('click', () => {
     starsOn = !starsOn;
