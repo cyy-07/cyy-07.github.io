@@ -15,6 +15,10 @@ window.PORTFOLIO_PROJECTS = [
       "en": "I built TerraPulse for arriving in an unfamiliar city and deciding where to go. Visitors choose among 78 cities on a Three.js globe, then browse places to visit and local food. I developed the globe interactions and city pages as an independent DesignVerse project.",
       "zh": "我想为初到陌生城市、还不知道去哪玩的人做一个直观的旅行入口。TerraPulse 可以在 Three.js 地球上选择 78 个城市，再查看当地景点与美食。我在 DesignVerse 中独立完成了地球交互和城市页面。"
     },
+    "cardSummary": {
+      "en": "Finding your way in a new city often starts with one question: where should I go first? I built TerraPulse around a Three.js globe that opens city pages for 78 destinations. Visitors move from the globe straight to local landmarks, food, and city guides.",
+      "zh": "初到陌生城市，最难的往往是决定先去哪里。我把 TerraPulse 做成一颗可通往 78 座城市的 Three.js 地球。用户从地球上选中城市，就能继续浏览当地地标、美食和城市指南。"
+    },
     "tags": [
       "JavaScript",
       "Three.js",
@@ -104,6 +108,10 @@ window.PORTFOLIO_PROJECTS = [
     "summary": {
       "en": "I built FluxMind for students deciding what to give up when a week is already full. It compares three plans for the same workload and makes the proposed delays or cuts explicit. I developed the Next.js interface and connected it to Gemini through server APIs, with optional ElevenLabs voice support.",
       "zh": "我做 FluxMind，是想帮助学生在一周已经排满时决定放下哪些事情。应用会针对同一组任务比较三种计划，明确列出需要推迟或放弃的安排。我开发了 Next.js 界面，通过服务端 API 接入 Gemini，并加入可选的 ElevenLabs 语音支持。"
+    },
+    "cardSummary": {
+      "en": "When the week is already full, deciding what to drop can matter more than adding another to-do list. I built FluxMind to compare three plans for the same workload and surface the tasks each plan delays or cuts. Gemini generates the alternatives through server APIs, with optional ElevenLabs voice support for quick replanning.",
+      "zh": "一周已经排满时，决定放下什么比再加一张待办清单更重要。我做了 FluxMind，让学生针对同一组任务比较三种计划，并看清每种计划会推迟或删掉哪些事情。应用通过服务端 API 调用 Gemini 生成方案，也提供可选的 ElevenLabs 语音功能，方便快速调整计划。"
     },
     "tags": [
       "Next.js",
@@ -202,6 +210,10 @@ window.PORTFOLIO_PROJECTS = [
       "en": "I built EcoLung to help people compare the exposure associated with their daily routines. After choosing a location, a visitor can change outdoor time or protective habits and compare the estimates in a 3D lung scene. I independently developed the React and Three.js frontend and connected a FastAPI backend to OpenAQ measurements.",
       "zh": "我做 EcoLung，是想让人们更直观地比较日常习惯对应的环境暴露。选择地点后，用户可以调整户外时间或防护习惯，在三维肺部场景中比较估计结果。我独立开发了 React 和 Three.js 前端，并通过 FastAPI 后端接入 OpenAQ 测量数据。"
     },
+    "cardSummary": {
+      "en": "Air-quality numbers are hard to act on without seeing how daily routines change exposure. I built EcoLung to compare exposure scenarios in an interactive 3D lung, with controls for location, outdoor time, and protective habits. I developed the React and Three.js interface and connected its FastAPI backend to OpenAQ readings.",
+      "zh": "只看空气质量数字，很难判断日常习惯会怎样改变暴露情况。我做了 EcoLung，让用户在交互式三维肺部视图中比较暴露情境，并调整地点、户外时间和防护习惯。我独立开发了 React 与 Three.js 界面，并将 FastAPI 后端接入 OpenAQ 读数。"
+    },
     "tags": [
       "React",
       "Three.js",
@@ -286,6 +298,10 @@ window.PORTFOLIO_PROJECTS = [
       "en": "Sona is an anonymous discussion app where authors choose the kind of response they want. In our three-person RoseHack team, I built the posting and reply views in Next.js and connected them to Supabase. I also wrote prompts for the posting modes and a Flask moderation prototype that assigns replies to three visibility levels.",
       "zh": "Sona 是一个允许发帖人选择回复类型的匿名讨论应用。我在三人 RoseHack 团队中开发了 Next.js 发帖与回复页面，并将前端连接到 Supabase。我还编写了对应不同发帖模式的提示词，以及将回复划分为三个可见等级的 Flask 审核原型。"
     },
+    "cardSummary": {
+      "en": "An anonymous post can leave readers guessing whether the author wants advice, empathy, or simply to be heard. I built Sona’s posting flow around four response modes chosen by the author. On our RoseHack team, I connected the Next.js posting and reply screens to Supabase and built mode prompts plus a Flask moderation prototype with three visibility levels.",
+      "zh": "匿名发帖时，读者不容易判断作者是想要建议、寻求共情，还是只想有人倾听。我围绕作者选择的四种回复模式搭建了 Sona 的发帖流程。在 RoseHack 团队中，我把 Next.js 发帖与回复界面接入 Supabase，并编写模式提示词和包含三个可见等级的 Flask 审核原型。"
+    },
     "tags": [
       "Next.js",
       "Supabase",
@@ -367,6 +383,10 @@ window.PORTFOLIO_PROJECTS = [
     "summary": {
       "en": "I designed TC-SS-DPMixer to forecast household appliance use with a compact model. It combines time dependent branch weights with separate predictions for smooth demand and usage spikes. On the four-hour UCI Appliances task, it achieved 34.83 Wh MAE with 68K parameters, compared with 34.19 Wh and 412K parameters for iTransformer.",
       "zh": "我设计 TC-SS-DPMixer，是想用紧凑模型预测家庭电器能耗。模型结合随时间变化的分支权重，分别预测平稳负载与用电尖峰。在 UCI Appliances 四小时预测任务上，模型以 6.8 万参数取得 34.83 Wh MAE；iTransformer 对应为 41.2 万参数和 34.19 Wh。"
+    },
+    "cardSummary": {
+      "en": "Household demand is mostly steady until brief appliance spikes disrupt a forecast. I designed TC-SS-DPMixer to reweight four branches over time and forecast baseline demand and appliance spikes separately. On four-hour UCI Appliances forecasts, it reached 34.83 Wh MAE with 68K parameters, close to iTransformer’s 34.19 Wh at 412K.",
+      "zh": "家庭用电大多平稳，短时电器尖峰却会打乱预测。我设计了 TC-SS-DPMixer，让四个预测分支随时间重新加权，分别预测基础负载与电器用电尖峰。在 UCI Appliances 四小时预测任务上，模型以 6.8 万参数取得 34.83 Wh MAE；iTransformer 的 MAE 为 34.19 Wh，参数量为 41.2 万。"
     },
     "tags": [
       "PyTorch",
@@ -459,6 +479,10 @@ window.PORTFOLIO_PROJECTS = [
     "summary": {
       "en": "I built a feature-search program to test how much a nearest neighbor classifier benefits from a smaller input set. On the 3,000-row assignment dataset, forward selection found two of 64 features with 97.3% validation accuracy, compared with 68.0% using all features. I implemented both forward selection and backward elimination with leave-one-out evaluation.",
       "zh": "我编写了特征搜索程序，研究减少输入特征能否改善近邻分类。在包含 3,000 条记录的作业数据上，前向选择从 64 个特征中选出两个，验证准确率为 97.3%，使用全部特征时为 68.0%。我实现了前向选择和后向消除，并用留一验证评估候选子集。"
+    },
+    "cardSummary": {
+      "en": "More inputs do not always mean better predictions. I built a feature-search program to find a compact input set for a nearest-neighbor classifier. On the 3,000-row assignment dataset, forward selection chose two of 64 features and reached 97.3% validation accuracy, versus 68.0% with all features.",
+      "zh": "输入特征越多，预测未必越准。我编写特征搜索程序，为近邻分类器寻找更精简的输入组合。在包含 3,000 条记录的作业数据上，前向选择从 64 个特征中选出两个，验证准确率达到 97.3%；使用全部特征时为 68.0%。"
     },
     "tags": [
       "Python",
@@ -554,6 +578,10 @@ window.PORTFOLIO_PROJECTS = [
       "en": "I implemented three ways to solve the 8-puzzle and compared how many states each explores. In the depth 24 assignment case, A* with Manhattan distance expanded 1,869 nodes, compared with 234,994 for uniform-cost search. All three methods use the same search routine, with counters for expanded nodes and maximum queue size.",
       "zh": "我实现了三种八数码求解方法，并比较各自需要探索多少状态。在解深度为 24 的作业测试中，曼哈顿距离 A* 扩展了 1,869 个节点，统一代价搜索为 234,994 个。三种方法使用同一搜索流程，并记录扩展节点数与最大队列规模。"
     },
+    "cardSummary": {
+      "en": "As a puzzle gets harder, the choice of heuristic can change how much work a solver must do. I built a shared 8-puzzle solver to compare uniform-cost search with A* using misplaced-tile and Manhattan heuristics. At depth 24, Manhattan A* expanded 1,869 nodes, against 234,994 for uniform-cost search.",
+      "zh": "数码问题越难，启发式的选择就越能左右搜索量。我搭建了统一的八数码求解器，对比统一代价搜索和采用错位数、曼哈顿距离启发式的 A*。在解深度为 24 的测试中，曼哈顿距离 A* 扩展 1,869 个节点，统一代价搜索则扩展 234,994 个。"
+    },
     "tags": [
       "Python",
       "A*",
@@ -628,6 +656,10 @@ window.PORTFOLIO_PROJECTS = [
     "summary": {
       "en": "While booking a trip for winter break, I noticed that an offer with a low base fare could become more expensive after extra fees. I built Flight Compare to put baggage, insurance, and service charges into the comparison. The C++ program filters simulated flight offers and calculates totals for Economy and First Class.",
       "zh": "订寒假旅行机票时，我注意到一些起步票价较低的报价，加上额外费用后反而更贵。因此我做了 Flight Compare，把行李、保险和服务费纳入比较。这个 C++ 程序可以筛选模拟航班报价，并计算经济舱和头等舱的总价。"
+    },
+    "cardSummary": {
+      "en": "A low fare can become the expensive option once baggage and service fees are added. I built Flight Compare to rank simulated Economy and First Class offers by total cost, including baggage, insurance, and service charges. Its C++ fare model applies separate cabin pricing rules, so travelers can compare the full estimated cost of each ticket.",
+      "zh": "一张低价机票，加上行李和服务费后，可能反而更贵。我做了 Flight Compare，把行李、保险和服务费都计入模拟经济舱与头等舱报价的总价。C++ 计价模型分别处理两种舱位的规则，方便旅客比较每张机票的预估总价。"
     },
     "tags": [
       "C++",

@@ -21,7 +21,7 @@
                         <div class="project-event">${bilingual(record.event)}</div>
                         <h2 class="project-title">${esc(record.title)}</h2>
                         <div class="project-subtitle">${bilingual(record.subtitle)}</div>
-                        <p class="project-desc">${bilingual(record.summary)}</p>
+                        <p class="project-desc">${bilingual(record.cardSummary || record.summary)}</p>
                         ${tags(record)}
                         <div class="project-actions">
                             <button class="cta-btn cta-primary project-open" type="button" data-open-project="${esc(record.slug)}">${label('Project details', '项目详情')} <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
